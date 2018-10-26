@@ -13,7 +13,7 @@
 
 
 #define NUMPRINT 20 //>0
-#define COUNTINTERVAL 50000
+#define COUNTINTERVAL 5000000
 ULong64_t NUMSORT=100000000;
 ULong64_t NumEntries = 0;
 ULong64_t ProcessedEntries = 0;
@@ -85,39 +85,39 @@ void InFlight::Begin(TTree *tree)
   //Generate all of the histograms needed for drawing later on
   //EZERO
   //INFL001
-  hExAt = new TH2F("hExAt","Raw RF (0), Exit (1,2) and ATSCAT (3,4,5) Data; Detector ; Energy [ch]",2000,-8000,8000,6,0,6);//Raw Data
-  hExDeE = new TH2F("hExDeE","Exit DE-E; E [ch]; DE [ch]",2000,0,8000,2000,0,2000);//EXIT
-  hExDeT = new TH2F("hExDeT","Exit DE-RF; RF [ch]; DE [ch]",500,2000,3500,2000,0,2000);//
-  hExET = new TH2F("hExET","Exit E-RF; RF [ch]; E [ch]",500,2000,3500,2000,0,8000);//
-  hExDeEtot = new TH2F("hExDeEtot","Exit DE-ETOT; ETOT [ch]; DE [ch]",2000,0,8000,2000,0,2000);//
+  hExAt = new TH2F("hExAt","Raw RF (0), Exit (1,2) and ATSCAT (3,4,5) Data; Detector ; Energy [ch]",2000,-8000,16000,6,0,6);//Raw Data
+  hExDeE = new TH2F("hExDeE","Exit DE-E; E [ch]; DE [ch]",2000,0,16000,12000,0,12000);//EXIT
+  hExDeT = new TH2F("hExDeT","Exit DE-RF; RF [ch]; DE [ch]",500,2000,3500,2000,0,12000);//
+  hExET = new TH2F("hExET","Exit E-RF; RF [ch]; E [ch]",500,2000,3500,2000,0,16000);//
+  hExDeEtot = new TH2F("hExDeEtot","Exit DE-ETOT; ETOT [ch]; DE [ch]",2000,0,16000,2000,0,12000);//
   hAtDeE = new TH2F("hAtDeE","ATSCAT DE-E; E [ch]; DE [ch]",1000,0,12000,1000,0,12000);//ATSCAT
-  hAtDeT = new TH2F("hAtDeT","ATSCAT DE-RF; RF [ch]; DE [ch]",1000,2000,3500,1000,0,12000);//
-  hAtET = new TH2F("hAtET","ATSCAT E-RF; RF [ch]; E [ch]",500,2000,3500,500,0,8000);//
-  hAtEtotT = new TH2F("hAtEtotT","ATSCAT ETOT-RF; RF [ch]; ETOT [ch]",500,2000,3500,1000,0,12000);//
-  hAtDeEtot = new TH2F("hAtDeEtot","ATSCAT DE-ETOT; ETOT [ch]; DE [ch]",2000,0,24000,2000,0,12000);//ATSCAT
+  hAtDeT = new TH2F("hAtDeT","ATSCAT DE-RF; RF [ch]; DE [ch]",1000,12000,3500,1000,0,12000);//
+  hAtET = new TH2F("hAtET","ATSCAT E-RF; RF [ch]; E [ch]",500,12000,3500,500,0,16000);//
+  hAtEtotT = new TH2F("hAtEtotT","ATSCAT ETOT-RF; RF [ch]; ETOT [ch]",500,12000,3500,1000,0,12000);//
+  hAtDeEtot = new TH2F("hAtDeEtot","ATSCAT DE-ETOT; ETOT [ch]; DE [ch]",12000,0,24000,12000,0,12000);//ATSCAT
   
   //gated
-  hExDeEg = new TH2F("hExDeEg","Exit DE-E (cut); E [ch]; DE [ch]",500,0,8000,500,0,8000);//EXIT
-  hExDeTg = new TH2F("hExDeTg","Exit DE-RF (cut); RF [ch]; DE [ch]",500,2000,3500,500,0,8000);//
-  hExETg = new TH2F("hExETg","Exit E-RF (cut); RF [ch]; E [ch]",500,2000,3500,500,0,8000);//
-  hAtDeEg = new TH2F("hAtDeEg","ATSCAT DE-E (cut); E [ch]; DE [ch]",500,0,8000,500,0,8000);//ATSCAT
-  hAtDeTg = new TH2F("hAtDeTg","ATSCAT DE-RF (cut); RF [ch]; DE [ch]",500,2000,3500,500,0,8000);//
-  hAtETg = new TH2F("hAtETg","ATSCAT E-RF (cut); RF [ch]; E [ch]",500,2000,3500,500,0,8000);//
-  hAtEtotTg = new TH2F("hAtEtotTg","ATSCAT ETOT-RF (cut); RF [ch]; ETOT [ch]",500,2000,3500,500,0,8000);//
+  hExDeEg = new TH2F("hExDeEg","Exit DE-E (cut); E [ch]; DE [ch]",500,0,16000,500,0,16000);//EXIT
+  hExDeTg = new TH2F("hExDeTg","Exit DE-RF (cut); RF [ch]; DE [ch]",500,12000,3500,500,0,16000);//
+  hExETg = new TH2F("hExETg","Exit E-RF (cut); RF [ch]; E [ch]",500,12000,3500,500,0,16000);//
+  hAtDeEg = new TH2F("hAtDeEg","ATSCAT DE-E (cut); E [ch]; DE [ch]",500,0,16000,500,0,16000);//ATSCAT
+  hAtDeTg = new TH2F("hAtDeTg","ATSCAT DE-RF (cut); RF [ch]; DE [ch]",500,12000,3500,500,0,16000);//
+  hAtETg = new TH2F("hAtETg","ATSCAT E-RF (cut); RF [ch]; E [ch]",500,12000,3500,500,0,16000);//
+  hAtEtotTg = new TH2F("hAtEtotTg","ATSCAT ETOT-RF (cut); RF [ch]; ETOT [ch]",500,12000,3500,500,0,16000);//
 
   //calibrated
-  hExDeEc = new TH2F("hExDeEc","Exit DE-E (cal); E [MeV]; DE [MeV]",2000,0,200,2000,0,50);//EXIT
-  hExDeTc = new TH2F("hExDeTc","Exit DE-RF (cal); TAC [ns]; DE [MeV]",4000,0,1000,2000,0,50);//EXIT
+  hExDeEc = new TH2F("hExDeEc","Exit DE-E (cal); E [MeV]; DE [MeV]",12000,0,200,12000,0,50);//EXIT
+  hExDeTc = new TH2F("hExDeTc","Exit DE-RF (cal); TAC [ns]; DE [MeV]",4000,0,1000,12000,0,50);//EXIT
   hExETc = new TH2F("hExETc","Exit E-RF (cal); TAC [ns]; E [MeV]",150,80,200,1000,0,200);//EXIT
-  hExDeEtotc = new TH2F("hExDeEtotc","Exit DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,2000,0,50);//
+  hExDeEtotc = new TH2F("hExDeEtotc","Exit DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,12000,0,50);//
   hAtDeEc = new TH2F("hAtDeEc","ATSCAT DE-E (cal); E [MeV]; DE [MeV]",500,0,200,500,0,200);//ATSCAT
-  hAtDeEtotc = new TH2F("hAtDeEtotc","ATSCAT DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,2000,0,200);//ATSCAT
+  hAtDeEtotc = new TH2F("hAtDeEtotc","ATSCAT DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,12000,0,200);//ATSCAT
 
   //calibrated & cut
-  hExDeEgc = new TH2F("hExDeEgc","Exit DE-E (cal & cut); E [MeV]; DE [MeV]",2000,0,200,2000,0,80);//EXIT
-  hExDeTgc = new TH2F("hExDeTgc","Exit DE-RF (cal & cut); TAC [ns]; DE [MeV]",4000,100,180,2000,0,80);//EXIT
+  hExDeEgc = new TH2F("hExDeEgc","Exit DE-E (cal & cut); E [MeV]; DE [MeV]",12000,0,200,12000,0,80);//EXIT
+  hExDeTgc = new TH2F("hExDeTgc","Exit DE-RF (cal & cut); TAC [ns]; DE [MeV]",4000,100,180,12000,0,80);//EXIT
   hExETgc = new TH2F("hExETgc","Exit E-RF (cal & cut); TAC [ns]; E [MeV]",150,80,200,1000,0,200);//EXIT
-  hExDeEtotgc = new TH2F("hExDeEtotgc","Exit DE-ETOT (cal & cut); ETOT [MeV]; DE [MeV]",2500,0,250,2000,0,50);//
+  hExDeEtotgc = new TH2F("hExDeEtotgc","Exit DE-ETOT (cal & cut); ETOT [MeV]; DE [MeV]",2500,0,250,12000,0,50);//
   hAtDeEgc = new TH2F("hAtDeEgc","ATSCAT DE-E (cal & cut); E [MeV]; DE [MeV]",500,0,200,500,0,200);//ATSCAT
 
   rateGraph = new TMultiGraph();

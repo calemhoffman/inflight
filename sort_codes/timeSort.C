@@ -2,12 +2,12 @@
 #include <TFile.h>
 #include <TTree.h>
 #include <TMath.h>
-char * folderName="pulserTestInflAtscat";
-Int_t RunNum=0;
+char * folderName="exit";
+Int_t RunNum=9;
 
 void timeSort(){
 
-  TFile * f1 = new TFile(Form("../../data/%s_0/UNFILTERED/compass_%s_%d.root",folderName,folderName,RunNum), "READ");
+  TFile * f1 = new TFile(Form("../../data/inflExit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum), "READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
   
   UShort_t Channel;
@@ -91,39 +91,37 @@ void timeSort(){
     
     //printf("=========== %d | %d, %15llu\n", i, Channel, Timestamp);
     Int_t trigChannel=0;
-    for (Int_t k=0;k<2;k++) {
-      if (k==1) trigChannel=6;
-      if( Channel == trigChannel) {
-	countCh ++;
-	ch[trigChannel] = 0;
-	ezero_t[trigChannel] = Timestamp;
-	ezero[trigChannel] = (Float_t)Energy;
-	//printf("      0  %d | %d, %15llu\n", i, ch[0], e_t[0]);
-      }else{
-	continue;
-      }
+    if( Channel == trigChannel) {
+      countCh++;
+      ch[trigChannel] = 0;
+      ezero_t[trigChannel] = Timestamp;
+      ezero[trigChannel] = (Float_t)Energy;
+      //printf("      0  %d | %d, %15llu\n", i, ch[0], e_t[0]);
+    }else{
+      continue;
+    }
       
-      for( int j = i+1 ; j < i + 100; j++){
-	tree->GetEntry(j);
-	if( Channel != trigChannel+1 ) continue;
-	dTime = ((int)Timestamp - (int)ezero_t[trigChannel])/1e8;
-	//printf("     (%3d,%3d) ( %15f, %15f )= dTime : %f \n",i,j, Timestamp/1e8, ezero_t[0]/1e8, dTime);
-	if( Channel == trigChannel+1 && TMath::Abs(dTime) < 0.01) {
-	  countCh ++;
-	  ch[trigChannel+1] = 0;
-	  ezero_t[trigChannel+1] = Timestamp;
-	  ezero[trigChannel+1] = (Float_t)Energy;
-	  //printf("      4  %d | %d, %15llu\n", i, ch[1], ezero_t[1]);
-	  break;
-	}	
-      }
+    for( int j = i+1 ; j < i + 1000; j++){
+      tree->GetEntry(j);
+      if( Channel != trigChannel+2 ) continue;
+      dTime = ((int)Timestamp - (int)ezero_t[trigChannel])/1e8;
+      //printf("     (%3d,%3d) ( %15f, %15f )= dTime : %f \n",i,j, Timestamp/1e8, ezero_t[0]/1e8, dTime);
+      if( Channel == trigChannel+2 && TMath::Abs(dTime) < 0.1) {
+	countCh ++;
+	ch[trigChannel+1] = 0;
+	ezero_t[trigChannel+1] = Timestamp;
+	ezero[trigChannel+1] = (Float_t)Energy;
+	//printf("      4  %d | %d, %15llu\n", i, ch[1], ezero_t[1]);
+	break;
+      }	
     }
     
-    if( countCh >= 2 ) {
+    
+    if( countCh == 2 ) {
       //printf("%6d | %d, %d, %15llu, %15llu | %d\n", i, ch[0], ch[1], e_t[0], e_t[1], (int)e_t[0]- (int)e_t[1]);
       newTree->Fill();
     }else{
-      nonPairCount ++;
+      nonPairCount++;
     }
   }
   
