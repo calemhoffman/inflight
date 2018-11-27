@@ -2,8 +2,8 @@
 #include <TFile.h>
 #include <TTree.h>
 #include <TMath.h>
-char * folderName="exit";
-Int_t RunNum=9;
+char * folderName="exit_mon";
+Int_t RunNum=17;
 
 void timeSort(){
 
