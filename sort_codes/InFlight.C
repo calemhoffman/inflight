@@ -189,7 +189,7 @@ Bool_t InFlight::Process(Long64_t entry)
  
     //EZERO
     //Fill Raw Data
-    hExAt->Fill(tac[0],0);
+    hExAt->Fill(ezero[6],0);
     for (Int_t i=0;i<5;i++) hExAt->Fill(ezero[i],i+1);
 
     //Make ZEROS
@@ -203,10 +203,10 @@ Bool_t InFlight::Process(Long64_t entry)
       }
     }
       
-    hExDeE->Fill(TMath::Abs(ezero[1]),TMath::Abs(ezero[0]));
-    hExDeT->Fill(TMath::Abs(tac[0]),TMath::Abs(ezero[0]));
-    hExET->Fill(TMath::Abs(tac[0]),TMath::Abs(ezero[1]));
-    hExDeEtot->Fill(TMath::Abs(ezero[0]+ezero[1]),TMath::Abs(ezero[0]));
+    hExDeE->Fill(TMath::Abs(ezero[2]),TMath::Abs(ezero[0]));
+    hExDeT->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[0]));
+    hExET->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[2]));
+    hExDeEtot->Fill(TMath::Abs(ezero[0]+ezero[2]),TMath::Abs(ezero[0]));
     hAtDeE->Fill(TMath::Abs(ezero[3]),TMath::Abs(ezero[2]));
     hAtDeT->Fill(TMath::Abs(tac[0]),TMath::Abs(ezero[2]));
     hAtET->Fill(TMath::Abs(tac[0]),TMath::Abs(ezero[3]));

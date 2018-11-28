@@ -15,14 +15,19 @@
 #include <TString.h>
 #include <string>
 
-char * folderName = "testRF";
-Int_t RunNum=2;
+#define toPrint 100
+Int_t setBlockEventNumber = 500000;
+Double_t deltaTimestampConstant=0.1;
+
+//char * folderName = "testRF";
+char * folderName = "exit_oct31";
+Int_t RunNum=9;
 
 void caenSort(){
   
   TString fileName;
   //folderName.Form("testRF");
-  fileName.Form("../../data/testRF/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
+  fileName.Form("../../data/infl3/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
   TFile * f1 = new TFile(fileName,"READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
   
@@ -41,7 +46,7 @@ void caenSort(){
   //======= make new tree
   TFile * saveFile = new TFile("gen.root", "recreate");
   TTree * newTree = new TTree("gen_tree", "PSD Tree");
-  
+
   int ch[10];
   ULong64_t ezero_t[10];
   float ezero[10];
@@ -69,15 +74,16 @@ void caenSort(){
   
   //============ Processing 
   int nEntries = tree->GetEntries();
-  printf("=================== # of Entries to be Sorted: %u\n", nEntries);
+  if (nEntries < setBlockEventNumber) setBlockEventNumber = nEntries;
+  printf("=================== # of Entries Avail: %d | and to be Sorted: %u\n", nEntries, setBlockEventNumber);
 
   /**///===================== Pull first n pieces of data into struct
-  Int_t blockEvents = 200;
-  UShort_t channelT[10000],channel[10000];
-  ULong64_t timestampT[10000],timestamp[10000];
-  UShort_t boardT[10000],board[10000];
-  UShort_t energyT[10000],energy[10000];
-  UInt_t flagsT[10000],flags[10000];
+  Int_t blockEvents = setBlockEventNumber;
+  UShort_t channelT[setBlockEventNumber],channel[setBlockEventNumber];
+  ULong64_t timestampT[setBlockEventNumber],timestamp[setBlockEventNumber];
+  UShort_t boardT[setBlockEventNumber],board[setBlockEventNumber];
+  UShort_t energyT[setBlockEventNumber],energy[setBlockEventNumber];
+  UInt_t flagsT[setBlockEventNumber],flags[setBlockEventNumber];
 
   Double_t *bubbleSortArr1;
   bubbleSortArr1 = new Double_t[blockEvents];
@@ -90,7 +96,7 @@ void caenSort(){
     boardT[entryID] = Board;
     energyT[entryID] = Energy;
     flagsT[entryID] = Flags;
-    if (entryID<40)
+    if (entryID<toPrint)
       printf(" %d | %d | %d | %15llu\n", entryID, channelT[entryID], energyT[entryID], timestampT[entryID]);
   }
 
@@ -99,18 +105,47 @@ void caenSort(){
   sortIndex = new Int_t[blockEvents];
   TMath::BubbleLow(blockEvents,bubbleSortArr1,sortIndex);
 
-  /**///===================== adjust
+  /**///===================== map based on bubble sort
   for (Int_t entryID=0;entryID<blockEvents;entryID++)
     {
       channel[entryID] = channelT[sortIndex[entryID]];
+      timestamp[entryID] = timestampT[sortIndex[entryID]];
+      board[entryID] = boardT[sortIndex[entryID]];
+      energy[entryID] = energyT[sortIndex[entryID]];
+      flags[entryID] = flagsT[sortIndex[entryID]];
 
-      if (entryID<40)
-	printf(" entryID %d | sortID %d | channelID %d \n",entryID,sortIndex[entryID],channel[entryID]);
+      if (entryID<toPrint)
+	printf(" entryID %d | sortID %d | channelID %d | ts %12llu | energy %d\n",entryID,sortIndex[entryID],channel[entryID],timestamp[entryID],energy[entryID]);
     }
-    
+
+  /**///===================== scan, make event, and TTree
+  Double_t deltaTime=TMath::QuietNaN();
+  
+  for (Int_t entryID=1;entryID<blockEvents;entryID++)
+    {
+      deltaTime = double(timestamp[entryID]-timestamp[entryID-1]);
+
+      if (entryID<toPrint)
+	printf(" entryID %d-%d | deltaTime/1e6 %2.10f \n",entryID,entryID-1,deltaTime/1e6);
+      
+      if (deltaTime/1e6>deltaTimestampConstant) { //fill the ttree w/ data
+	newTree->Fill();
+	//zero out ttree params and dt for safety
+	for (Int_t cleanID=0;cleanID<10;cleanID++) {
+	  ezero[cleanID]=TMath::QuietNaN();
+	  ezero_t[cleanID]=TMath::QuietNaN();
+	  deltaTime = TMath::QuietNaN();
+	}
+      }
+      //Always pass current entry to ttree arrays
+	ezero[channel[entryID]] = energy[entryID];
+	ezero_t[channel[entryID]] = timestamp[entryID];
+    }
+
+
+  
   newTree->Write();
   int pEntries = newTree->GetEntries();
   printf("-------------- done. gen.root, event: %d\n",  pEntries);
   saveFile->Close();
-  
 }
