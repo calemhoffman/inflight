@@ -15,19 +15,19 @@
 #include <TString.h>
 #include <string>
 
-#define toPrint 100
+#define toPrint 5
 Int_t setBlockEventNumber = 500000;
-Double_t deltaTimestampConstant=0.1;
+Double_t deltaTimestampConstant=1;
 
 //char * folderName = "testRF";
-char * folderName = "exit_oct31";
-Int_t RunNum=9;
+char * folderName = "exit_mon";
+Int_t RunNum=12;
 
 void caenSort(){
   
   TString fileName;
   //folderName.Form("testRF");
-  fileName.Form("../../data/infl3/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
+  fileName.Form("../../data/inflExit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
   TFile * f1 = new TFile(fileName,"READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
   

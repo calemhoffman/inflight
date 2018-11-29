@@ -155,9 +155,9 @@ void InFlight::Begin(TTree *tree)
   }
   
   printf("======== number of cuts found : %d \n", numCut);
-  cCanvas  = new TCanvas("cCanvas","Running Plots",1250,1000);
-  cCanvas->Divide(1,3);cCanvas->cd(2);gPad->Divide(2,1);
-  cCanvas->cd(3);gPad->Divide(2,1);
+  cCanvas  = new TCanvas("cCanvas","Plots",1250,1000);
+  //cCanvas->Divide(2,2);cCanvas->cd(2);gPad->Divide(2,1);
+  //cCanvas->cd(3);gPad->Divide(2,1);
   cCanvas->Modified(); cCanvas->Update();
   StpWatch.Start();
 }
@@ -277,72 +277,73 @@ Bool_t InFlight::Process(Long64_t entry)
 	  printf("Total Run Time: %10.1f sec, dT : %5.3f sec, Total Evt Rate: %10.0f pps \n",
 		 timeCurrent, timeDelta,
 		 ProcessedEntries/timeCurrent);
-	  if( timeCurrent > 0 ){
-	    graphRate->SetPoint(n-1, timeCurrent, ProcessedEntries/timeDelta);
-	    if( isCutFileOpen){
-	      for( int i = 0 ; i < numCut; i++ ){
-		printf("cut%d : %5d, %6.3f pps \n", i+1, countFromCut[i], countFromCut[i]/timeDelta);			 
-		graphRateCut[i]->SetPoint(n-1, timeCurrent, countFromCut[i]/timeDelta);
-		countFromCut[i] = 0; // reset count for semi-Instantaneous beam rate;
-		timeRef = timeCurrent;
-	      }
-	    }
-	    cCanvas->cd(1);
-	    rateGraph->Draw("AP");
-	    rateGraph->GetXaxis()->SetRangeUser(0, timeCurrent);
-	    gPad->Modified(); cCanvas->Modified(); cCanvas->Update();
-	    n++;
-	  }	
-	  cCanvas->cd(2); gPad->cd(1); hAtDeE->Draw("colz");
-	  cCanvas->cd(3); gPad->cd(1); hExDeE->Draw("colz");//CRH
-	  if( isCutFileOpen){
-	    for( int i = 0 ; i < numCut; i++ ){
-	      cCanvas->cd(2); gPad->cd(1);	 cutList->At(i) ->Draw("same");
-	      cCanvas->cd(3); gPad->cd(1);	 cutList->At(i) ->Draw("same");
-	    }
-	  }
-	  cCanvas->cd(2); gPad->cd(2); hAtDeEtotc->Draw("colz");
-	  cCanvas->cd(3); gPad->cd(2); hExDeEtotc->Draw("colz");//CRH
-	  gPad->Modified(); cCanvas->Modified(); cCanvas->Update();
-	  gSystem->ProcessEvents();
+	  /* if( timeCurrent > 0 ){ */
+	  /*   graphRate->SetPoint(n-1, timeCurrent, ProcessedEntries/timeDelta); */
+	  /*   if( isCutFileOpen){ */
+	  /*     for( int i = 0 ; i < numCut; i++ ){ */
+	  /* 	printf("cut%d : %5d, %6.3f pps \n", i+1, countFromCut[i], countFromCut[i]/timeDelta);			  */
+	  /* 	graphRateCut[i]->SetPoint(n-1, timeCurrent, countFromCut[i]/timeDelta); */
+	  /* 	countFromCut[i] = 0; // reset count for semi-Instantaneous beam rate; */
+	  /* 	timeRef = timeCurrent; */
+	  /*     } */
+	  /*   } */
+	    /* cCanvas->cd(1); */
+	    /* rateGraph->Draw("AP"); */
+	    /* rateGraph->GetXaxis()->SetRangeUser(0, timeCurrent); */
+	    /* gPad->Modified(); cCanvas->Modified(); cCanvas->Update(); */
+	  /*   n++; */
+	  /* } */	
+	  /* cCanvas->cd(2); gPad->cd(1); hAtDeE->Draw("colz"); */
+	  /* cCanvas->cd(3); gPad->cd(1); hExDeE->Draw("colz");//CRH */
+	  /* if( isCutFileOpen){ */
+	  /*   for( int i = 0 ; i < numCut; i++ ){ */
+	  /*     cCanvas->cd(2); gPad->cd(1);	 cutList->At(i) ->Draw("same"); */
+	  /*     cCanvas->cd(3); gPad->cd(1);	 cutList->At(i) ->Draw("same"); */
+	  /*   } */
+	  /* } */
+	  /* cCanvas->cd(2); gPad->cd(2); hAtDeEtotc->Draw("colz"); */
+	  /* cCanvas->cd(3); gPad->cd(2); hExDeEtotc->Draw("colz");//CRH */
+	  /* gPad->Modified(); cCanvas->Modified(); cCanvas->Update(); */
+	  /* gSystem->ProcessEvents(); */
 	}
-	
-   
   }
-   return kTRUE;
+  return kTRUE;
 }
 
 void InFlight::SlaveTerminate()
 {
-
+  
 }
 
 void InFlight::Terminate()
 {
-  cCanvas->cd(1);
-  if( isCutFileOpen) {
-    for (int i = 0 ; i < numCut ; i++){
-      graphRateCut[i]->Fit("pol0");
-    }
-  }
-  /*
-  cCanvas->Clear(); cCanvas->Divide(2,2);
-  cCanvas->cd(1); hExDeEc->Draw("colz");
-  cCanvas->cd(2); hExDeEtotc->Draw("colz");
-  cCanvas->cd(3); gPad->SetLogy(); hExDeEtotc->ProjectionY("py",0,2500,"d");
-  cCanvas->cd(4); gPad->SetLogy(); hExDeEtotc->ProjectionX("px",0,2500,"d");
-  */
+  /* cCanvas->cd(1); */
+  /* if( isCutFileOpen) { */
+  /*   for (int i = 0 ; i < numCut ; i++){ */
+  /*     graphRateCut[i]->Fit("pol0"); */
+  /*   } */
+  /* } */
+  
+  cCanvas->Clear();
+  hExDeEtot->Draw("col");
+
+  /* cCanvas->Divide(2,2); */
+  /* cCanvas->cd(1); hExDeEc->Draw("colz"); */
+  /* cCanvas->cd(2); hExDeEtotc->Draw("colz"); */
+  /* cCanvas->cd(3); gPad->SetLogy(); hExDeEtotc->ProjectionY("py",0,2500,"d"); */
+  /* cCanvas->cd(4); gPad->SetLogy(); hExDeEtotc->ProjectionX("px",0,2500,"d"); */
+  
 
   //cCanvas->Clear(); hAtDeEtotc->Draw("colz");
   printf("Total Run Time: %5.1f\n",timeCurrent);
 
-  	if( isCutFileOpen){
-		for( int i = 0 ; i < numCut; i++ ){
-			cutG = (TCutG *)cutList->At(i) ;
-			printf("Total Counts for Cut %d: %4.0f\n",i,cutG->IntegralHist(hExDeE));
-		}
+  	/* if( isCutFileOpen){ */
+	/* 	for( int i = 0 ; i < numCut; i++ ){ */
+	/* 		cutG = (TCutG *)cutList->At(i) ; */
+	/* 		printf("Total Counts for Cut %d: %4.0f\n",i,cutG->IntegralHist(hExDeE)); */
+	/* 	} */
 
-	}
+	/* } */
   
   if (ProcessedEntries>=NUMSORT)
     printf("Warning: Only Sorted %llu Events\n",NUMSORT);
