@@ -260,9 +260,9 @@ Bool_t InFlight::Process(Long64_t entry)
 	
 	//Time
 	if (TMath::Abs(ezero[0])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[0]/1e8;
+	  timeCurrent = (Float_t) ezero_t[0]/1e12;
 	} else if (TMath::Abs(ezero[2])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[2]/1e8;
+	  timeCurrent = (Float_t) ezero_t[2]/1e12;
 	}
 	//initial timeZero and timeRef
 	if (timeZero==0) {
@@ -327,14 +327,6 @@ void InFlight::Terminate()
   cCanvas->Clear();
   hExDeEtot->Draw("col");
 
-  /* cCanvas->Divide(2,2); */
-  /* cCanvas->cd(1); hExDeEc->Draw("colz"); */
-  /* cCanvas->cd(2); hExDeEtotc->Draw("colz"); */
-  /* cCanvas->cd(3); gPad->SetLogy(); hExDeEtotc->ProjectionY("py",0,2500,"d"); */
-  /* cCanvas->cd(4); gPad->SetLogy(); hExDeEtotc->ProjectionX("px",0,2500,"d"); */
-  
-
-  //cCanvas->Clear(); hAtDeEtotc->Draw("colz");
   printf("Total Run Time: %5.1f\n",timeCurrent);
 
   	/* if( isCutFileOpen){ */

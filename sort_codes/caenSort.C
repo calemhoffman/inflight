@@ -17,11 +17,15 @@
 
 #define toPrint 5
 Int_t setBlockEventNumber = 500000;
-Double_t deltaTimestampConstant=1;
+Double_t deltaTimestampConstant=0.9; //in microseconds
+//^^^^^^---- coincidence window, if > then new event..
 
 //char * folderName = "testRF";
 char * folderName = "exit_mon";
 Int_t RunNum=12;
+
+TH1D * hDeltaTime;
+TH1I * hEventMultiplicity;
 
 void caenSort(){
   
@@ -30,6 +34,11 @@ void caenSort(){
   fileName.Form("../../data/inflExit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
   TFile * f1 = new TFile(fileName,"READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
+
+  hDeltaTime = new TH1D("hDeltaTime","Time Differences Between Data; Delta Time [u-seconds]",
+			1000,0,5);
+  hEventMultiplicity = new TH1I("hEventMultiplicity","Multiplicity for each event; Mult",
+				20,0,20);
   
   UShort_t Channel;
   ULong64_t Timestamp;
@@ -120,31 +129,45 @@ void caenSort(){
 
   /**///===================== scan, make event, and TTree
   Double_t deltaTime=TMath::QuietNaN();
+  Int_t eventMultCounter=0;
   
   for (Int_t entryID=1;entryID<blockEvents;entryID++)
     {
       deltaTime = double(timestamp[entryID]-timestamp[entryID-1]);
-
+      hDeltaTime->Fill(deltaTime/1e6);
+      eventMultCounter++;
       if (entryID<toPrint)
 	printf(" entryID %d-%d | deltaTime/1e6 %2.10f \n",entryID,entryID-1,deltaTime/1e6);
       
       if (deltaTime/1e6>deltaTimestampConstant) { //fill the ttree w/ data
 	newTree->Fill();
+	hEventMultiplicity->Fill(eventMultCounter);
 	//zero out ttree params and dt for safety
 	for (Int_t cleanID=0;cleanID<10;cleanID++) {
 	  ezero[cleanID]=TMath::QuietNaN();
 	  ezero_t[cleanID]=TMath::QuietNaN();
 	  deltaTime = TMath::QuietNaN();
 	}
+	eventMultCounter=0;
       }
       //Always pass current entry to ttree arrays
 	ezero[channel[entryID]] = energy[entryID];
 	ezero_t[channel[entryID]] = timestamp[entryID];
     }
-
+  TCanvas *cc = new TCanvas("cc","cc",1000,500);
+  cc->Clear();cc->Divide(1,2);
+  cc->cd(1);
+  gPad->SetLogy(1);
+  hDeltaTime->SetMinimum(1); hDeltaTime->Draw();
+  cc->cd(2);
+  hEventMultiplicity->Draw();
+  cc->Update();
 
   
   newTree->Write();
+  hDeltaTime->Write();
+  deltaTime = double(timestamp[blockEvents-1]-timestamp[1])/1e12;
+  printf("============== run length: %5.2f seconds\n", deltaTime);
   int pEntries = newTree->GetEntries();
   printf("-------------- done. gen.root, event: %d\n",  pEntries);
   saveFile->Close();
