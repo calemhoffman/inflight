@@ -27,7 +27,7 @@ Int_t RunNum=12;
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;
 
-void caenSort(){
+void barbasol(){
   
   TString fileName;
   //folderName.Form("testRF");
