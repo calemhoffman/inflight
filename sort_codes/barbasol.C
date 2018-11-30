@@ -14,6 +14,7 @@
 #include <TProof.h>
 #include <TString.h>
 #include <string>
+#include <TLine.h>
 
 #define toPrint 5
 Int_t setBlockEventNumber = 500000;
@@ -159,10 +160,14 @@ void barbasol(){
   cc->cd(1);
   gPad->SetLogy(1);
   hDeltaTime->SetMinimum(1); hDeltaTime->Draw();
+  cc->Update();
+  TLine *l=new TLine(deltaTimestampConstant,0,deltaTimestampConstant,hDeltaTime->GetMaximum());
+  l->SetLineColor(kBlue);
+  l->Draw();
   cc->cd(2);
   hEventMultiplicity->Draw();
   cc->Update();
-
+ 
   
   newTree->Write();
   hDeltaTime->Write();

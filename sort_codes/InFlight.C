@@ -36,6 +36,10 @@ TGraph ** graphRateCut; //!
 TMultiGraph * rateGraph; //!
 
 //INFL001
+TH1F *hExDe;
+TH1F *hExE;
+TH1F *hExEtot;
+
 TH2F *hExAt;
 TH2F *hExDeE,*hAtDeE;
 TH2F *hExDeT,*hAtDeT;
@@ -84,7 +88,10 @@ void InFlight::Begin(TTree *tree)
   
   //Generate all of the histograms needed for drawing later on
   //EZERO
-  //INFL001
+  hExDe = new TH1F("hExDe","Exit DE; DE [ch]",4000,50,16000);//EXIT
+  hExE = new TH1F("hExE","Exit E; E [ch]",4000,50,16000);//EXIT
+  hExEtot = new TH1F("hExEtot","Exit ETOT; ETOT [ch]",4000,50,24000);//EXIT
+  
   hExAt = new TH2F("hExAt","Raw RF (0), Exit (1,2) and ATSCAT (3,4,5) Data; Detector ; Energy [ch]",2000,-8000,16000,6,0,6);//Raw Data
   hExDeE = new TH2F("hExDeE","Exit DE-E; E [ch]; DE [ch]",2000,0,16000,12000,0,12000);//EXIT
   hExDeT = new TH2F("hExDeT","Exit DE-RF; RF [ch]; DE [ch]",500,2000,3500,2000,0,12000);//
@@ -155,10 +162,9 @@ void InFlight::Begin(TTree *tree)
   }
   
   printf("======== number of cuts found : %d \n", numCut);
-  cCanvas  = new TCanvas("cCanvas","Plots",1250,1000);
   //cCanvas->Divide(2,2);cCanvas->cd(2);gPad->Divide(2,1);
   //cCanvas->cd(3);gPad->Divide(2,1);
-  cCanvas->Modified(); cCanvas->Update();
+  //cCanvas->Modified(); cCanvas->Update();
   StpWatch.Start();
 }
 
@@ -202,7 +208,10 @@ Bool_t InFlight::Process(Long64_t entry)
 	ezero[i]=0;
       }
     }
-      
+
+    hExDe->Fill(TMath::Abs(ezero[0]));
+    hExE->Fill(TMath::Abs(ezero[2]));
+    hExEtot->Fill(TMath::Abs(ezero[0])+TMath::Abs(ezero[2]));    
     hExDeE->Fill(TMath::Abs(ezero[2]),TMath::Abs(ezero[0]));
     hExDeT->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[0]));
     hExET->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[2]));
@@ -323,10 +332,17 @@ void InFlight::Terminate()
   /*     graphRateCut[i]->Fit("pol0"); */
   /*   } */
   /* } */
-  
+  cCanvas  = new TCanvas("cCanvas","Plots",1250,1000);
   cCanvas->Clear();
-  hExDeEtot->Draw("col");
-
+  cCanvas->Divide(1,2);
+  cCanvas->cd(1);gPad->Divide(2,1);
+  cCanvas->cd(1);gPad->cd(1);hExDeE->Draw("col");
+  cCanvas->cd(1);gPad->cd(2);hExDeEtot->Draw("col");
+  cCanvas->cd(2);gPad->Divide(3,1);
+  cCanvas->cd(2);gPad->cd(1);hExDe->Draw();
+  cCanvas->cd(2);gPad->cd(2);hExE->Draw();
+  cCanvas->cd(2);gPad->cd(3);hExEtot->Draw();
+		   
   printf("Total Run Time: %5.1f\n",timeCurrent);
 
   	/* if( isCutFileOpen){ */
