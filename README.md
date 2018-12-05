@@ -1,2 +1,2 @@
-# inflight - local branch for MAC Laptop
+# inflight
 All software relating to the inflight project 
