@@ -18,7 +18,7 @@ void CutCreator(){
 	printf("7 = AtScat totE - T cut \n");
 	printf("============== Choice? : ");
 	*/
-	int option = 4; // assume exit dE - E
+	int option = 1; // assume exit dE - E
 	//scanf("%d", &option);
 	
 	TString varX, varY, tag;
@@ -41,7 +41,7 @@ void CutCreator(){
 	if( !cCutCreator->GetShowToolBar() ) cCutCreator->ToggleToolBar();
 	
 	TString expression; //CRH
-	expression.Form("%s*%f + %f:%s * %f + %f>>h(2000, 0, 8000, 2000, 0, 8000)", 
+	expression.Form("%s*%f + %f:%s * %f + %f>>h(2000, 0, 16000, 2000, 0, 16000)", 
 					varY.Data(), ezero_cal[0][0], ezero_cal[0][1],
 					varX.Data(), ezero_cal[1][0], ezero_cal[1][1]);
 					

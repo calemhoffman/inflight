@@ -5,8 +5,8 @@
 
  
   // Set ROOT defaults
-  gStyle->SetPalette(1);
-  // gStyle->SetOptStat("im"); 
+  //gStyle->SetPalette(1);
+  gStyle->SetOptStat("im"); 
   //gStyle->SetOptStat(0);
   gStyle->SetLineWidth(2);
   gStyle->SetStatW(0.3);
@@ -35,21 +35,16 @@
   gStyle->SetOptFit(1111);                        // the results of the fits
   gStyle->SetPadGridX(kTRUE);                     // draw horizontal and vertical grids
   gStyle->SetPadGridY(kTRUE);
-  gStyle->SetPalette(1,0);                        // pretty and useful palette
-  gStyle->SetHistLineWidth(2);                    // a thicker histogram line
+  //gStyle->SetPalette(1,0);                        // pretty and useful palette
+  gStyle->SetHistLineWidth(1);                    // a thicker histogram line
   gStyle->SetFrameFillColor(10);                  // a different frame colour   
   gStyle->SetTitleFillColor(33);                 // title colour to highlight it
   gStyle->SetTitleW(.76);                         // Title Width
   gStyle->SetTitleH(.07);                        // Title height
   gStyle->SetHistMinimumZero(true);               // Suppresses Histogram Zero Supression
 
-  
-  /*
-  gROOT->ProcessLine(".x cut1_Clvr0DTPPAC.C"); cut1_Clvr0DTPPAC; 
-  */
- 
- 
-  //  TBrowser *b = new TBrowser()
 
+   
+  //  TBrowser *b = new TBrowser()
 
 }
