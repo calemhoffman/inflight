@@ -21,18 +21,19 @@ Int_t setBlockEventNumber = 500000;
 Double_t deltaTimestampConstant=0.9; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
-//char * folderName = "testRF";
-char * folderName = "exit_mon";
+TString folderName("exit_mon");
 Int_t RunNum=12;
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;
 
-void barbasol(){
+void barbasol(Int_t runNumberInput=0){
+
+  if (runNumberInput!=0) RunNum=runNumberInput;
   
   TString fileName;
   //folderName.Form("testRF");
-  fileName.Form("../../data/inflExit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName,RunNum,folderName,RunNum); 
+  fileName.Form("../../data/inflExit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName.Data(),RunNum,folderName.Data(),RunNum); 
   TFile * f1 = new TFile(fileName,"READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
 
