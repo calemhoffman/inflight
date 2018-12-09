@@ -324,10 +324,12 @@ void InFlight::Terminate()
   cCanvas2->Clear(); cCanvas2->cd();
   hExDeE->Draw("col box");
 
+  Int_t cutIntegral=0;
   if(isCutFileOpen){
     for( int i = 0 ; i < numCut; i++ ){
       cutG = (TCutG *)cutList->At(i) ;
       cutG->Draw("same");
+      cutIntegral=cutG->IntegralHist(hExDeE);
       printf("Total Counts for Cut %d: %4.0f\n",i,cutG->IntegralHist(hExDeE));
     }   
   }
@@ -335,7 +337,8 @@ void InFlight::Terminate()
   if (ProcessedEntries>=NUMSORT)
     printf("Warning: Only Sorted %llu Events\n",NUMSORT);
   // printf("Total time for sort: %3.1f\n",StpWatch.RealTime());
-  //printf("Which is a rate of: %3.1f k/s\n",(Float_t)ProcessedEntries/StpWatch.RealTime()/1000.);
+  if(isCutFileOpen)
+    printf("Which is a rate of: %3.1f 1/s\n",(Float_t)cutIntegral/timeCurrent);
 
   StpWatch.Start(kFALSE);
 }
