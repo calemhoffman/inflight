@@ -14,8 +14,8 @@
 
 #define NUMPRINT 20 //>0
 #define COUNTINTERVAL 5000000
-#define deChan 0
-#define eChan 2
+#define deChan 4
+#define eChan 6
 
 ULong64_t NUMSORT=100000000;
 ULong64_t NumEntries = 0;
@@ -243,11 +243,10 @@ Bool_t InFlight::Process(Long64_t entry)
 	}
 	
 	//Time
-	if (TMath::Abs(ezero[0])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[0]/1e12;
-	} else if (TMath::Abs(ezero[2])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[2]/1e12;
+	if (TMath::Abs(ezero[deChan])>50 ){//CRH
+	  timeCurrent = (Float_t) ezero_t[deChan]/1e12;
 	}
+	
 	//initial timeZero and timeRef
 	if (timeZero==0) {
 	  timeZero = timeCurrent;
