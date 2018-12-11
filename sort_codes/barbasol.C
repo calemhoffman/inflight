@@ -22,7 +22,7 @@ Double_t deltaTimestampConstant=0.9; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
 TString folderName("exit_dec10");
-Int_t RunNum=1; //Change for each new run!!!
+Int_t RunNum=7; //Change for each new run!!!
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;

@@ -199,11 +199,19 @@ Bool_t InFlight::Process(Long64_t entry)
 
     hExDe->Fill(TMath::Abs(ezero[deChan]));
     hExE->Fill(TMath::Abs(ezero[eChan]));
-    hExEtot->Fill(TMath::Abs(ezero[deChan])+TMath::Abs(ezero[eChan]));    
+    
     hExDeE->Fill(TMath::Abs(ezero[eChan]),TMath::Abs(ezero[deChan]));
     hExDeT->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[deChan]));
     hExET->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[eChan]));
-    hExDeEtot->Fill(TMath::Abs(ezero[deChan]+ezero[eChan]),TMath::Abs(ezero[deChan]));
+    Float_t etotalTemp=0;
+    if (deChan==4) {
+      etotalTemp = TMath::Abs(ezero[deChan]/4.0)+TMath::Abs(ezero[eChan]);
+    } else {
+      etotalTemp = TMath::Abs(ezero[deChan]/1.0)+TMath::Abs(ezero[eChan]);
+    }
+
+    hExEtot->Fill(TMath::Abs(etotalTemp));    
+    hExDeEtot->Fill(TMath::Abs(etotalTemp),TMath::Abs(ezero[deChan]));
   		    
     //calibrated
     temp[4] = temp[3]+temp[2];
@@ -306,7 +314,7 @@ void InFlight::Terminate()
   /*     graphRateCut[i]->Fit("pol0"); */
   /*   } */
   /* } */
-  cCanvas  = new TCanvas("cCanvas","Plots",1250,1000);
+  cCanvas  = new TCanvas("cCanvas","Plots",1500,800);
   cCanvas->Clear();
   cCanvas->Divide(1,2);
   cCanvas->cd(1);gPad->Divide(2,1);
@@ -319,7 +327,7 @@ void InFlight::Terminate()
   cCanvas->Update();
   printf("Total Run Time: %5.1f\n",timeCurrent);
 
-  TCanvas *cCanvas2 = new TCanvas("cCanvas2","hExDeE",1250,1000);
+  TCanvas *cCanvas2 = new TCanvas("cCanvas2","hExDeE",900,900);
   cCanvas2->Clear(); cCanvas2->cd();
   hExDeE->Draw("col box");
 
