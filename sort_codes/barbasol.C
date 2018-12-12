@@ -18,11 +18,11 @@
 
 #define toPrint 5
 Int_t setBlockEventNumber = 500000;
-Double_t deltaTimestampConstant=0.9; //in microseconds
+Double_t deltaTimestampConstant=0.5; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
 TString folderName("exit_dec10");
-Int_t RunNum=7; //Change for each new run!!!
+Int_t RunNum=19; //Change for each new run!!!
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;

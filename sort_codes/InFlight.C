@@ -204,12 +204,9 @@ Bool_t InFlight::Process(Long64_t entry)
     hExDeT->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[deChan]));
     hExET->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[eChan]));
     Float_t etotalTemp=0;
-    if (deChan==4) {
-      etotalTemp = TMath::Abs(ezero[deChan]/4.0)+TMath::Abs(ezero[eChan]);
-    } else {
-      etotalTemp = TMath::Abs(ezero[deChan]/1.0)+TMath::Abs(ezero[eChan]);
-    }
-
+    
+    etotalTemp = TMath::Abs(ezero[deChan]/4.0)+TMath::Abs(ezero[eChan]);
+    
     hExEtot->Fill(TMath::Abs(etotalTemp));    
     hExDeEtot->Fill(TMath::Abs(etotalTemp),TMath::Abs(ezero[deChan]));
   		    
