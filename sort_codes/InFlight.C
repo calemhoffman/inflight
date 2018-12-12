@@ -14,8 +14,8 @@
 
 #define NUMPRINT 20 //>0
 #define COUNTINTERVAL 5000000
-#define deChan 0
-#define eChan 2
+#define deChan 4
+#define eChan 6
 
 ULong64_t NUMSORT=100000000;
 ULong64_t NumEntries = 0;
@@ -199,11 +199,16 @@ Bool_t InFlight::Process(Long64_t entry)
 
     hExDe->Fill(TMath::Abs(ezero[deChan]));
     hExE->Fill(TMath::Abs(ezero[eChan]));
-    hExEtot->Fill(TMath::Abs(ezero[deChan])+TMath::Abs(ezero[eChan]));    
+    
     hExDeE->Fill(TMath::Abs(ezero[eChan]),TMath::Abs(ezero[deChan]));
     hExDeT->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[deChan]));
     hExET->Fill(TMath::Abs(ezero[6]),TMath::Abs(ezero[eChan]));
-    hExDeEtot->Fill(TMath::Abs(ezero[deChan]+ezero[eChan]),TMath::Abs(ezero[deChan]));
+    Float_t etotalTemp=0;
+    
+    etotalTemp = TMath::Abs(ezero[deChan]/4.0)+TMath::Abs(ezero[eChan]);
+    
+    hExEtot->Fill(TMath::Abs(etotalTemp));    
+    hExDeEtot->Fill(TMath::Abs(etotalTemp),TMath::Abs(ezero[deChan]));
   		    
     //calibrated
     temp[4] = temp[3]+temp[2];
@@ -243,11 +248,10 @@ Bool_t InFlight::Process(Long64_t entry)
 	}
 	
 	//Time
-	if (TMath::Abs(ezero[0])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[0]/1e12;
-	} else if (TMath::Abs(ezero[2])>50 ){//CRH
-	  timeCurrent = (Float_t) ezero_t[2]/1e12;
+	if (TMath::Abs(ezero[deChan])>50 ){//CRH
+	  timeCurrent = (Float_t) ezero_t[deChan]/1e12;
 	}
+	
 	//initial timeZero and timeRef
 	if (timeZero==0) {
 	  timeZero = timeCurrent;
@@ -307,7 +311,7 @@ void InFlight::Terminate()
   /*     graphRateCut[i]->Fit("pol0"); */
   /*   } */
   /* } */
-  cCanvas  = new TCanvas("cCanvas","Plots",1250,1000);
+  cCanvas  = new TCanvas("cCanvas","Plots",1500,800);
   cCanvas->Clear();
   cCanvas->Divide(1,2);
   cCanvas->cd(1);gPad->Divide(2,1);
@@ -320,7 +324,7 @@ void InFlight::Terminate()
   cCanvas->Update();
   printf("Total Run Time: %5.1f\n",timeCurrent);
 
-  TCanvas *cCanvas2 = new TCanvas("cCanvas2","hExDeE",1250,1000);
+  TCanvas *cCanvas2 = new TCanvas("cCanvas2","hExDeE",900,900);
   cCanvas2->Clear(); cCanvas2->cd();
   hExDeE->Draw("col box");
 

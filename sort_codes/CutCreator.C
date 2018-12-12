@@ -23,7 +23,7 @@ void CutCreator(){
 	
 	TString varX, varY, tag;
 	switch(option){
-		case 1 : varX = "TMath::Abs(ezero[2])"; varY = "TMath::Abs(ezero[0])"; tag = "1"; break;
+		case 1 : varX = "TMath::Abs(ezero[6])"; varY = "TMath::Abs(ezero[4])"; tag = "1"; break;
 		case 2 : varX = "TMath::Abs(tac[0])";   varY = "TMath::Abs(ezero[0])"; tag = "2"; break;
 		case 3 : varX = "TMath::Abs(tac[0])";   varY = "TMath::Abs(ezero[1])"; tag = "3"; break;
 		case 4 : varX = "TMath::Abs(ezero[3])"; varY = "TMath::Abs(ezero[2])"; tag = "4"; break;
