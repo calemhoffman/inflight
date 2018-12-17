@@ -1,0 +1,352 @@
+#Beam	A	Z	Rate	Energy Range	Purity	Designation	Type		Comments
+6He	6	2	0.00E+00	6	0	Not Available	-p	3	Check primary beam / energy
+6He	6	2	1.00E+04	10	5	Expected	-p	3	Check primary beam / energy
+6He	6	2	1.00E+04	14	5	Expected	-p	3	Check primary beam / energy
+									
+8Li	8	3	5.00E+04	6	5	Expected	+n	1	Check primary beam / energy
+8Li	8	3	5.00E+04	10	10	Available	+n	1	Check primary beam / energy
+8Li	8	3	1.00E+04	14	10	Expected	+n	1	Check primary beam / energy
+									
+7Be	7	4	1.00E+04	6	10	Expected	+p	2	Check primary beam / energy
+7Be	7	4	5.00E+03	10	20	Available	+p	2	Check primary beam / energy
+7Be	7	4	1.00E+03	14	20	Expected	+p	2	Check primary beam / energy
+									
+10Be	10	4	1.00E+05	6	50	Available	+n	1	primary beam limit
+10Be	10	4	1.00E+05	10	50	Available	+n	1	primary beam limit
+10Be	10	4	2.00E+04	14	50	Expected	+n	1	primary beam limit
+									
+11Be	11	4	0.00E+00	6	0	Not Available	-2p	5	Q-values check
+11Be	11	4	2.00E+02	10	50	Expected	-2p	5	Q-values check
+11Be	11	4	1.00E+03	14	50	Expected	-2p	5	Q-values check
+									
+12Be	12	4	0.00E+00	6	0	Not Available	-2p	5	
+12Be	12	4	2.00E+02	10	50	Expected	-2p	5	
+12Be	12	4	1.00E+03	14	50	Expected	-2p	5	
+									
+8B	8	5	0.00E+00	6	0	Not Available	-2n	6	?
+8B	8	5	0.00E+00	10	0	Not Available	-2n	6	?
+8B	8	5	0.00E+00	14	0	Not Available	-2n	6	?
+									
+12B	12	5	2.00E+06	6	20	Available	+n	1	
+12B	12	5	1.00E+06	10	50	Available	+n	1	
+12B	12	5	2.00E+05	14	50	Available	+n	1	
+									
+13B	13	5	0.00E+00	6	0	Not Available	-p	3	
+13B	13	5	1.00E+04	10	20	Expected	-p	3	
+13B	13	5	5.00E+04	14	50	Available	-p	3	
+									
+10C	10	6	0.00E+00	6	0	Not Available	pn	7	
+10C	10	6	0.00E+00	10	0	Not Available	pn	7	
+10C	10	6	0.00E+00	14	0	Not Available	pn	7	
+									
+11C	11	6	1.00E+06	6	10	Available	+p	2	check primary
+11C	11	6	5.00E+05	10	20	Available	+p	2	check primary
+11C	11	6	1.00E+05	14	20	Available	+p	2	check primary
+									
+15C	15	6	2.00E+06	6	50	Available	+n	1	
+15C	15	6	1.00E+06	10	50	Available	+n	1	
+15C	15	6	5.00E+05	14	50	Available	+n	1	
+									
+16C	16	6	0.00E+00	6	0	Not Available	-2p	5	
+16C	16	6	2.00E+02	10	10	Available	-2p	5	
+16C	16	6	1.00E+03	14	50	Available	-2p	5	
+									
+12N	12	7	0.00E+00	6	0	Not Available	pn	7	
+12N	12	7	0.00E+00	10	0	Not Available	pn	7	
+12N	12	7	0.00E+00	14	0	Not Available	pn	7	
+									
+13N	13	7	2.00E+06	6	20	Available	+p	2	
+13N	13	7	1.00E+06	10	20	Available	+p	2	
+13N	13	7	2.00E+05	14	20	Available	+p	2	
+									
+16Nm/g	16	7	2.00E+06	6	20	Available	+n	1	
+16Nm/g	16	7	1.00E+06	10	20	Available	+n	1	
+16Nm/g	16	7	2.00E+05	14	20	Available	+n	1	
+									
+17N	17	7	0.00E+00	6	0	Not Available	-p	3	
+17N	17	7	1.00E+04	10	20	Available	-p	3	
+17N	17	7	5.00E+04	14	50	Available	-p	3	
+									
+14O	14	8	0.00E+00	6	0	Not Available	pn	7	
+14O	14	8	0.00E+00	10	0	Not Available	pn	7	
+14O	14	8	0.00E+00	14	0	Not Available	pn	7	
+									
+15O	15	8	1.00E+06	6	20	Available	+p	2	
+15O	15	8	1.00E+06	10	50	Available	+p	2	
+15O	15	8	2.00E+05	14	50	Available	+p	2	
+									
+19O	19	8	1.00E+06	6	20	Available	+n	1	
+19O	19	8	1.00E+06	10	50	Available	+n	1	
+19O	19	8	2.00E+05	14	50	Available	+n	1	
+									
+20O	20	8	0.00E+00	6	0	Not Available	-2p	5	
+20O	20	8	2.00E+02	10	50	Available	-2p	5	
+20O	20	8	1.00E+03	14	50	Available	-2p	5	
+									
+17F	17	9	1.00E+06	6	20	Available	+p	2	
+17F	17	9	1.00E+06	10	50	Available	+p	2	
+17F	17	9	2.00E+05	14	50	Available	+p	2	
+									
+18Fm/g	18	9	1.00E+06	6	20	Available	+p	2	Check isomer stuff
+18Fm/g	18	9	1.00E+06	10	50	Available	+p	2	Check isomer stuff
+18Fm/g	18	9	2.00E+05	14	50	Available	+p	2	Check isomer stuff
+									
+20F	20	9	1.00E+06	6	20	Available	+n	1	
+20F	20	9	1.00E+06	10	50	Available	+n	1	
+20F	20	9	2.00E+05	14	50	Available	+n	1	
+									
+21F	21	9	0.00E+00	6	0	Not Available	-p	3	2 energy ranges?
+21F	21	9	1.00E+04	10	50	Available	-p	3	2 energy ranges?
+21F	21	9	5.00E+04	14	50	Available	-p	3	2 energy ranges?
+									
+18Ne	18	10	0.00E+00	6	0	Not Available	-2n	6	
+18Ne	18	10	0.00E+00	10	0	Not Available	-2n	6	
+18Ne	18	10	0.00E+00	14	0	Not Available	-2n	6	
+									
+19Ne	19	10	0.00E+00	6	0	Not Available	-n	4	Check -1n
+19Ne	19	10	0.00E+00	10	0	Not Available	-n	4	Check -1n
+19Ne	19	10	0.00E+00	14	0	Not Available	-n	4	Check -1n
+									
+23Ne	23	10	2.00E+05	6	10	Available	+n	1	
+23Ne	23	10	2.00E+05	10	20	Available	+n	1	
+23Ne	23	10	5.00E+04	14	20	Available	+n	1	
+									
+24Ne	24	10	0.00E+00	6	0	Not Available	-2p	5	check primary beam
+24Ne	24	10	1.00E+02	10	50	Available	-2p	5	check primary beam
+24Ne	24	10	5.00E+02	14	50	Available	-2p	5	check primary beam
+									
+20Na	20	11	0.00E+00	6	0	Not Available	pn	7	
+20Na	20	11	0.00E+00	10	0	Not Available	pn	7	
+20Na	20	11	0.00E+00	14	0	Not Available	pn	7	
+									
+21Na	21	11	5.00E+05	6	10	Available	+p	2	
+21Na	21	11	5.00E+05	10	20	Available	+p	2	
+21Na	21	11	1.00E+05	14	20	Available	+p	2	
+									
+22Na	22	11	5.00E+05	6	10	Available	+p	2	
+22Na	22	11	5.00E+05	10	20	Available	+p	2	
+22Na	22	11	1.00E+05	14	20	Available	+p	2	
+									
+24Na	24	11	5.00E+04	6	5	Available	+n	1	check primary beam
+24Na	24	11	5.00E+04	10	10	Available	+n	1	check primary beam
+24Na	24	11	1.00E+04	14	10	Available	+n	1	check primary beam
+									
+25Na	25	11	0.00E+00	6	0	Not Available	-p	3	check primary beam
+25Na	25	11	2.00E+04	10	50	Available	-p	3	check primary beam
+25Na	25	11	5.00E+04	14	50	Available	-p	3	check primary beam
+									
+23Mg	23	12	0.00E+00	6	0	Not Available	-n	4	
+23Mg	23	12	0.00E+00	10	0	Not Available	-n	4	
+23Mg	23	12	0.00E+00	14	0	Not Available	-n	4	
+									
+27Mg	27	12	1.00E+05	6	10	Available	+n	1	check primary beam
+27Mg	27	12	1.00E+05	10	20	Available	+n	1	check primary beam
+27Mg	27	12	2.00E+04	14	20	Available	+n	1	check primary beam
+									
+28Mg	28	12	0.00E+00	6	0	Not Available	-2p	5	
+28Mg	28	12	0.00E+00	10	0	Not Available	-2p	5	
+28Mg	28	12	0.00E+00	14	0	Not Available	-2p	5	
+									
+24Al	24	13	0.00E+00	6	0	Not Available	pn	7	
+24Al	24	13	0.00E+00	10	0	Not Available	pn	7	
+24Al	24	13	0.00E+00	14	0	Not Available	pn	7	
+									
+25Al	25	13	1.00E+05	6	10	Available	+p	2	
+25Al	25	13	1.00E+05	10	20	Available	+p	2	
+25Al	25	13	2.00E+04	14	20	Available	+p	2	
+									
+26Alm/g	26	13	1.00E+05	6	10	Available	+p	2	Lookup what was done
+26Alm/g	26	13	1.00E+05	10	20	Available	+p	2	Lookup what was done
+26Alm/g	26	13	2.00E+04	14	20	Available	+p	2	Lookup what was done
+									
+28Al	28	13	1.00E+05	6	5	Expected	+n	1	
+28Al	28	13	1.00E+05	10	10	Expected	+n	1	
+28Al	28	13	2.00E+04	14	10	Expected	+n	1	
+									
+29Al	29	13	0.00E+00	6	0	Not Available	-p	3	
+29Al	29	13	1.00E+04	10	5	Expected	-p	3	
+29Al	29	13	2.00E+04	14	10	Expected	-p	3	
+									
+27Si	27	14	0.00E+00	6	0	Not Available	pn	7	
+27Si	27	14	0.00E+00	10	0	Not Available	pn	7	
+27Si	27	14	0.00E+00	14	0	Not Available	pn	7	
+									
+31Si	31	14	5.00E+04	6	5	Expected	+n	1	
+31Si	31	14	5.00E+04	10	10	Expected	+n	1	
+31Si	31	14	1.00E+04	14	10	Expected	+n	1	
+									
+32Si	32	14	0.00E+00	6	0	Not Available	-2p	5	
+32Si	32	14	1.00E+02	10	5	Expected	-2p	5	
+32Si	32	14	5.00E+02	14	10	Expected	-2p	5	
+									
+34Si	34	14	0.00E+00	6	0	Not Available	-2p	5	
+34Si	34	14	5.00E+01	10	5	Expected	-2p	5	
+34Si	34	14	2.50E+02	14	10	Expected	-2p	5	
+									
+28P	28	15	0.00E+00	6	0	Not Available	pn	7	
+28P	28	15	0.00E+00	10	0	Not Available	pn	7	
+28P	28	15	0.00E+00	14	0	Not Available	pn	7	
+									
+29P	29	15	5.00E+04	6	5	Available	+p	2	
+29P	29	15	1.00E+05	10	10	Available	+p	2	
+29P	29	15	5.00E+04	14	10	Available	+p	2	
+									
+30P	30	15	5.00E+04	6	5	Available	+p	2	
+30P	30	15	1.00E+05	10	10	Available	+p	2	
+30P	30	15	5.00E+04	14	10	Available	+p	2	
+									
+32P	32	15	1.00E+04	6	5	Expected	+n	1	
+32P	32	15	2.00E+04	10	10	Expected	+n	1	
+32P	32	15	1.00E+04	14	10	Expected	+n	1	
+									
+33P	33	15	0.00E+00	6	0	Not Available	-p	3	
+33P	33	15	1.00E+04	10	20	Expected	-p	3	
+33P	33	15	2.00E+04	14	20	Expected	-p	3	
+									
+34P	34	15	0.00E+00	6	0	Not Available	-pn	7	
+34P	34	15	0.00E+00	10	0	Not Available	-pn	7	
+34P	34	15	0.00E+00	14	0	Not Available	-pn	7	
+									
+35P	35	15	0.00E+00	6	0	Not Available	-p	3	
+35P	35	15	1.00E+04	10	20	Expected	-p	3	
+35P	35	15	2.00E+04	14	20	Expected	-p	3	
+									
+31S	31	16	0.00E+00	6	0	Not Available	pn	7	
+31S	31	16	0.00E+00	10	0	Not Available	pn	7	
+31S	31	16	0.00E+00	14	0	Not Available	pn	7	
+									
+35S	35	16	2.00E+03	6	2	Expected	+n	1	
+35S	35	16	1.00E+04	10	4	Expected	+n	1	
+35S	35	16	2.00E+03	14	4	Expected	+n	1	
+									
+37S	37	16	2.00E+03	6	2	Expected	+n	1	
+37S	37	16	1.00E+04	10	4	Expected	+n	1	
+37S	37	16	2.00E+03	14	4	Expected	+n	1	
+									
+38S	38	16	0.00E+00	6	0	Not Available	-2p	5	
+38S	38	16	0.00E+00	6	0	Not Available	-2p	5	
+38S	38	16	0.00E+00	6	0	Not Available	-2p	5	
+									
+32Cl	32	17	0.00E+00	6	0	Not Available	pn	7	
+32Cl	32	17	0.00E+00	10	0	Not Available	pn	7	
+32Cl	32	17	0.00E+00	14	0	Not Available	pn	7	
+									
+33Cl	33	17	1.00E+04	6	2	Available	+p	2	
+33Cl	33	17	2.00E+04	10	4	Available	+p	2	
+33Cl	33	17	1.00E+04	14	4	Available	+p	2	
+									
+34Clm/g	34	17	1.00E+04	6	2	Available	+p	2	
+34Clm/g	34	17	2.00E+04	10	4	Available	+p	2	
+34Clm/g	34	17	1.00E+04	14	4	Available	+p	2	
+									
+35Cl	35	17	1.00E+04	6	2	Available	+p	2	
+35Cl	35	17	2.00E+04	10	4	Available	+p	2	
+35Cl	35	17	1.00E+04	14	4	Available	+p	2	
+									
+36Cl	36	17	0.00E+00	6	0	Not Available	+n	1	
+36Cl	36	17	0.00E+00	10	0	Not Available	+n	1	
+36Cl	36	17	0.00E+00	14	0	Not Available	+n	1	
+									
+38Cl	38	17	0.00E+00	6	0	Not Available	+n	1	
+38Cl	38	17	0.00E+00	10	0	Not Available	+n	1	
+38Cl	38	17	0.00E+00	14	0	Not Available	+n	1	
+									
+39Cl	39	17	0.00E+00	6	0	Not Available	-p	3	
+39Cl	39	17	0.00E+00	10	0	Not Available	-p	3	
+39Cl	39	17	0.00E+00	14	0	Not Available	-p	3	
+									
+35Ar	35	18	0.00E+00	6	0	Not Available	-n	4	
+35Ar	35	18	0.00E+00	10	0	Not Available	-n	4	
+35Ar	35	18	0.00E+00	14	0	Not Available	-n	4	
+									
+37Ar	37	18	0.00E+00	6	0	Not Available	+n	1	
+37Ar	37	18	0.00E+00	10	0	Not Available	+n	1	
+37Ar	37	18	0.00E+00	14	0	Not Available	+n	1	
+									
+39Ar	39	18	0.00E+00	6	0	Not Available	+n	1	
+39Ar	39	18	0.00E+00	10	0	Not Available	+n	1	
+39Ar	39	18	0.00E+00	14	0	Not Available	+n	1	
+									
+41Ar	41	18	0.00E+00	6	0	Not Available	+n	1	
+41Ar	41	18	0.00E+00	10	0	Not Available	+n	1	
+41Ar	41	18	0.00E+00	14	0	Not Available	+n	1	
+									
+42Ar	42	18	0.00E+00	6	0	Not Available	+n	1	
+42Ar	42	18	0.00E+00	10	0	Not Available	+n	1	
+42Ar	42	18	0.00E+00	14	0	Not Available	+n	1	
+									
+43Ar	43	18	0.00E+00	6	0	Not Available	+n	1	
+43Ar	43	18	0.00E+00	10	0	Not Available	+n	1	
+43Ar	43	18	0.00E+00	14	0	Not Available	+n	1	
+									
+44Ar	44	18	0.00E+00	6	0	Not Available	+n	1	
+44Ar	44	18	0.00E+00	10	0	Not Available	+n	1	
+44Ar	44	18	0.00E+00	14	0	Not Available	+n	1	
+									
+45Ar	45	18	0.00E+00	6	0	Not Available	+n	1	
+45Ar	45	18	0.00E+00	10	0	Not Available	+n	1	
+45Ar	45	18	0.00E+00	14	0	Not Available	+n	1	
+									
+46Ar	46	18	0.00E+00	6	0	Not Available	+n	1	
+46Ar	46	18	0.00E+00	10	0	Not Available	+n	1	
+46Ar	46	18	0.00E+00	14	0	Not Available	+n	1	
+									
+36K	36	19	0.00E+00	6	0	Not Available	pn	7	
+36K	36	19	0.00E+00	10	0	Not Available	pn	7	
+36K	36	19	0.00E+00	14	0	Not Available	pn	7	
+									
+37K	37	19	1.00E+04	6	2	Available	+p	2	
+37K	37	19	1.00E+04	10	4	Available	+p	2	
+37K	37	19	5.00E+03	14	4	Available	+p	2	
+									
+38K	38	19	0.00E+00	6	0	Not Available	pn	7	
+38K	38	19	0.00E+00	10	0	Not Available	pn	7	
+38K	38	19	0.00E+00	14	0	Not Available	pn	7	
+									
+42K	42	19	0.00E+00	6	0	Not Available	+n	1	
+42K	42	19	0.00E+00	10	0	Not Available	+n	1	
+42K	42	19	0.00E+00	14	0	Not Available	+n	1	
+									
+43K	43	19	0.00E+00	6	0	Not Available	-p	3	
+43K	43	19	0.00E+00	10	0	Not Available	-p	3	
+43K	43	19	0.00E+00	14	0	Not Available	-p	3	
+									
+44K	44	19	0.00E+00	6	0	Not Available	pn	7	
+44K	44	19	0.00E+00	10	0	Not Available	pn	7	
+44K	44	19	0.00E+00	14	0	Not Available	pn	7	
+									
+45K	45	19	0.00E+00	6	0	Not Available	-p	3	
+45K	45	19	0.00E+00	10	0	Not Available	-p	3	
+45K	45	19	0.00E+00	14	0	Not Available	-p	3	
+									
+46K	46	19	0.00E+00	6	0	Not Available	pn	7	
+46K	46	19	0.00E+00	10	0	Not Available	pn	7	
+46K	46	19	0.00E+00	14	0	Not Available	pn	7	
+									
+47K	47	19	0.00E+00	6	0	Not Available	-p	3	
+47K	47	19	0.00E+00	10	0	Not Available	-p	3	
+47K	47	19	0.00E+00	14	0	Not Available	-p	3	
+									
+39Ca	39	20	0.00E+00	6	0	Not Available	-n	4	
+39Ca	39	20	0.00E+00	10	0	Not Available	-n	4	
+39Ca	39	20	0.00E+00	14	0	Not Available	-n	4	
+									
+41Ca	41	20	0.00E+00	6	0	Not Available	+n	1	
+41Ca	41	20	0.00E+00	10	0	Not Available	+n	1	
+41Ca	41	20	0.00E+00	14	0	Not Available	+n	1	
+									
+45Ca	45	20	0.00E+00	6	0	Not Available	+n	1	
+45Ca	45	20	0.00E+00	10	0	Not Available	+n	1	
+45Ca	45	20	0.00E+00	14	0	Not Available	+n	1	
+									
+47Ca	47	20	0.00E+00	6	0	Not Available	+n	1	
+47Ca	47	20	0.00E+00	10	0	Not Available	+n	1	
+47Ca	47	20	0.00E+00	14	0	Not Available	+n	1	
+									
+49Ca	49	20	0.00E+00	6	0	Not Available	+n	1	
+49Ca	49	20	0.00E+00	10	0	Not Available	+n	1	
+49Ca	49	20	0.00E+00	14	0	Not Available	+n	1	
+									
+50Ca	50	20	0.00E+00	6	0	Not Available	+2n	8	
+50Ca	50	20	0.00E+00	10	0	Not Available	+2n	8	
+50Ca	50	20	0.00E+00	14	0	Not Available	+2n	8	
