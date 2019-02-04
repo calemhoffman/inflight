@@ -68,8 +68,8 @@ set arr 16 from 50.5,25 to 50.5,52 nohead lt -1 lw 2 front
 #82
 set arr 17 from 94,81.5 to 142,81.5 nohead lt -1 lw 2 front
 set arr 18 from 94,82.5 to 142,82.5 nohead lt -1 lw 2 front
-set arr 19 from 82.5,43 to 82.5,75 nohead lt -1 lw 2 front
-set arr 20 from 81.5,43 to 81.5,75 nohead lt -1 lw 2 front
+set arr 19 from 82.5,43 to 82.5,69 nohead lt -1 lw 2 front
+set arr 20 from 81.5,43 to 81.5,69 nohead lt -1 lw 2 front
 
 #126
 set arr 21 from 126.5,74 to 126.5,95 nohead lt -1 lw 2 front
@@ -145,20 +145,23 @@ set label 19 left at 23,0 tc rgb color_5 font "Helvetica, 18"
 pt1=37
 pt2=44
 
-
-set label 12 "ATLAS in-flight radioactive isotope beams for FY19 PAC [14 MeV/u]"
-set label 12 center at 16.5,22.5 tc rgb color_5 font "Helvetica, 18"
+set label 22 "ATLAS in-flight radioactive ion beams"
+set label 22 center at 16.5,22.5 tc rgb color_5 font "Helvetica, 18"
+unset label 12
+set label 12 "rates [10 MeV/u]"
+set label 12 center at 24.1,5.2 tc rgb color_5 font "Helvetica, 18"
+unset title
 plot [-1:32][-1:20] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e2?(stringcolumn(7) eq "Available"? $3:1/0):1/0) every 3::2 w points pt pt1 lt 4 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e3?(stringcolumn(7) eq "Available"? $3:1/0):1/0) every 3::2 w points pt pt1 lt 2 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e4?(stringcolumn(7) eq "Available"? $3:1/0):1/0) every 3::2 w points pt pt1 lt 3 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e5?(stringcolumn(7) eq "Available"? $3:1/0):1/0) every 3::2 w points pt pt1 lt 6 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e6?(stringcolumn(7) eq "Available"? $3:1/0):1/0) every 3::2 w points pt pt1 lt 5 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e2?(stringcolumn(7) eq "Expected"? $3:1/0):1/0) every 3::2 w points pt pt2 lt 4 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e3?(stringcolumn(7) eq "Expected"? $3:1/0):1/0) every 3::2 w points pt pt2 lt 2 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e4?(stringcolumn(7) eq "Expected"? $3:1/0):1/0) every 3::2 w points pt pt2 lt 3 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e5?(stringcolumn(7) eq "Expected"? $3:1/0):1/0) every 3::2 w points pt pt2 lt 6 notitle,\
-                    'rate_test.tsv' using ($2-$3):($4>=1e6?(stringcolumn(7) eq "Expected"? $3:1/0):1/0) every 3::2 w points pt pt2 lt 5 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e2?(stringcolumn(8) eq "Available"? $3:1/0):1/0) every 3::1 w points pt pt1 lt 4 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0) every 3::1 w points pt pt1 lt 2 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0) every 3::1 w points pt pt1 lt 3 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0) every 3::1 w points pt pt1 lt 6 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0) every 3::1 w points pt pt1 lt 5 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e2?(stringcolumn(8) eq "Expected"? $3:1/0):1/0) every 3::1 w points pt pt2 lt 4 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0) every 3::1 w points pt pt2 lt 2 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0) every 3::1 w points pt pt2 lt 3 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0) every 3::1 w points pt pt2 lt 6 notitle,\
+                    'rate_test.tsv' using ($2-$3):($5>=1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0) every 3::1 w points pt pt2 lt 5 notitle,\
                     'stable.dat' u 2:1 w points pt 47 lc rgb color_6 notitle,\
                     'legend.dat' u 1:2 every :::0::0 w points pt pt1 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::1::1 w points pt pt2 lt 5 notitle,\
@@ -169,13 +172,19 @@ plot [-1:32][-1:20] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 
 
-set out "|ps2pdf - raisor.pdf"
+set out "raisor.ps"
 
 set label 12 "expected ATLAS in-flight radioactive isotope beam rates [100 pnA]"
 unset label 13
 unset label 14
-pt1=44
-pt2=44
+pt1=47
+pt2=47
+
+
+do for [n=1:40:1] {
+unset label n
+}
+
 
 plot [-1:32][-1:20] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
                     'airis.dat' using ($1-$2):($7>=1e3?$2:1/0) w points pt pt1 lt 4 notitle,\
@@ -183,9 +192,13 @@ plot [-1:32][-1:20] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     '' using ($1-$2):($7>=1e5?$2:1/0) w points pt pt1 lt 3 notitle,\
                     '' using ($1-$2):($7>=1e6?$2:1/0) w points pt pt1 lt 6 notitle,\
                     '' using ($1-$2):($7>=1e7?$2:1/0) w points pt pt1 lt 5 notitle,\
-                    'stable.dat' u 2:1 w points pt 47 lc rgb color_6 notitle,\
-                    'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 4 notitle,\
-                    'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
-                    'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 6 notitle,\
-                    'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
+                    'stable.dat' u 2:1 w points pt 47 lc rgb color_6 notitle
+
+set out "|ps2pdf - caribu.pdf"
+set pointsize 1.1
+plot [44:106][24:68] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
+                      'caribu_rates18.tsv' using ($2-$3):($7>=1e1?$3:1/0) w points pt pt1 lt 4 notitle,\
+                      'caribu_rates18.tsv' using ($2-$3):($7>=1e2?$3:1/0) w points pt pt1 lt 2 notitle,\
+                      'caribu_rates18.tsv' using ($2-$3):($7>=1e3?$3:1/0) w points pt pt1 lt 3 notitle,\
+                      'caribu_rates18.tsv' using ($2-$3):($7>=1e4?$3:1/0) w points pt pt1 lt 6 notitle,\
+                      'caribu_rates18.tsv' using ($2-$3):($7>=1e5?$3:1/0) w points pt pt1 lt 5 notitle
