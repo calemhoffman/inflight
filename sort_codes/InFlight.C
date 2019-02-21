@@ -14,8 +14,8 @@
 
 #define NUMPRINT 20 //>0
 #define COUNTINTERVAL 5000000
-#define deChan 4
-#define eChan 6
+#define deChan 0
+#define eChan 2
 
 ULong64_t NUMSORT=100000000;
 ULong64_t NumEntries = 0;
