@@ -89,32 +89,32 @@ void InFlight::Begin(TTree *tree)
   
   //Generate all of the histograms needed for drawing later on
   //EZERO
-  hExDe = new TH1F("hExDe","Exit DE; DE [ch]",4000,50,16000);//EXIT
-  hExE = new TH1F("hExE","Exit E; E [ch]",4000,50,16000);//EXIT
-  hExEtot = new TH1F("hExEtot","Exit ETOT; ETOT [ch]",4000,50,24000);//EXIT
+  hExDe = new TH1F("hExDe","SPS/MUSIC (secondbase) DE; DE [ch]",4000,50,16000);//EXIT
+  hExE = new TH1F("hExE","SPS/MUSIC (secondbase) E; E [ch]",4000,50,16000);//EXIT
+  hExEtot = new TH1F("hExEtot","SPS/MUSIC (secondbase) ETOT; ETOT [ch]",4000,50,24000);//EXIT
   
   hExAt = new TH2F("hExAt","Raw RF (0), Exit (1,2) and ATSCAT (3,4,5) Data; Detector ; Energy [ch]",2000,-8000,16000,6,0,6);//Raw Data
-  hExDeE = new TH2F("hExDeE","Exit DE-E; E [ch]; DE [ch]",2000,0,16000,2000,0,12000);//EXIT
-  hExDeT = new TH2F("hExDeT","Exit DE-RF; RF [ch]; DE [ch]",500,2000,3500,2000,0,12000);//
-  hExET = new TH2F("hExET","Exit E-RF; RF [ch]; E [ch]",500,2000,3500,2000,0,16000);//
-  hExDeEtot = new TH2F("hExDeEtot","Exit DE-ETOT; ETOT [ch]; DE [ch]",2000,0,16000,2000,0,12000);//
+  hExDeE = new TH2F("hExDeE","SPS/MUSIC (secondbase) DE-E; E [ch]; DE [ch]",2000,0,16000,2000,0,12000);//EXIT
+  hExDeT = new TH2F("hExDeT","SPS/MUSIC (secondbase) DE-RF; RF [ch]; DE [ch]",500,2000,3500,2000,0,12000);//
+  hExET = new TH2F("hExET","SPS/MUSIC (secondbase) E-RF; RF [ch]; E [ch]",500,2000,3500,2000,0,16000);//
+  hExDeEtot = new TH2F("hExDeEtot","SPS/MUSIC (secondbase) DE-ETOT; ETOT [ch]; DE [ch]",2000,0,16000,2000,0,12000);//
   
   //gated
-  hExDeEg = new TH2F("hExDeEg","Exit DE-E (cut); E [ch]; DE [ch]",500,0,16000,500,0,16000);//EXIT
-  hExDeTg = new TH2F("hExDeTg","Exit DE-RF (cut); RF [ch]; DE [ch]",500,12000,3500,500,0,16000);//
-  hExETg = new TH2F("hExETg","Exit E-RF (cut); RF [ch]; E [ch]",500,12000,3500,500,0,16000);//
+  hExDeEg = new TH2F("hExDeEg","SPS/MUSIC (secondbase) DE-E (cut); E [ch]; DE [ch]",500,0,16000,500,0,16000);//EXIT
+  hExDeTg = new TH2F("hExDeTg","SPS/MUSIC (secondbase) DE-RF (cut); RF [ch]; DE [ch]",500,12000,3500,500,0,16000);//
+  hExETg = new TH2F("hExETg","SPS/MUSIC (secondbase) E-RF (cut); RF [ch]; E [ch]",500,12000,3500,500,0,16000);//
  
   //calibrated
-  hExDeEc = new TH2F("hExDeEc","Exit DE-E (cal); E [MeV]; DE [MeV]",12000,0,200,12000,0,50);//EXIT
-  hExDeTc = new TH2F("hExDeTc","Exit DE-RF (cal); TAC [ns]; DE [MeV]",4000,0,1000,12000,0,50);//EXIT
-  hExETc = new TH2F("hExETc","Exit E-RF (cal); TAC [ns]; E [MeV]",150,80,200,1000,0,200);//EXIT
-  hExDeEtotc = new TH2F("hExDeEtotc","Exit DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,12000,0,50);//
+  hExDeEc = new TH2F("hExDeEc","SPS/MUSIC (secondbase) DE-E (cal); E [MeV]; DE [MeV]",12000,0,200,12000,0,50);//EXIT
+  hExDeTc = new TH2F("hExDeTc","SPS/MUSIC (secondbase) DE-RF (cal); TAC [ns]; DE [MeV]",4000,0,1000,12000,0,50);//EXIT
+  hExETc = new TH2F("hExETc","SPS/MUSIC (secondbase) E-RF (cal); TAC [ns]; E [MeV]",150,80,200,1000,0,200);//EXIT
+  hExDeEtotc = new TH2F("hExDeEtotc","SPS/MUSIC (secondbase) DE-ETOT (cal); ETOT [MeV]; DE [MeV]",2500,0,250,12000,0,50);//
  
   //calibrated & cut
-  hExDeEgc = new TH2F("hExDeEgc","Exit DE-E (cal & cut); E [MeV]; DE [MeV]",2000,0,200,2000,0,80);//EXIT
-  hExDeTgc = new TH2F("hExDeTgc","Exit DE-RF (cal & cut); TAC [ns]; DE [MeV]",2000,100,180,2000,0,80);//EXIT
-  hExETgc = new TH2F("hExETgc","Exit E-RF (cal & cut); TAC [ns]; E [MeV]",2000,80,200,1000,0,200);//EXIT
-  hExDeEtotgc = new TH2F("hExDeEtotgc","Exit DE-ETOT (cal & cut); ETOT [MeV]; DE [MeV]",2000,0,250,2000,0,50);//
+  hExDeEgc = new TH2F("hExDeEgc","SPS/MUSIC (secondbase) DE-E (cal & cut); E [MeV]; DE [MeV]",2000,0,200,2000,0,80);//EXIT
+  hExDeTgc = new TH2F("hExDeTgc","SPS/MUSIC (secondbase) DE-RF (cal & cut); TAC [ns]; DE [MeV]",2000,100,180,2000,0,80);//EXIT
+  hExETgc = new TH2F("hExETgc","SPS/MUSIC (secondbase) E-RF (cal & cut); TAC [ns]; E [MeV]",2000,80,200,1000,0,200);//EXIT
+  hExDeEtotgc = new TH2F("hExDeEtotgc","SPS/MUSIC (secondbase) DE-ETOT (cal & cut); ETOT [MeV]; DE [MeV]",2000,0,250,2000,0,50);//
   rateGraph = new TMultiGraph();
   graphRate = new TGraph();
   graphRate->SetTitle("Total Rate [pps]");
