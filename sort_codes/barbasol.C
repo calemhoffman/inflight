@@ -21,19 +21,24 @@ Int_t setBlockEventNumber = 500000;
 Double_t deltaTimestampConstant=0.3; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
-TString folderName("exit_dec12");
-Int_t RunNum=4; //Change for each new run!!!
+TString folderName("exit_oct31");
+Int_t RunNum=9; //Change for each new run!!!
+//TString folderName;
+//Int_t RunNum;
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;
 
 void barbasol(Int_t runNumberInput=0){
-
+//int barbasol(int argc, char *argv[]){
+//sscanf(argv[1],"%s",&folderName);
+//sscanf(argv[2],"%d",&RunNum);
+  
   if (runNumberInput!=0) RunNum=runNumberInput;
   
   TString fileName;
   //folderName.Form("testRF");
-  fileName.Form("~/Desktop/infl4/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName.Data(),RunNum,folderName.Data(),RunNum); 
+  fileName.Form("~/Desktop/infl3/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName.Data(),RunNum,folderName.Data(),RunNum); 
   TFile * f1 = new TFile(fileName,"READ");
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
 
@@ -86,6 +91,7 @@ void barbasol(Int_t runNumberInput=0){
   //============ Processing 
   int nEntries = tree->GetEntries();
   if (nEntries < setBlockEventNumber) setBlockEventNumber = nEntries;
+  printf("======= File processed = %s_%i\n",folderName.Data(),RunNum);
   printf("=================== # of Entries Avail: %d | and to be Sorted: %u\n", nEntries, setBlockEventNumber);
 
   /**///===================== Pull first n pieces of data into struct
@@ -176,9 +182,11 @@ void barbasol(Int_t runNumberInput=0){
   printf("============== run length: %5.2f seconds\n", deltaTime);
   int pEntries = newTree->GetEntries();
   printf("-------------- done. gen.root, event: %d\n",  pEntries);
+  printf("======= File processed = %s_%i\n",folderName.Data(),RunNum);
   saveFile->Close();
 
   TChain * chain = new TChain("gen_tree");
   chain->Add("gen.root");
   chain->Process("../sort_codes/InFlight.C++");
+  printf("======= File processed = %s_%i\n",folderName.Data(),RunNum);
 }
