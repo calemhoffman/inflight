@@ -17,24 +17,43 @@
 #include <TLine.h>
 
 #define toPrint 5
-Int_t setBlockEventNumber = 500000;
+Int_t setBlockEventNumber = 50000;
+Double_t ch2ns = 2e-9;
 Double_t deltaTimestampConstant=0.3; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
-TString folderName("exit_dec12");
-Int_t RunNum=22; //Change for each new run!!!
+//TString folderName("SPS_21Feb");
+Int_t RunNum=8; //Change for each new run!!!
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;
 
-void barbasol(Int_t runNumberInput=0){
-
+void barbasol(Int_t infl,TString loc,TString folder,Int_t runNumberInput=0){
   if (runNumberInput!=0) RunNum=runNumberInput;
+  
   
   TString fileName;
   //folderName.Form("testRF");
-  fileName.Form("~/Desktop/infl4/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName.Data(),RunNum,folderName.Data(),RunNum); 
+  //fileName.Form("~/Desktop/infl5/exit/DAQ/%s_%d/UNFILTERED/compass_%s_%d.root",folderName.Data(),RunNum,folderName.Data(),RunNum);
+  fileName.Form("~/Desktop/infl%d/%s/DAQ/%s_%s_%d/UNFILTERED/compass_%s_%s_%d.root",infl,loc.Data(),loc.Data(),folder.Data(),RunNum,loc.Data(),folder.Data(),RunNum);
+ 
+  gROOT->ProcessLine("gErrorIgnoreLevel = kFatal;"); // supress error messsage
+  
   TFile * f1 = new TFile(fileName,"READ");
+  if(!f1->IsOpen()) {
+
+    printf("==================== list of existing folders:\n");
+    
+    TString expression;
+    expression.Form("cd -v ~/Desktop/infl%d/test/DAQ/; ls", infl );
+    int temp = system(expression.Data());
+  
+    gROOT->ProcessLine(".q");
+    return;
+  }
+
+  gROOT->ProcessLine("gErrorIgnoreLevel = -1;"); // resume error messsage
+  
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
 
   hDeltaTime = new TH1D("hDeltaTime","Time Differences Between Data; Delta Time [u-seconds]",
@@ -55,7 +74,9 @@ void barbasol(Int_t runNumberInput=0){
   tree->SetBranchAddress("Flags", &Flags);
   
   //======= make new tree
-  TFile * saveFile = new TFile("gen.root", "recreate");
+  TString outputFileName;
+  outputFileName.form("out_%s_%s_%d.root",loc.Data(),folder.Data(),RunNum);
+  TFile * saveFile = new TFile(outputFileName, "recreate");
   TTree * newTree = new TTree("gen_tree", "PSD Tree");
 
   int ch[10];
@@ -86,7 +107,8 @@ void barbasol(Int_t runNumberInput=0){
   //============ Processing 
   int nEntries = tree->GetEntries();
   if (nEntries < setBlockEventNumber) setBlockEventNumber = nEntries;
-  printf("=================== # of Entries Avail: %d | and to be Sorted: %u\n", nEntries, setBlockEventNumber);
+  printf("======= File processed = %s_%i\n",folder.Data(),RunNum);
+  printf("=================== # of Entries Avail: %d | and to be Sorted: %u (%.2f %%) \n", nEntries, setBlockEventNumber, setBlockEventNumber * 100./ nEntries);
 
   /**///===================== Pull first n pieces of data into struct
   Int_t blockEvents = setBlockEventNumber;
@@ -141,7 +163,7 @@ void barbasol(Int_t runNumberInput=0){
       if (entryID<toPrint)
 	printf(" entryID %d-%d | deltaTime/1e6 %2.10f \n",entryID,entryID-1,deltaTime/1e6);
       
-      if (deltaTime/1e6>deltaTimestampConstant) { //fill the ttree w/ data
+      if (deltaTime * ch2ns * 1e6 >deltaTimestampConstant) { //fill the ttree w/ data
 	newTree->Fill();
 	hEventMultiplicity->Fill(eventMultCounter);
 	//zero out ttree params and dt for safety
@@ -175,10 +197,12 @@ void barbasol(Int_t runNumberInput=0){
   deltaTime = double(timestamp[blockEvents-1]-timestamp[1])/1e12;
   printf("============== run length: %5.2f seconds\n", deltaTime);
   int pEntries = newTree->GetEntries();
-  printf("-------------- done. gen.root, event: %d\n",  pEntries);
+  printf("-------------- done. out_%s_%s_%d.root, event: %d\n",loc.Data(),folder.data(),RunNum,  pEntries);
+  printf("======= File processed = %s_%s_%i\n",loc.Data(),folder.Data(),RunNum);
   saveFile->Close();
 
   TChain * chain = new TChain("gen_tree");
-  chain->Add("gen.root");
+  chain->Add(outputFileName);
   chain->Process("../sort_codes/InFlight.C++");
+  printf("======= File processed = %s_%s_%i\n",loc.Data(),folder.Data(),RunNum);
 }
