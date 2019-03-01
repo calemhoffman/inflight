@@ -35,3 +35,7 @@
 **/*.root
 
 *.pdf
+# real time reading program
+RealTimeReading/CutsCreator
+RealTimeReading/RealTimeReading
+RealTimeReading/DetectDigitizer
