@@ -5,8 +5,8 @@
 // found on file: psd.root
 //////////////////////////////////////////////////////////
 
-#ifndef InFlight_h
-#define InFlight_h
+#ifndef InFlightworking_h
+#define InFlightworking_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -23,13 +23,13 @@
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
-class InFlight : public TSelector {
+class InFlightworking : public TSelector {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    //Int_t detLoc;
    // Declaration of leaf types
-   Int_t           deChan;
-   Int_t           eChan;
+   // Int_t           deChan;
+   //Int_t           eChan;
    Float_t         e[100];
    ULong64_t       e_t[100];
    Float_t         xf[100];
@@ -46,8 +46,8 @@ public :
    ULong64_t       ezero_t[10];
 
    // List of branches
-   TBranch        *b_deChan; //!
-   TBranch        *b_eChan; //!
+   // TBranch        *b_deChan; //!
+   //TBranch        *b_eChan; //!
    TBranch        *b_Energy;   //!
    TBranch        *b_EnergyTimestamp;   //!
    TBranch        *b_XF;   //!
@@ -63,8 +63,8 @@ public :
    TBranch        *b_EZERO;   //!
    TBranch        *b_EZEROTimestamp;   //!
 
-   InFlight(TTree * /*tree*/ =0) : fChain(0) { }
-   virtual ~InFlight() { }
+   InFlightworking(TTree * /*tree*/ =0) : fChain(0) { }
+   virtual ~InFlightworking() { }
    virtual Int_t   Version() const { return 2; }
    virtual void    Begin(TTree *tree);
    virtual void    SlaveBegin(TTree *tree);
@@ -79,13 +79,13 @@ public :
    virtual void    SlaveTerminate();
    virtual void    Terminate();
 
-   ClassDef(InFlight,0);
+   ClassDef(InFlightworking,0);
 };
 
 #endif
 
-#ifdef InFlight_cxx
-void InFlight::Init(TTree *tree)
+#ifdef InFlightworking_cxx
+void InFlightworking::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -100,8 +100,8 @@ void InFlight::Init(TTree *tree)
    fChain = tree;
    fChain->SetMakeClass(1);
 
-    fChain->SetBranchAddress("deChan",&deChan,&b_deChan);
-    fChain->SetBranchAddress("eChan",&eChan,&b_eChan);
+   // fChain->SetBranchAddress("deChan",&deChan,&b_deChan);
+   // fChain->SetBranchAddress("eChan",&eChan,&b_eChan);
    fChain->SetBranchAddress("e", e, &b_Energy);
    fChain->SetBranchAddress("e_t", e_t, &b_EnergyTimestamp);
    fChain->SetBranchAddress("xf", xf, &b_XF);
@@ -118,7 +118,7 @@ void InFlight::Init(TTree *tree)
    fChain->SetBranchAddress("ezero_t", ezero_t, &b_EZEROTimestamp);
 }
 
-Bool_t InFlight::Notify()
+Bool_t InFlightworking::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -129,4 +129,4 @@ Bool_t InFlight::Notify()
    return kTRUE;
 }
 
-#endif // #ifdef InFlight_cxx
+#endif // #ifdef InFlightworking_cxx

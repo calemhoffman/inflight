@@ -17,48 +17,26 @@
 #include <TLine.h>
 
 #define toPrint 5
-#define ch2ns  2
-#define deltaTimestampConstant 0.6 //in microseconds
+Int_t setBlockEventNumber = 5000000;
+Double_t deltaTimestampConstant=0.3; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
-//Int_t setBlockEventNumber =  500000;
+
+TString folderName("exit_feb28");
+Int_t RunNum=0; //Change for each new run!!!
 
 TH1D * hDeltaTime;
 TH1I * hEventMultiplicity;
 
-void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
+void barbasolworking(Int_t infl,TString loc,TString folder,Int_t runNumberInput=0){
 
+  if (runNumberInput!=0) RunNum=runNumberInput;
+  
   TString fileName;
-  fileName.Form("~/Desktop/infl%d/%s/DAQ/%s_%s_%d/UNFILTERED/compass_%s_%s_%d.root",infl,loc.Data(),loc.Data(),folder.Data(),RunNum,loc.Data(),folder.Data(),RunNum);
  
+   fileName.Form("~/Desktop/infl%d/%s/DAQ/%s_%s_%d/UNFILTERED/compass_%s_%s_%d.root",infl,loc.Data(),loc.Data(),folder.Data(),RunNum,loc.Data(),folder.Data(),RunNum);
   printf("%s\n",fileName.Data());
-  printf("%s\n",folder.Data());
-  gROOT->ProcessLine("gErrorIgnoreLevel = kFatal;"); // suppress error messsage
-  printf("You're working on diag2!\n");
   
   TFile * f1 = new TFile(fileName,"READ");
-  if(!f1->IsOpen()) {
-
-    printf("==================== list of existing folders:\n");
-    
-    TString expression;
-    expression.Form("cd ~/Desktop/infl%d/%s/DAQ/; ls", infl,loc.Data() );
-    int temp = system(expression.Data());
-  
-    gROOT->ProcessLine(".q");
-    return;
-  }
-  // Where are the detectors?
-  Int_t detLoc = -1;
-  if((!loc.CompareTo("exit"))||(!loc.CompareTo("exit_2"))){
-    detLoc = 0;
-  } if(!loc.CompareTo("SPS")){
-    detLoc = 1;
-  }
-  if(detLoc==-1) printf("Check your channels in InFlight.C!\n");
-  printf("detLoc = %d\n",detLoc);
-  
-  gROOT->ProcessLine("gErrorIgnoreLevel = -1;"); // resume error messsage
-  
   TTree * tree = (TTree *) f1->FindObjectAny("Data");
 
   hDeltaTime = new TH1D("hDeltaTime","Time Differences Between Data; Delta Time [u-seconds]",
@@ -79,19 +57,17 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   tree->SetBranchAddress("Flags", &Flags);
   
   //======= make new tree
-  TString outputFileName;
+  
+ TString outputFileName;
   outputFileName.Form("out_%s_%s_%d.root",loc.Data(),folder.Data(),RunNum);
   TFile * saveFile = new TFile(outputFileName, "recreate");
-  // TFile * saveFile = new TFile("gen.root", "recreate");
   TTree * newTree = new TTree("gen_tree", "PSD Tree");
 
+  int ch[10];
   ULong64_t ezero_t[10];
   float ezero[10];
-  Int_t eChan = -1;
-  Int_t deChan = -1;
-
-  newTree->Branch("eChan", &eChan, "eChan/I");
-  newTree->Branch("deChan", &deChan, "deChan/I");
+  
+  newTree->Branch("ch", ch, "ch[10]/I");
   newTree->Branch("ezero",     ezero, "EZERO[10]/F");
   newTree->Branch("ezero_t", ezero_t, "EZEROTimestamp[10]/l");
   
@@ -113,21 +89,21 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   newTree->Branch("elum_t", elum_t,"ELUMTimestamp[32]/l"); 
   
   //============ Processing 
-  const int nEntries = tree->GetEntries();
-  printf("======= File processed = %s_%i\n",folder.Data(),RunNum);
-  printf("=================== # of Entries Avail: %d  \n", nEntries);
-  
+  int nEntries = tree->GetEntries();
+  if (nEntries < setBlockEventNumber) setBlockEventNumber = nEntries;
+  printf("=================== # of Entries Avail: %d | and to be Sorted: %u\n", nEntries, setBlockEventNumber);
+
   /**///===================== Pull first n pieces of data into struct
-  Int_t blockEvents = nEntries;
-  UShort_t channelT[nEntries],channel[nEntries];
-  ULong64_t timestampT[nEntries],timestamp[nEntries];
-  UShort_t boardT[nEntries],board[nEntries];
-  UShort_t energyT[nEntries],energy[nEntries];
-  UInt_t flagsT[nEntries],flags[nEntries];
+  Int_t blockEvents = setBlockEventNumber;
+  UShort_t channelT[setBlockEventNumber],channel[setBlockEventNumber];
+  ULong64_t timestampT[setBlockEventNumber],timestamp[setBlockEventNumber];
+  UShort_t boardT[setBlockEventNumber],board[setBlockEventNumber];
+  UShort_t energyT[setBlockEventNumber],energy[setBlockEventNumber];
+  UInt_t flagsT[setBlockEventNumber],flags[setBlockEventNumber];
 
   Double_t *bubbleSortArr1;
   bubbleSortArr1 = new Double_t[blockEvents];
-  
+
   for (Int_t entryID=0;entryID<blockEvents;entryID++) {
     tree->GetEntry(entryID);
     channelT[entryID] = Channel;
@@ -143,11 +119,9 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   /**///===================== bubblesort the timestamps
   Int_t * sortIndex;
   sortIndex = new Int_t[blockEvents];
-  printf(" start bubble sort \n");
   TMath::BubbleLow(blockEvents,bubbleSortArr1,sortIndex);
 
   /**///===================== map based on bubble sort
-  printf(" remapping.... \n");
   for (Int_t entryID=0;entryID<blockEvents;entryID++)
     {
       channel[entryID] = channelT[sortIndex[entryID]];
@@ -163,37 +137,29 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   /**///===================== scan, make event, and TTree
   Double_t deltaTime=TMath::QuietNaN();
   Int_t eventMultCounter=0;
-  if(detLoc==0){
-    printf("detloc check loop\n");
-    deChan = 0; eChan = 2;
-  }else if(detLoc==1){
-    deChan = 4; eChan = 6;
-  }else{
-    deChan = 0; eChan = 2;
-    printf("Check yo channels!\n");
-  }
-  for (Int_t entryID=1;entryID < blockEvents;entryID++){   
+  
+  for (Int_t entryID=1;entryID<blockEvents;entryID++)
+    {
       deltaTime = double(timestamp[entryID]-timestamp[entryID-1]);
-      hDeltaTime->Fill(deltaTime * ch2ns * 1e-6 ); // in microsec
+      hDeltaTime->Fill(deltaTime/1e6);
       eventMultCounter++;
+      if (entryID<toPrint)
+	printf(" entryID %d-%d | deltaTime/1e6 %2.10f \n",entryID,entryID-1,deltaTime/1e6);
       
-      //if (entryID<toPrint) printf(" entryID %d-%d | deltaTime %2.10f usec \n",entryID,entryID-1,deltaTime/1e6);
-      
-      if (deltaTime*ch2ns * 1e-6 > deltaTimestampConstant) { //fill the ttree w/ data
-        
-        newTree->Fill();
-        hEventMultiplicity->Fill(eventMultCounter);
-        //zero out ttree params and dt for safety
-        for (Int_t cleanID=0;cleanID<10;cleanID++) {
-          ezero[cleanID]=TMath::QuietNaN();
-          ezero_t[cleanID]=TMath::QuietNaN();
-          deltaTime = TMath::QuietNaN();
-        }
-        eventMultCounter=0;
+      if (deltaTime/1e6>deltaTimestampConstant) { //fill the ttree w/ data
+	newTree->Fill();
+	hEventMultiplicity->Fill(eventMultCounter);
+	//zero out ttree params and dt for safety
+	for (Int_t cleanID=0;cleanID<10;cleanID++) {
+	  ezero[cleanID]=TMath::QuietNaN();
+	  ezero_t[cleanID]=TMath::QuietNaN();
+	  deltaTime = TMath::QuietNaN();
+	}
+	eventMultCounter=0;
       }
       //Always pass current entry to ttree arrays
       ezero[channel[entryID]] = energy[entryID];
-      ezero_t[channel[entryID]] = timestamp[entryID];       
+      ezero_t[channel[entryID]] = timestamp[entryID];
       
     }
   TCanvas *cc = new TCanvas("cc","cc",1000,500);
@@ -208,7 +174,6 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   cc->cd(2);
   hEventMultiplicity->Draw();
   cc->Update();
-
  
   
   newTree->Write();
@@ -216,12 +181,12 @@ void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
   deltaTime = double(timestamp[blockEvents-1]-timestamp[1])/1e12;
   printf("============== run length: %5.2f seconds\n", deltaTime);
   int pEntries = newTree->GetEntries();
-  printf("-------------- done. out_%s_%s_%d.root, event: %d\n",loc.Data(),folder.Data(),RunNum, pEntries);
+ printf("-------------- done. out_%s_%s_%d.root, event: %d\n",loc.Data(),folder.Data(),RunNum, pEntries);
   printf("======= File processed = %s_%s_%d\n",loc.Data(),folder.Data(),RunNum);
   saveFile->Close();
 
   TChain * chain = new TChain("gen_tree");
-  chain->Add(outputFileName);
-  chain->Process("../sort_codes/InFlight.C+");
-  printf("======= File processed = %s_%s_%d\n",loc.Data(),folder.Data(),RunNum);
+    chain->Add(outputFileName);
+  chain->Process("../sort_codes/test/InFlightworking.C++");
+   printf("======= File processed = %s_%s_%d\n",loc.Data(),folder.Data(),RunNum);
 }

@@ -1,6 +1,6 @@
-#define InFlight_cxx
+#define InFlightworking_cxx
 //test
-#include "InFlight.h"
+#include "InFlightworking.h"
 #include <TH2.h>
 #include <TH1.h>
 #include <TStyle.h>
@@ -15,14 +15,10 @@
 #define NUMPRINT 20 //>0
 #define COUNTINTERVAL 5000000
 
-/*if(detLoc==0){
+
 #define deChan 0
 #define eChan 2
-}else if(detLoc==1){
-#define deChan 4
- #define eChan 6
-}
-*/
+
 ULong64_t NUMSORT=100000000;
 ULong64_t NumEntries = 0;
 ULong64_t ProcessedEntries = 0;
@@ -90,7 +86,7 @@ Long64_t tempTimeLong=10001;
 
 
 
-void InFlight::Begin(TTree *tree)
+void InFlightworking::Begin(TTree *tree)
 {
   
   TString option = GetOption();
@@ -165,13 +161,13 @@ void InFlight::Begin(TTree *tree)
   StpWatch.Start();
 }
 
-void InFlight::SlaveBegin(TTree * /*tree*/)
+void InFlightworking::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
 }
 
-Bool_t InFlight::Process(Long64_t entry)
+Bool_t InFlightworking::Process(Long64_t entry)
 {
   ProcessedEntries++;
   if (ProcessedEntries<NUMSORT) {
@@ -182,8 +178,8 @@ Bool_t InFlight::Process(Long64_t entry)
       StpWatch.Start(kFALSE);
       Frac+=0.1;
     }
-    b_deChan->GetEntry(entry);
-    b_eChan->GetEntry(entry);
+    //  b_deChan->GetEntry(entry);
+    // b_eChan->GetEntry(entry);
     b_TAC->GetEntry(entry);
     b_EZERO->GetEntry(entry);
     b_TACTimestamp->GetEntry(entry);
@@ -308,12 +304,12 @@ Bool_t InFlight::Process(Long64_t entry)
   return kTRUE;
 }
 
-void InFlight::SlaveTerminate()
+void InFlightworking::SlaveTerminate()
 {
   
 }
 
-void InFlight::Terminate()
+void InFlightworking::Terminate()
 {
   /* cCanvas->cd(1); */
   /* if( isCutFileOpen) { */
