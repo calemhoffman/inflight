@@ -28,7 +28,7 @@ TH1I * hEventMultiplicity;
 void barbasol(Int_t infl,TString loc,TString folder,Int_t RunNum=0){
 
   TString fileName;
-  fileName.Form("~/Desktop/infl%d/%s/DAQ/%s_%s_%d/UNFILTERED/compass_%s_%s_%d.root",infl,loc.Data(),loc.Data(),folder.Data(),RunNum,loc.Data(),folder.Data(),RunNum);
+  fileName.Form("~/Desktop/infl%d/%s_2/DAQ/%s_%s_%d/UNFILTERED/compass_%s_%s_%d.root",infl,loc.Data(),loc.Data(),folder.Data(),RunNum,loc.Data(),folder.Data(),RunNum);
  
   printf("%s\n",fileName.Data());
   printf("%s\n",folder.Data());

@@ -17,7 +17,7 @@
 #include <TLine.h>
 
 #define toPrint 5
-Int_t setBlockEventNumber = 5000000;
+Int_t setBlockEventNumber = 50000;
 Double_t deltaTimestampConstant=0.3; //in microseconds
 //^^^^^^---- coincidence window, if > then new event..
 
