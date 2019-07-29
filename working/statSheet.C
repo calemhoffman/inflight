@@ -5,15 +5,15 @@
   t->Print();
 
   //Set cals
-  Int_t location = 1; //0 - HP (exit), 1 - SSX (cross), 2 - SST (target)
+  Int_t location = 2; //0 - HP (exit), 1 - SSX (cross), 2 - SST (target)
   Float_t deGain=1,deOffset=0;
   Float_t eGain=1,eOffset=0;
   Int_t nDe = 2;
   Int_t nE = 5;
   TString title;
-  if (location == 0) {
+  if (location == 2) {
     deGain = 0.1;
-    eGain = 0.606;
+    eGain = 0.5;
     title = "^{29}Al at the target";
     nDe = 2;
     nE = 5;
@@ -23,7 +23,7 @@
     title = "^{29}Al at the cross";
     nDe = 1;
     nE = 4;
-  } else if (location == 2) {
+  } else if (location == 0) {
     deGain = 0.1;
     eGain = 0.1;
     title = "^{29}Al at the exit";
