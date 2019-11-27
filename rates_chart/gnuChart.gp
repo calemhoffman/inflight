@@ -172,7 +172,7 @@ plot [-1:32][-1:20] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 
 
-set out "raisor.ps"
+set out "|ps2pdf - raisor.ps"
 
 set label 12 "expected ATLAS in-flight radioactive isotope beam rates [100 pnA]"
 unset label 13
