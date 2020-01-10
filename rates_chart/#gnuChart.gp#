@@ -88,7 +88,7 @@ set arr 6 from 4,8.5 to 17,8.5 nohead lt -1 lw 1 front
 set arr 7 from 8.5,2 to 8.5,15 nohead lt -1 lw 1 front
 set arr 8 from 7.5,2 to 7.5,15 nohead lt -1 lw 1 front
 
-set pointsize 2.2
+set pointsize 2
 
 #set arr 99 from -3,-3 to -3,4 lt -1 lw 3 front
 #set arr 990 from -3,-3 to 4,-3 lt -1 lw 3 front
@@ -146,7 +146,7 @@ pt1=37
 pt2=44
 
 set label 22 "ATLAS in-flight radioactive ion beams"
-set label 22 center at 7,22.5 tc rgb color_5 font "Helvetica, 18"
+set label 22 center at 7,2.5 tc rgb color_5 font "Helvetica, 18"
 set label 12 "rates [10 MeV/u]"
 set label 12 center at 24.1,5.2 tc rgb color_5 font "Helvetica, 18"
 unset title
