@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=0){
+void n16isomer(Int_t loc=0){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -6,17 +6,17 @@ void statSheet(Int_t loc=0){
 
   //Set cals
   Int_t location = loc; //0 - HP (exit), 1 - SSX (cross), 2 - SST (target)
-  Float_t deGain=1,deOffset=0;
-  Float_t eGain=1,eOffset=0;
-  Int_t nDe = 2;
-  Int_t nE = 5;
+  Float_t deGain=1.0,deOffset=0.0;
+  Float_t eGain=1.0,eOffset=0.0;
+  Int_t nDe = 0;
+  Int_t nE = 0;
   TString title;
   if (location == 3) {
-   deGain = 1.0;
-   eGain = 1.0;
+   deGain = 0.03;
+   eGain = 0.5;
    title = "XY Target";
-   nDe = 2;
-   nE = 5;
+   nDe = 1;
+   nE = 7;
   } else if (location == 2) {
     deGain = 0.25;
     eGain = 1.0;
@@ -32,7 +32,7 @@ void statSheet(Int_t loc=0){
   } else if (location == 0) {
     deGain = 0.25;
     eGain = 1.0;
-    title = "Exit";
+    title = "Exit: 2.5% Scale";
     nDe = 0;
     nE = 3;
   }
@@ -40,8 +40,8 @@ void statSheet(Int_t loc=0){
   //Histos and draw
   Int_t xBin = 1000;
   Int_t yBin = 1000;
-  Int_t xHigh = 6000;
-  Int_t yHigh = 800;
+  Int_t xHigh = 12000;
+  Int_t yHigh = 2000;
 
   TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
 			   xBin,0,xHigh,
@@ -53,23 +53,32 @@ void statSheet(Int_t loc=0){
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2); cc->cd(1); gPad->SetLogz(1); cc->cd(2); gPad->SetLogy(1);
 
-  cc->cd(1);
-  tree->Draw(Form("e[%d]*%f:e[%d]*%f+e[%d]*%f>>hdEtotE",nDe,deGain,
-		  nDe,deGain,nE,eGain),
-	     Form("e[%d]>0",nE),"colz");
-  tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotE",nDe,deGain,nE,eGain));
 
+ if (location<3) {
+    cc->cd(1);
+    tree->Draw(Form("e[%d]*%f:e[%d]*%f+e[%d]*%f>>hdEtotE",nDe,deGain,
+    	  nDe,deGain,nE,eGain),
+         "","colz");
+    tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotE",nDe,deGain,nE,eGain));
+  } else {
+    cc->cd(1);
+    tree->Draw(Form("(e[%d]+e[%d])*%f:e[%d]*%f>>hdEtotE",
+    nDe,nDe+3,deGain,
+    nE,eGain),"","colz");
+    tree->Draw(Form("e[%d]*%f>>htotE",
+    nE,eGain));
+  }
 
   //Draw nicely
   hdEtotE->SetMinimum(1);
-  //hdEtotE->SetStats(0);
+  hdEtotE->SetStats(0);
   hdEtotE->Draw("colz");
 
   cc->cd(2);
-  htotE->SetStats(0);
   htotE->Draw();
 
-cc->cd();
-cc->Update();
+  cc->SaveAs("n16_exit_3.C");
+  cc->SaveAs("n16_exit_3.png");
+
 
 }
