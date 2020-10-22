@@ -40,15 +40,16 @@ void n16isomer(Int_t loc=0){
   //Histos and draw
   Int_t xBin = 1000;
   Int_t yBin = 1000;
-  Int_t xHigh = 12000;
-  Int_t yHigh = 2000;
+  Int_t xLow = 3000;
+  Int_t xHigh = 35000;
+  Int_t yHigh = 10000;
 
   TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
-			   xBin,0,xHigh,
+			   xBin,xLow,xHigh,
 			   yBin,0,yHigh);
 
   TH1F *htotE = new TH1F("htotE",Form("%s; Total E [MeV]",title.Data()),
-			 xBin,0,xHigh);
+			 xBin,xLow,xHigh);
 
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2); cc->cd(1); gPad->SetLogz(1); cc->cd(2); gPad->SetLogy(1);
@@ -71,14 +72,14 @@ void n16isomer(Int_t loc=0){
 
   //Draw nicely
   hdEtotE->SetMinimum(1);
-  hdEtotE->SetStats(0);
+  //hdEtotE->SetStats(0);
   hdEtotE->Draw("colz");
 
   cc->cd(2);
   htotE->Draw();
 
-  cc->SaveAs("n16_exit_3.C");
-  cc->SaveAs("n16_exit_3.png");
+  cc->SaveAs("n16.C");
+  cc->SaveAs("n16.png");
 
 
 }
