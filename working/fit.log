@@ -1,0 +1,498 @@
+
+
+*******************************************************************************
+Wed Oct 21 13:39:12 2020
+
+
+FIT:    data read from 'phase.dat' u 4:($5-180.0)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'off' is zero.
+iter      chisq       delta/lim  lambda   off           length       
+   0 8.0737462485e+04   0.00e+00  7.40e+00    1.000000e-30   2.050000e+01
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Wed Oct 21 13:39:36 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'off' is zero.
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.7289352053e+05   0.00e+00  2.80e+00    1.000000e-30   2.050000e+01
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Wed Oct 21 13:43:18 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.7118032396e+05   0.00e+00  3.62e+00    1.000000e+01   2.050000e+01
+  39 6.3255581115e+04  -6.35e-03  3.62e-04    5.079905e+01   1.373121e+00
+
+After 39 iterations the fit converged.
+final sum of squares of residuals : 63255.6
+rel. change during last iteration : -6.35379e-08
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 125.753
+variance of residuals (reduced chisquare) = WSSR/ndf   : 15813.9
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 50.799           +/- 345.3        (679.7%)
+length          = 1.37312          +/- 5.423        (394.9%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length          0.996  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:43:56 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 1.7118032396e+05   0.00e+00  1.06e+00    1.000000e+01
+   5 1.5479670158e+05  -1.93e-02  1.06e-05    5.717958e+03
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 154797
+rel. change during last iteration : -1.93268e-07
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 175.953
+variance of residuals (reduced chisquare) = WSSR/ndf   : 30959.3
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5717.96          +/- 674.7        (11.8%)
+
+
+*******************************************************************************
+Wed Oct 21 13:44:26 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.6331377516e+05   0.00e+00  4.14e+02    5.500000e+03   2.050000e+01
+  43 1.5366547568e+05   0.00e+00  4.14e+10    5.560100e+03   2.048088e+01
+
+After 43 iterations the fit converged.
+final sum of squares of residuals : 153665
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 196.001
+variance of residuals (reduced chisquare) = WSSR/ndf   : 38416.4
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5560.1           +/- 54.97        (0.9887%)
+length          = 20.4809          +/- 121.5        (593.5%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.566  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:48:51 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.6164999902e+05   0.00e+00  4.59e+02    5.500000e+03   1.850000e+01
+  42 1.5084655631e+05   0.00e+00  4.59e+10    6.550595e+03   1.842167e+01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 150847
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 194.195
+variance of residuals (reduced chisquare) = WSSR/ndf   : 37711.6
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 6550.59          +/- 55.37        (0.8453%)
+length          = 18.4217          +/- 113.1        (614%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.708  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:49:07 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.6164999902e+05   0.00e+00  4.59e+02    5.500000e+03   1.850000e+01
+  42 1.5084655631e+05   0.00e+00  4.59e+10    6.550595e+03   1.842167e+01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 150847
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 194.195
+variance of residuals (reduced chisquare) = WSSR/ndf   : 37711.6
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 6550.59          +/- 55.37        (0.8453%)
+length          = 18.4217          +/- 113.1        (614%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.708  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:49:53 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.6164999902e+05   0.00e+00  4.59e+02    5.500000e+03   1.850000e+01
+  42 1.5084655631e+05   0.00e+00  4.59e+10    6.550595e+03   1.842167e+01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 150847
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 194.195
+variance of residuals (reduced chisquare) = WSSR/ndf   : 37711.6
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 6550.59          +/- 55.37        (0.8453%)
+length          = 18.4217          +/- 113.1        (614%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.708  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:50:00 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 1.6164999902e+05   0.00e+00  4.59e+02    5.500000e+03   1.850000e+01
+  42 1.5084655631e+05   0.00e+00  4.59e+10    6.550595e+03   1.842167e+01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 150847
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 194.195
+variance of residuals (reduced chisquare) = WSSR/ndf   : 37711.6
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 6550.59          +/- 55.37        (0.8453%)
+length          = 18.4217          +/- 113.1        (614%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.708  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:50:41 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 2.4779755685e+05   0.00e+00  4.59e+02    5.500000e+03   1.850000e+01
+  20 2.3410842756e+05   0.00e+00  4.59e+10    6.875944e+03   1.838859e+01
+
+After 20 iterations the fit converged.
+final sum of squares of residuals : 234108
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 241.924
+variance of residuals (reduced chisquare) = WSSR/ndf   : 58527.1
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 6875.94          +/- 93.96        (1.366%)
+length          = 18.3886          +/- 108.7        (591.4%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length         -0.343  1.000 
+
+
+*******************************************************************************
+Wed Oct 21 13:51:02 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.5009269321e+05   0.00e+00  5.86e+02    5.500000e+03
+  61 2.3761207763e+05   0.00e+00  5.86e+10    5.557463e+03
+
+After 61 iterations the fit converged.
+final sum of squares of residuals : 237612
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 217.996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47522.4
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5557.46          +/- 71.18        (1.281%)
+
+
+*******************************************************************************
+Wed Oct 21 13:51:20 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.5009269321e+05   0.00e+00  5.86e+02    5.500000e+03
+  61 2.3761207763e+05   0.00e+00  5.86e+10    5.557463e+03
+
+After 61 iterations the fit converged.
+final sum of squares of residuals : 237612
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 217.996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47522.4
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5557.46          +/- 71.18        (1.281%)
+
+
+*******************************************************************************
+Wed Oct 21 14:10:47 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.4900223557e+05   0.00e+00  6.16e+02    5.500000e+03
+   3 2.3654754524e+05   0.00e+00  6.16e+10    8.358691e+03
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 236548
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 217.507
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47309.5
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 8358.69          +/- 103          (1.232%)
+
+
+*******************************************************************************
+Wed Oct 21 14:11:02 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.4956070300e+05   0.00e+00  6.00e+02    5.500000e+03
+   6 2.3969383371e+05  -2.07e-01  6.00e+01    1.346134e+04
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 239694
+rel. change during last iteration : -2.06965e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 218.949
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47938.8
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 13461.3          +/- 819.1        (6.085%)
+
+
+*******************************************************************************
+Wed Oct 21 14:11:24 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.5009269321e+05   0.00e+00  5.86e+02    5.500000e+03
+  61 2.3761207763e+05   0.00e+00  5.86e+10    5.557463e+03
+
+After 61 iterations the fit converged.
+final sum of squares of residuals : 237612
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 217.996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47522.4
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5557.46          +/- 71.18        (1.281%)
+
+
+*******************************************************************************
+Wed Oct 21 14:11:38 2020
+
+
+FIT:    data read from 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off          
+   0 2.5163929247e+05   0.00e+00  5.32e+00    5.000000e+01
+  73 2.3663858012e+05  -8.43e-01  5.32e+02    1.190141e+02
+
+After 73 iterations the fit converged.
+final sum of squares of residuals : 236639
+rel. change during last iteration : -8.43085e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 217.549
+variance of residuals (reduced chisquare) = WSSR/ndf   : 47327.7
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 119.014          +/- 834.2        (700.9%)
