@@ -496,3 +496,751 @@ variance of residuals (reduced chisquare) = WSSR/ndf   : 47327.7
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
 off             = 119.014          +/- 834.2        (700.9%)
+
+
+*******************************************************************************
+Tue Nov 10 12:47:16 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             c            
+   0 2.9004226567e+01   0.00e+00  4.13e+01    8.000000e+00   6.000000e+01
+   5 1.2786113584e+01   0.00e+00  4.13e+06    6.563673e+00   6.163826e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 12.7861
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.78788
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.19653
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.56367          +/- 1.209        (18.41%)
+c               = 61.6383          +/- 0.9765       (1.584%)
+
+correlation matrix of the fit parameters:
+                a      c      
+a               1.000 
+c               0.078  1.000 
+
+
+*******************************************************************************
+Tue Nov 10 12:47:36 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 2.9004226567e+01   0.00e+00  5.82e+01    6.000000e+01
+   5 1.7297220534e+01  -2.12e-01  5.82e+00    6.174027e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 17.2972
+rel. change during last iteration : -2.11886e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.85996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.45944
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.7403          +/- 0.8361       (1.354%)
+
+
+*******************************************************************************
+Tue Nov 10 12:47:47 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 2.9004226567e+01   0.00e+00  5.82e+01    6.000000e+01
+   5 1.7297220534e+01  -2.12e-01  5.82e+00    6.174027e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 17.2972
+rel. change during last iteration : -2.11886e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.85996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.45944
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.7403          +/- 0.8361       (1.354%)
+
+
+*******************************************************************************
+Tue Nov 10 12:47:52 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 2.9004226567e+01   0.00e+00  5.82e+01    6.000000e+01
+   5 1.7297220534e+01  -2.12e-01  5.82e+00    6.174027e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 17.2972
+rel. change during last iteration : -2.11886e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.85996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.45944
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.7403          +/- 0.8361       (1.354%)
+
+
+*******************************************************************************
+Tue Nov 10 12:48:00 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:48:08 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:50:00 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:50:15 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:50:27 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:50:39 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:51:05 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:51:13 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:52:15 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:52:54 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:53:04 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:53:58 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:55:08 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4:($4*0.2)
+        format = x:z:s
+        x range restricted to [50.0000 : 75.0000]
+
+Current data point
+=========================
+#               = 5 out of 6
+x               = 54             
+z               = 0              
+s               = 0              
+
+BREAK: Zero error value in data file
+
+*******************************************************************************
+Tue Nov 10 12:55:16 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 12:55:32 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             c            
+   0 3.9544666059e+01   0.00e+00  4.65e+01    9.000000e+00   6.000000e+01
+   5 1.2786102176e+01   0.00e+00  4.65e+06    6.563614e+00   6.163713e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 12.7861
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.78788
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.19653
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.56361          +/- 1.209        (18.41%)
+c               = 61.6371          +/- 0.9764       (1.584%)
+
+correlation matrix of the fit parameters:
+                a      c      
+a               1.000 
+c               0.078  1.000 
+
+
+*******************************************************************************
+Tue Nov 10 12:55:40 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             c            
+   0 3.9544666059e+01   0.00e+00  4.65e+01    9.000000e+00   6.000000e+01
+   5 1.2786102176e+01   0.00e+00  4.65e+06    6.563614e+00   6.163713e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 12.7861
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.78788
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.19653
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.56361          +/- 1.209        (18.41%)
+c               = 61.6371          +/- 0.9764       (1.584%)
+
+correlation matrix of the fit parameters:
+                a      c      
+a               1.000 
+c               0.078  1.000 
+
+
+*******************************************************************************
+Tue Nov 10 12:55:51 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 13:02:51 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 3.9544666059e+01   0.00e+00  6.55e+01    6.000000e+01
+   6 2.5744797779e+01  -1.07e-01  6.55e+01    6.180988e+01
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 25.7448
+rel. change during last iteration : -1.07231e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.26913
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.14896
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.8099          +/- 0.9107       (1.473%)
+
+
+*******************************************************************************
+Tue Nov 10 13:02:59 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 2.9004226567e+01   0.00e+00  5.82e+01    6.000000e+01
+   5 1.7297220534e+01  -2.12e-01  5.82e+00    6.174027e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 17.2972
+rel. change during last iteration : -2.11886e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.85996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.45944
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.7403          +/- 0.8361       (1.354%)
+
+
+*******************************************************************************
+Tue Nov 10 13:03:12 2020
+
+
+FIT:    data read from 'mg22_run_list.txt' u 6:4
+        format = x:z
+        x range restricted to [50.0000 : 75.0000]
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * exp(-b*(x-c)**2.0)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   c            
+   0 2.9004226567e+01   0.00e+00  5.82e+01    6.000000e+01
+   5 1.7297220534e+01  -2.12e-01  5.82e+00    6.174027e+01
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 17.2972
+rel. change during last iteration : -2.11886e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.85996
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.45944
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+c               = 61.7403          +/- 0.8361       (1.354%)

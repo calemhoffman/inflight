@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=0){
+void statSheet(Int_t loc=0,Int_t expNum=10,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -18,21 +18,21 @@ void statSheet(Int_t loc=0){
    nDe = 1;
    nE = 7;
   } else if (location == 2) {
-    deGain = 0.2;
+    deGain = 0.25;
     eGain = 1.0;
-    title = "ZD or Target";
+    title = Form("ZD or Target: Scale %d",scaleNum);
     nDe = 2;
     nE = 5;
   } else if (location == 1) {
-    deGain = 0.25;
+    deGain = 0.05;//0.25
     eGain = 1.0;
-    title = "Cross";
+    title = Form("cross: Scale %.1f",scaleNum/10.0);
     nDe = 1;
     nE = 4;
   } else if (location == 0) {
     deGain = 0.25;
     eGain = 1.0;
-    title = "Exit: 2.5% Scale";
+    title = "Exit: 5.5% Scale";
     nDe = 0;
     nE = 3;
   }
@@ -40,16 +40,29 @@ void statSheet(Int_t loc=0){
   //Histos and draw
   Int_t xBin = 1000;
   Int_t yBin = 1000;
-  Int_t xLow = 3000;
-  Int_t xHigh = 7500;
-  Int_t yHigh = 3000;
+  Int_t xLow = 0;
+  Int_t xHigh = 40000;
+  Int_t yHigh = 10000;
 
-  TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
-			   xBin,xLow,xHigh,
-			   yBin,0,yHigh);
+  if (expNum == 10) {
+    xHigh=10000;
+    yHigh=1500;
+  }
+  if (expNum == 17) {
+    xHigh=8000;
+    xLow=3000;
+    yHigh=3000;
+  }
 
-  TH1F *htotE = new TH1F("htotE",Form("%s; Total E [MeV]",title.Data()),
-			 xBin,xLow,xHigh);
+
+TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
+xBin,xLow,xHigh,
+yBin,0,yHigh);
+
+TH1F *htotE = new TH1F("htotE",Form("%s; Total E [MeV]",title.Data()),
+xBin,xLow,xHigh);
+TH1F *htotEg = new TH1F("htotEg",Form("%s; Total E [MeV]",title.Data()),
+xBin,xLow,xHigh);
 
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2); cc->cd(1); gPad->SetLogz(1); cc->cd(2); gPad->SetLogy(1);
@@ -61,6 +74,8 @@ void statSheet(Int_t loc=0){
     	  nDe,deGain,nE,eGain),
          "","colz");
     tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotE",nDe,deGain,nE,eGain));
+    tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotEg",nDe,deGain,nE,eGain),
+          Form("e[%d]>100",nDe),"");
   } else {
     cc->cd(1);
     tree->Draw(Form("(e[%d]+e[%d])*%f:e[%d]*%f>>hdEtotE",
@@ -76,10 +91,13 @@ void statSheet(Int_t loc=0){
   hdEtotE->Draw("colz");
 
   cc->cd(2);
-  htotE->Draw();
+  htotEg->SetLineColor(kRed);
+  htotEg->SetFillColor(kRed);
+  htotEg->Draw();
+  htotE->Draw("same");
 
-  cc->SaveAs("n16.C");
-  cc->SaveAs("n16.png");
+  cc->SaveAs(Form("figures/infl%d_scale%d.C",expNum,scaleNum));
+  cc->SaveAs(Form("figures/infl%d_scale%d.png",expNum,scaleNum));
 
 
 }

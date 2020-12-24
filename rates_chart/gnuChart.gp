@@ -144,8 +144,8 @@ set label 19 left at 23,0 tc rgb color_5 font "Helvetica, 18"
 
 pt1=37
 pt2=44
-pt1=47
-pt2=47
+# pt1=47
+# pt2=47
 ps1=1.25
 ps2=1.25
 
