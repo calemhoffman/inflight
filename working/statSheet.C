@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=0,Int_t expNum=10,Int_t scaleNum=100){
+void statSheet(Int_t loc=0,Int_t expNum=19,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -32,7 +32,7 @@ void statSheet(Int_t loc=0,Int_t expNum=10,Int_t scaleNum=100){
   } else if (location == 0) {
     deGain = 0.25;
     eGain = 1.0;
-    title = "Exit: 5.5% Scale";
+    title = Form("exit: Scale %d",scaleNum);
     nDe = 0;
     nE = 3;
   }
@@ -53,7 +53,11 @@ void statSheet(Int_t loc=0,Int_t expNum=10,Int_t scaleNum=100){
     xLow=3000;
     yHigh=3000;
   }
-
+  if (expNum == 19) {
+    xHigh=300;
+    xLow=0;
+    yHigh=500;
+  }
 
 TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
 xBin,xLow,xHigh,
@@ -67,14 +71,15 @@ xBin,xLow,xHigh);
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2); cc->cd(1); gPad->SetLogz(1); cc->cd(2); gPad->SetLogy(1);
 
-
+Float_t cal1=0.0387;
+Float_t cal2=-5.51;
  if (location<3) {
     cc->cd(1);
-    tree->Draw(Form("e[%d]*%f:e[%d]*%f+e[%d]*%f>>hdEtotE",nDe,deGain,
-    	  nDe,deGain,nE,eGain),
+    tree->Draw(Form("e[%d]*%f:(e[%d]*%f+e[%d]*%f)*%f+%f>>hdEtotE",nDe,deGain,
+    	  nDe,deGain,nE,eGain,cal1,cal2),
          "","colz");
-    tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotE",nDe,deGain,nE,eGain));
-    tree->Draw(Form("e[%d]*%f+e[%d]*%f>>htotEg",nDe,deGain,nE,eGain),
+    tree->Draw(Form("(e[%d]*%f+e[%d]*%f)*%f+%f>>htotE",nDe,deGain,nE,eGain,cal1,cal2));
+    tree->Draw(Form("(e[%d]*%f+e[%d]*%f)*%f+%f>>htotEg",nDe,deGain,nE,eGain,cal1,cal2),
           Form("e[%d]>100",nDe),"");
   } else {
     cc->cd(1);

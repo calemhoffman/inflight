@@ -1,0 +1,108 @@
+
+
+*******************************************************************************
+Sat Feb 13 20:49:35 2021
+
+
+FIT:    data read from 'working/phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 3.6241904011e+05   0.00e+00  2.09e+00   -2.000000e+01   1.850000e+01
+  42 6.0387774552e+04  -1.31e-04  2.09e-03    5.984766e+00   4.604750e-01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 60387.8
+rel. change during last iteration : -1.31133e-09
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 92.8807
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8626.82
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5.98477          +/- 27.69        (462.7%)
+length          = 0.460475         +/- 0.3273       (71.08%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length          0.972  1.000 
+
+
+*******************************************************************************
+Sat Feb 13 20:49:48 2021
+
+
+FIT:    data read from 'working/phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 3.6241904011e+05   0.00e+00  2.09e+00   -2.000000e+01   1.850000e+01
+  42 6.0387774552e+04  -1.31e-04  2.09e-03    5.984766e+00   4.604750e-01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 60387.8
+rel. change during last iteration : -1.31133e-09
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 92.8807
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8626.82
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5.98477          +/- 27.69        (462.7%)
+length          = 0.460475         +/- 0.3273       (71.08%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length          0.972  1.000 
+
+
+*******************************************************************************
+Sat Feb 13 20:50:52 2021
+
+
+FIT:    data read from 'working/phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: ph(x)
+	ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   off           length       
+   0 3.6241904011e+05   0.00e+00  2.09e+00   -2.000000e+01   1.850000e+01
+  42 6.0387774552e+04  -1.31e-04  2.09e-03    5.984766e+00   4.604750e-01
+
+After 42 iterations the fit converged.
+final sum of squares of residuals : 60387.8
+rel. change during last iteration : -1.31133e-09
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 92.8807
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8626.82
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+off             = 5.98477          +/- 27.69        (462.7%)
+length          = 0.460475         +/- 0.3273       (71.08%)
+
+correlation matrix of the fit parameters:
+                off    length 
+off             1.000 
+length          0.972  1.000 

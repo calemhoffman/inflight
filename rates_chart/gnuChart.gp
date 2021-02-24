@@ -246,25 +246,16 @@ plot [-1:32][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
                     'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 4 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
-
-set out "|ps2pdf - raisor.pdf"
-
+############################################################################################################
+set out "|ps2pdf - raisor_full.pdf"
 set label 12  at 24,5.5 "rates/100 pnA [10 MeV/u]" center
 set label 22 "ATLAS in-flight radioactive ion beams"
 set label 22 center at 6,25 tc rgb color_8 font "Helvetica, 18"
-
 unset label 13
 unset label 14
 pt1=47
 ps1=1.25
 pt2=47
-
-
-# do for [n=1:40:1] {
-# unset label n
-# }
-
-
 plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
                     'airis.dat' using ($1-$2):($7>=1e3?$2:1/0) w points pt pt1 ps ps1 lt 6 notitle,\
                     '' using ($1-$2):($7>=1e4?$2:1/0) w points pt pt1 ps ps1 lt 2 notitle,\
@@ -277,6 +268,29 @@ plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
                     'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 1 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
+############################################################################################################
+set out "|ps2pdf - raisor.pdf"
+# set label 12  at 24,5.5 "rates/100 pnA [10 MeV/u]" center
+# set label 22 "ATLAS in-flight radioactive ion beams"
+# set label 22 center at 6,25 tc rgb color_8 font "Helvetica, 18"
+unset label 12
+unset label 13
+unset label 14
+unset label 15
+unset label 16
+unset label 17
+unset label 18
+unset label 19
+unset label 20
+unset label 21
+pt1=47
+ps1=3
+pt2=47
+plot [-1:32][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
+'airis.dat' using ($1-$2):($7>=1e3?$2:1/0) w points pt pt1 ps ps1-1 lt 7 notitle,\
+'done.dat' using ($1-$2):($2) w points pt pt1 ps ps1 lt 4 notitle,\
+'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\
+
 
 set out "|ps2pdf - caribu.pdf"
 set pointsize 1.1

@@ -1,6 +1,6 @@
 #plot and fit "phase.dat" data
 set term post enhance color lw 0.5
-set out "|ps2pdf - phase.pdf"
+set out "|ps2pdf - working/phase.pdf"
 set lmargin 2
 set rmargin 0.5
 set tmargin 0
@@ -16,16 +16,16 @@ b=9.0
 #calc tof to test distance
 #=SQRT(2*E8*9*10^16/(B8*931))
 #v(x)=sqrt(2.0*($1)*9e16/(($6*931.494))
-length=19.5
+length=18.5
 c=360.0/(1.0/6.0625*1.0e-3)
 d=164.94
-off=-30#-10.0#-56.0
+off=-20#-10.0#-56.0
 ph(x) = 2.1825/1.0*((x+off)-(floor((x+off)/d)*d))/length
-# fit ph(x) 'phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)\
- # via off
-plot [200:1000][-10:370] "phase.dat" u 4:($5-0.0) w points notit,\
+# fit ph(x) 'working/phase.dat' u (1.0*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5)\
+#  via off,length
+plot [200:1000][-10:370] "working/phase.dat" u 4:($5-0.0) w points notit,\
 length*ph(x) w lines notit,\
-"phase.dat" u (length*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5) w points
+"working/phase.dat" u (length*1e9)/(sqrt(2.0*($6)*9e16/(($1)*931.494))):($5) w points
 
 print ph(0)
 print ph(82.47)
