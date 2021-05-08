@@ -24,7 +24,7 @@ void statSheet(Int_t loc=0,Int_t expNum=19,Int_t scaleNum=100){
     nDe = 2;
     nE = 5;
   } else if (location == 1) {
-    deGain = 0.05;//0.25
+    deGain = 0.25;//0.05;//0.25
     eGain = 1.0;
     title = Form("cross: Scale %.1f",scaleNum/10.0);
     nDe = 1;
@@ -48,16 +48,32 @@ void statSheet(Int_t loc=0,Int_t expNum=19,Int_t scaleNum=100){
     xHigh=10000;
     yHigh=1500;
   }
+  if (expNum == 11) {
+    xLow=4000;
+    xHigh=7500;
+    yHigh=3500;
+  }
+  if (expNum == 12) {
+    xLow=3000;
+    xHigh=8000;
+    yHigh=1500;
+  }
+  if (expNum == 16) {
+    xLow=5000;
+    xHigh=14000;
+    yHigh=2400;
+  }
   if (expNum == 17) {
     xHigh=8000;
     xLow=3000;
     yHigh=3000;
   }
   if (expNum == 19) {
-    xHigh=300;
+    xHigh=200;//300;
     xLow=0;
-    yHigh=500;
+    yHigh=150;//
   }
+
 
 TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
 xBin,xLow,xHigh,
@@ -71,12 +87,20 @@ xBin,xLow,xHigh);
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2); cc->cd(1); gPad->SetLogz(1); cc->cd(2); gPad->SetLogy(1);
 
-Float_t cal1=0.0387;
-Float_t cal2=-5.51;
+Float_t cal1=0.0195;//cal1=0.0387;
+Float_t cal2=-1.621;//0.0;//cal2=-5.51;
+Float_t cal3=cal1;
+Float_t cal4=cal2;
+
+if (expNum<20) {
+  cal1 = 1.0;
+  cal2 = cal1; cal3 = cal1; cal4 = cal1;
+}
+
  if (location<3) {
     cc->cd(1);
-    tree->Draw(Form("e[%d]*%f:(e[%d]*%f+e[%d]*%f)*%f+%f>>hdEtotE",nDe,deGain,
-    	  nDe,deGain,nE,eGain,cal1,cal2),
+    tree->Draw(Form("(e[%d]*%f)*%f+%f:(e[%d]*%f+e[%d]*%f)*%f+%f>>hdEtotE",nDe,deGain,
+    	  cal3,cal4,nDe,deGain,nE,eGain,cal1,cal2),
          "","colz");
     tree->Draw(Form("(e[%d]*%f+e[%d]*%f)*%f+%f>>htotE",nDe,deGain,nE,eGain,cal1,cal2));
     tree->Draw(Form("(e[%d]*%f+e[%d]*%f)*%f+%f>>htotEg",nDe,deGain,nE,eGain,cal1,cal2),
@@ -92,7 +116,7 @@ Float_t cal2=-5.51;
 
   //Draw nicely
   hdEtotE->SetMinimum(1);
-  //hdEtotE->SetStats(0);
+  hdEtotE->SetStats(0);
   hdEtotE->Draw("colz");
 
   cc->cd(2);
