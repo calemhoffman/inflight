@@ -3,11 +3,11 @@
   // gROOT->ProcessLine(".L GSUtil_new_cc.so");
   //printf("GSUtil_new_cc.so loaded\n");
 
- 
+
   // Set ROOT defaults
   //gStyle->SetPalette(1);
-  //gStyle->SetOptStat("im"); 
-  //gStyle->SetOptStat(0);
+  gStyle->SetOptStat("im");
+  gStyle->SetOptStat(0);
   /* gStyle->SetLineWidth(2); */
   /* gStyle->SetStatW(0.3); */
   /* gStyle->SetStatH(0.3); */
@@ -25,8 +25,8 @@
   /* gStyle->GetAttDate()->SetTextAngle(0); */
   /* gStyle->GetAttDate()->SetTextAlign(11); */
   /* gStyle->GetAttDate()->SetTextColor(1); */
-  /* gStyle->SetDateX(0); */
-  /* gStyle->SetDateY(0); */
+  gStyle->SetDateX(0);
+  gStyle->SetDateY(0);
 
   gROOT->SetStyle("Plain");                       // plain histogram style
   gStyle->SetOptStat("nemruoi");                  // expanded stats box
@@ -37,14 +37,13 @@
   gStyle->SetPadGridY(kTRUE);
   gStyle->SetPalette(108);                        // pretty and useful palette
   gStyle->SetHistLineWidth(1);                    // a thicker histogram line
-  gStyle->SetFrameFillColor(10);                  // a different frame colour   
+  gStyle->SetFrameFillColor(10);                  // a different frame colour
   gStyle->SetTitleFillColor(33);                 // title colour to highlight it
   gStyle->SetTitleW(.76);                         // Title Width
   gStyle->SetTitleH(.07);                        // Title height
   gStyle->SetHistMinimumZero(true);               // Suppresses Histogram Zero Supression
 
 
-   
   //TBrowser *b = new TBrowser()
 
 }
