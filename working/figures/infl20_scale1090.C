@@ -1,7 +1,7 @@
 void infl20_scale1090()
 {
 //=========Macro generated from canvas: cc/cc
-//=========  (Wed May 12 16:07:20 2021) by ROOT version 6.22/06
+//=========  (Fri May 14 10:25:36 2021) by ROOT version 6.22/06
    TCanvas *cc = new TCanvas("cc", "cc",0,53,800,848);
    gStyle->SetOptFit(1);
    cc->ToggleEventStatus();
