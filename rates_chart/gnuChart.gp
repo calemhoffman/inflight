@@ -175,24 +175,24 @@ set label 12 "rates [10 MeV/u]"
 set label 12 center at 24.1,5.2 tc rgb color_8 font "Helvetica, 18"
 unset title
 set out "|ps2pdf - raisor10.pdf"
-plot [-1:32][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 1 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 5 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 1 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 5 notitle,\
+plot [-1:30][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 1 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 1::0 w points pt pt1 ps ps1 lt 5 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 1 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 1::0 w points pt pt2 ps ps2 lt 5 notitle,\
                     'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\
                     'legend.dat' u 1:2 every :::0::0 w points pt pt1 ps ps1 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::1::1 w points pt pt2 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 6 notitle,\
-                    'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
+                    'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 1 notitle,\
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 1 notitle,\
+                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 
 set label 22 "ATLAS in-flight radioactive ion beams"
@@ -202,23 +202,23 @@ set label 12 center at 24.1,5.2 tc rgb color_8 font "Helvetica, 18"
 unset title
 set out "|ps2pdf - raisor6.pdf"
 plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 2 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 5 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 2 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 5 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::2 w points pt pt1 ps ps1 lt 5 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::2 w points pt pt2 lt 5 notitle,\
                     'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\
                     'legend.dat' u 1:2 every :::0::0 w points pt pt1 ps ps1 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::1::1 w points pt pt2 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 6 notitle,\
                     'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 4 notitle,\
+                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 
 set label 22 "ATLAS in-flight radioactive ion beams"
@@ -227,24 +227,24 @@ set label 12 "rates [14 MeV/u]"
 set label 12 center at 24.1,5.2 tc rgb color_8 font "Helvetica, 18"
 unset title
 set out "|ps2pdf - raisor14.pdf"
-plot [-1:32][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 2 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 5 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 6 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 2 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 3 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 4 notitle,\
-                    'rates2021.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 5 notitle,\
+plot [-1:30][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Available"? $3:1/0):1/0):1/0) every 3::4 w points pt pt1 ps ps1 lt 5 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e2?($5<1e3?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 6 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e3?($5<1e4?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e4?($5<1e5?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 3 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e5?($5<1e6?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 2 notitle,\
+                    'rates2022.tsv' using ($6==10 ? ($2-$3):1/0):($5>=1e6?($5<1e10?(stringcolumn(8) eq "Expected"? $3:1/0):1/0):1/0) every 3::4 w points pt pt2 lt 5 notitle,\
                     'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\
                     'legend.dat' u 1:2 every :::0::0 w points pt pt1 ps ps1 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::1::1 w points pt pt2 lt 5 notitle,\
                     'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 6 notitle,\
                     'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 4 notitle,\
+                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 ############################################################################################################
 set out "|ps2pdf - raisor_full.pdf"
@@ -266,7 +266,7 @@ plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 6 notitle,\
                     'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
                     'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 1 notitle,\
+                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 4 notitle,\
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 ############################################################################################################
 set out "|ps2pdf - raisor.pdf"
@@ -286,7 +286,7 @@ unset label 21
 pt1=47
 ps1=3
 pt2=47
-plot [-1:32][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
+plot [-1:30][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
 'airis.dat' using ($1-$2):($7>=1e3?$2:1/0) w points pt pt1 ps ps1-1 lt 7 notitle,\
 'done.dat' using ($1-$2):($2) w points pt pt1 ps ps1 lt 4 notitle,\
 'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\

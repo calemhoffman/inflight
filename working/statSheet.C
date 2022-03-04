@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=1,Int_t expNum=21,Int_t scaleNum=100){
+void statSheet(Int_t loc=1,Int_t expNum=18,Int_t scaleNum=78){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -70,6 +70,11 @@ void statSheet(Int_t loc=1,Int_t expNum=21,Int_t scaleNum=100){
     xLow=3000;
     yHigh=3000;
   }
+  if (expNum == 18) {
+    xHigh=5500;
+    xLow=1000;
+    yHigh=1300;
+  }
   if (expNum == 19) {
     xHigh=200;//300;
     xLow=0;
@@ -104,8 +109,8 @@ xBin,xLow,xHigh);
 
   TCanvas *cc = new TCanvas("cc","cc",800,800);
   cc->Clear(); cc->Divide(1,2);
-  cc->cd(1); gPad->Divide(2,1); cc->cd(1)->cd(1); gPad->SetLogz(1);
-  cc->cd(2); gPad->Divide(2,1); cc->cd(2)->cd(1); gPad->SetLogz(1);
+  //cc->cd(1); gPad->Divide(2,1); cc->cd(1)->cd(1); gPad->SetLogz(1);
+  //cc->cd(2); gPad->Divide(2,1); cc->cd(2)->cd(1); gPad->SetLogz(1);
 
 Float_t cal1=0.1310;//e
 Float_t cal2=11.030;
@@ -125,7 +130,7 @@ tree->SetAlias("etotcal","decal+ecal");
 tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1,tcal2));
 
  if (location<3) {
-    cc->cd(1)->cd(1);
+    cc->cd(1);//->cd(1);
     tree->Draw(Form("decal:etotcal>>hdEtotE"),"","colz");
     tree->Draw(Form("decal:etotcal>>hdEtotEg"),Form(""),"colz");
     tree->Draw(Form("etotcal>>htotE"));
@@ -133,7 +138,7 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
     tree->Draw(Form("decal:tofcal>>hdEdT"),Form(""),Form(""));
     tree->Draw(Form("decal:tofcal>>hdEdTg"),Form("cut_dee1_1030"),Form(""));
   } else {
-    cc->cd(1)->cd(1);
+    cc->cd(1);//->cd(1);
     tree->Draw(Form("(e[%d]+e[%d])*%f:e[%d]*%f>>hdEtotE",
     nDe,nDe+3,deGain,
     nE,eGain),"","colz");
@@ -142,25 +147,12 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
   }
 
   //Draw nicely
-  cc->cd(1)->cd(1);
+  cc->cd(1);//->cd(1);
   hdEtotE->SetMinimum(1);
   hdEtotE->SetStats(0);
   hdEtotE->Draw("colz");
-  cc->cd(1)->cd(2);
-  hdEtotEg->SetMarkerColor(kRed);
-  hdEtotEg->Draw("same");
-
-  cc->cd(2)->cd(1);
-  // htotEg->SetLineColor(kRed);
-  // htotEg->SetFillColor(kRed);
-  // htotEg->Draw();
-  // htotE->Draw("same");
-  hdEdT->SetMinimum(1);
-  hdEdT->Draw("colz");
-  hdEdT->SetStats(0);
-  cc->cd(2)->cd(2);
-  hdEdTg->SetMarkerColor(kRed);hdEdTg->Draw("same");
-
+cc->cd(2);
+htotE->Draw();
   cc->SaveAs(Form("figures/infl%d_scale%d.C",expNum,scaleNum));
   cc->SaveAs(Form("figures/infl%d_scale%d.png",expNum,scaleNum));
 
