@@ -71,9 +71,11 @@ void statSheet(Int_t loc=1,Int_t expNum=18,Int_t scaleNum=78){
     yHigh=3000;
   }
   if (expNum == 18) {
-    xHigh=5500;
-    xLow=1000;
-    yHigh=1300;
+    xHigh=80;
+    xLow=20;
+    yLow=300;
+    yHigh=1200;
+    yBin=yBin/4.;
   }
   if (expNum == 19) {
     xHigh=200;//300;
@@ -119,9 +121,9 @@ Float_t cal4=-1.610;//
 Float_t tcal1=0.4749;//
 Float_t tcal2=306.69;//
 
-if (expNum<20) {
-  cal1 = 1.0;
-  cal2 = cal1; cal3 = cal1; cal4 = cal1;
+if (expNum<20 || expNum==18) {
+  cal1 = 1;
+ cal2 = cal1; cal3 = cal1; cal4 = cal1;
 }
 
 tree->SetAlias("decal",Form("e[%d]*%f+%f",nDe,cal3,cal4));
@@ -131,12 +133,11 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
 
  if (location<3) {
     cc->cd(1);//->cd(1);
-    tree->Draw(Form("decal:etotcal>>hdEtotE"),"","colz");
+    tree->Draw(Form("decal:etotcal*0.019+2.13>>hdEtotE"),"","colz");
     tree->Draw(Form("decal:etotcal>>hdEtotEg"),Form(""),"colz");
-    tree->Draw(Form("etotcal>>htotE"));
+    tree->Draw(Form("etotcal*0.019+2.13>>htotE"));
     tree->Draw(Form("etotcal>>htotEg"),Form("e[%d]>100",nDe),"");
     tree->Draw(Form("decal:tofcal>>hdEdT"),Form(""),Form(""));
-    tree->Draw(Form("decal:tofcal>>hdEdTg"),Form("cut_dee1_1030"),Form(""));
   } else {
     cc->cd(1);//->cd(1);
     tree->Draw(Form("(e[%d]+e[%d])*%f:e[%d]*%f>>hdEtotE",
@@ -153,6 +154,10 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
   hdEtotE->Draw("colz");
 cc->cd(2);
 htotE->Draw();
+
+cc->Clear();
+hdEtotE->Draw("col");
+
   cc->SaveAs(Form("figures/infl%d_scale%d.C",expNum,scaleNum));
   cc->SaveAs(Form("figures/infl%d_scale%d.png",expNum,scaleNum));
 
