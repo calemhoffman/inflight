@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=1,Int_t expNum=18,Int_t scaleNum=78){
+void statSheet(Int_t loc=2,Int_t expNum=18,Int_t scaleNum=78){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -18,7 +18,7 @@ void statSheet(Int_t loc=1,Int_t expNum=18,Int_t scaleNum=78){
    nDe = 1;
    nE = 7;
   } else if (location == 2) {
-    deGain = 0.25;
+    deGain = 0.01;
     eGain = 1.0;
     title = Form("ZD or Target: Scale %d",scaleNum);
     nDe = 2;
@@ -76,6 +76,11 @@ void statSheet(Int_t loc=1,Int_t expNum=18,Int_t scaleNum=78){
     yLow=300;
     yHigh=1200;
     yBin=yBin/4.;
+    if (loc==2) {
+      xHigh=5000;
+      xLow=100;
+      yLow=100;
+    }
   }
   if (expNum == 19) {
     xHigh=200;//300;
@@ -133,9 +138,16 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
 
  if (location<3) {
     cc->cd(1);//->cd(1);
+    if (loc==2) {
+      tree->Draw(Form("decal:etotcal-decal>>hdEtotE"),"","colz");
+        tree->Draw(Form("etotcal-decal>>htotE"));
+   
+    }
+    else {
     tree->Draw(Form("decal:etotcal*0.019+2.13>>hdEtotE"),"","colz");
+        tree->Draw(Form("etotcal*0.019+2.13>>htotE"));
+    }
     tree->Draw(Form("decal:etotcal>>hdEtotEg"),Form(""),"colz");
-    tree->Draw(Form("etotcal*0.019+2.13>>htotE"));
     tree->Draw(Form("etotcal>>htotEg"),Form("e[%d]>100",nDe),"");
     tree->Draw(Form("decal:tofcal>>hdEdT"),Form(""),Form(""));
   } else {
