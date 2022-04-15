@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=2,Int_t expNum=18,Int_t scaleNum=78){
+void statSheet(Int_t loc=2,Int_t expNum=25,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -18,15 +18,15 @@ void statSheet(Int_t loc=2,Int_t expNum=18,Int_t scaleNum=78){
    nDe = 1;
    nE = 7;
   } else if (location == 2) {
-    deGain = 0.01;
+    deGain = 1.0;///0.01;
     eGain = 1.0;
     title = Form("ZD or Target: Scale %d",scaleNum);
     nDe = 2;
     nE = 5;
   } else if (location == 1) {
-    deGain = 1.0;//0.25;//0.05;//0.25
+    deGain = 0.25;//0.05;//0.25
     eGain = 1.0;
-    title = Form("cross: Scale %.1f",scaleNum/10.0);
+    title = Form("cross: Scale %d",scaleNum);
     nDe = 1;
     nE = 4;
     //if (expNum==21)
@@ -93,7 +93,22 @@ void statSheet(Int_t loc=2,Int_t expNum=18,Int_t scaleNum=78){
     yLow=80;
     yHigh=160;//
   }
-
+  if (expNum == 25) {
+    xHigh=400;
+    xLow=10;
+    yLow=10;
+    yHigh=400;
+    yBin=yBin/3.;
+    xBin=xBin/3.;
+    if (loc == 1) {
+      xHigh=3000;
+      xLow=10;
+      yLow=1500;
+      yHigh=5000;
+      yBin=yBin*3.;
+      xBin=xBin*3.;
+    }
+  }
 
 TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
 xBin,xLow,xHigh,
@@ -126,9 +141,9 @@ Float_t cal4=-1.610;//
 Float_t tcal1=0.4749;//
 Float_t tcal2=306.69;//
 
-if (expNum<20 || expNum==18) {
+if (expNum<20 || expNum==18 || expNum==25) {
   cal1 = 1;
- cal2 = cal1; cal3 = cal1; cal4 = cal1;
+ cal2 = 0; cal3 = cal1; cal4 = 0;
 }
 
 tree->SetAlias("decal",Form("e[%d]*%f+%f",nDe,cal3,cal4));
@@ -138,10 +153,9 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
 
  if (location<3) {
     cc->cd(1);//->cd(1);
-    if (loc==2) {
+    if (loc==2 || loc==1) {
       tree->Draw(Form("decal:etotcal-decal>>hdEtotE"),"","colz");
-        tree->Draw(Form("etotcal-decal>>htotE"));
-   
+      tree->Draw(Form("etotcal>>htotE"));
     }
     else {
     tree->Draw(Form("decal:etotcal*0.019+2.13>>hdEtotE"),"","colz");
