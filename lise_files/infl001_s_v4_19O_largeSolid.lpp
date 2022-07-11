@@ -1,0 +1,3525 @@
+Version 10.0.45
+
+{============================= Main Part ======================================}
+[general]
+                    File = Z:\Users\calemhoffman\Research\anl\inflight\lise\infl001_s_v4_19O_largeSolid.lpp
+                    Date = 15-10-2018
+                    Time = 17:13:34
+           Configuration = other\s_AIRIS.lcn
+             Optionsfile = A1900_2016.lopt
+                   Title = s_AIRIS
+          BlockStructure = DSWDSSMMMM
+
+[settings]
+                   A,Z,Q = 18O 8+                                ; Mass ElementName Charge+ Beam
+                  Energy = 14.531997559         MeV/u            
+               Intensity = 1                    pnA              ; enA,pna,pps,kW
+            RF frequency = 12.125               MHz              
+            Bunch length = 0.5                  ns               
+         Settings on A,Z = 20O                                   ; Mass ElementName Charge+ Beam
+
+[OpticsBeam]
+                      BX = 1                    (±)mm            ; one-half the horisontal beam extent (x)
+                      BT = 3                    (±)mrad          ; one-half the horisontal beam divergence(x')
+                      BY = 1                    (±)mm            ; one-half the vertical beam extent (y)
+                      BF = 3                    (±)mrad          ; one-half the vertical beam divergence (y')
+                      BL = 0                    (±)mm            
+                      BD = 0.05                 (±)%             ; one-half of the momentum spread (dp/p)
+                  ShiftX = 0                    mm               ; beam respect to the spectrometer axis
+                  AngleX = 0                    mrad             ; beam respect to the spectrometer axis
+                  ShiftY = 0                    mm               ; beam respect to the spectrometer axis
+                  AngleY = 0                    mrad             ; beam respect to the spectrometer axis
+            Scheme Angle = 0                    degrees          
+                  ShapeX = 32769
+                  ShapeT = 32769
+                  ShapeY = 32769
+                  ShapeF = 32769
+                  ShapeL = 32769
+                  ShapeD = 32769
+               OptBeam_X = 1                    (±)mm            
+               OptBeam_T = 40                   (±)mrad          
+               OptBeam_Y = 1                    (±)mm            
+               OptBeam_F = 40                   (±)mrad          
+               OptBeam_L = 0                    (±)mm            
+               OptBeam_D = 1                    (±)%             
+
+[SlitsBeforeTarget]
+                   Shape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 1,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 1,-15.00,-50.0,15.00,50.0             ; joint,Left,L-limit,Right,R-limit
+                Y_action = 1,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-15.00,-50.0,15.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[options]
+               NP simple = 64                                    ; Number of points in distribution
+        NP charge states = 64                                    ; Number of points in distribution
+                NP wedge = 32                                    ; Number of points in distribution
+           Charge states = Yes                                   ; No  & Yes
+           CutEdgeEffect = 1                                     ; 1-Yes. Default, 0-no - for extended configurations
+       Prim.beam scatter = 0                                     ; 0-without, 1-with
+              Delta peak = 0                                     ; 0-without, 1-with
+             BrhoMeanMax = 0                                     ; 0-Max, 1-Mean
+            BrhoMeMaLeRi = 1                                     ; 0-Max, 1-Mean, 2-Left, 3-Right /for fission/
+
+[target]
+         Target contents = 0,8,2,18                              ; Nomer,Z,Atoms,Mass
+        Target thickness = 4,37,0.002068,0,1                     ; State,Thickness,density,angle,SolidGas
+  Target fusion compound = 0
+   Targ use for Q-states = 1
+           Target Defect = 0,0.1                                 ; [0] choice - % or micron at 0 degree,  [1]=value; 
+       Degrader contents = 0,27,42,58.933                        ; Nomer,Z,Atoms,Mass
+       Degrader contents = 1,24,20,51.996                        ; Nomer,Z,Atoms,Mass
+       Degrader contents = 2,28,13,58.69                         ; Nomer,Z,Atoms,Mass
+       Degrader contents = 3,26,19,55.847                        ; Nomer,Z,Atoms,Mass
+       Degrader contents = 4,74,1,183.85                         ; Nomer,Z,Atoms,Mass
+      Degrader thickness = 1,1.9,8.3,0,0                         ; State,Thickness,density,angle,SolidGas
+  Degra use for Q-states = 1
+         Degrader Defect = 0,0.1                                 ; [0] choice - % or micron at 0 degree,  [1]=value; 
+
+[mechanism]
+                Reaction = 7                                     ; 0 - fragm, 1 - fusion-resid, 2 - fusion-fission
+               CalcOther = 128                                   ; calculate other reactions
+           V calculation = 3                                     ; 0 - constant, 1 - Borrel, 2 - Rami, 3-convolution, 4-two body reaction
+             V_opt/Vbeam = 1                                     ; default 1
+         Velocity_exceed = 1                                     ; 0 - without, 1-with - two-body recations velocity corrections
+Binding Energy for Vf/Vp = 8                    MeV              ; Binding energy for Borrel's expression
+    Shift for Vf/Vp calc = 0     
+        Prefragment_Rami = 1                                     ; 1-Yes, 0-No
+                  Sigma0 = 90                   MeV/c            ; default 90
+                  SigmaD = 200                  MeV/c            ; default 200
+                  SigmaM = 87                   MeV/c            ; default 87
+               Asymmetry = 0                    %                ; default 0
+          Method v-sigma = 3                                     ; 0 - Goldhaber, 1-Morrissey,2-Friedman,3-Convolution
+               G_Surface = 0.95                 MeV/fm^2         
+ Symmetry around half_Ab = 1                                     ; 1 - yes, 0-no
+ Pfaff pickup correction = 1                                     ; 1 - yes, 0-no
+     ChargeExchangePfaff = 1                                     ; 1 - exclude, 0-forget
+            Sigma corr 0 = 0                                     ; Coulomb energy
+            Sigma corr 1 = 0                                     ; Projectile mass
+           Friedman mode = 2                                     ; 0-Qgg, 1-Surface, 2-Qgg+Surface
+         Prefragment_Fri = 1                                     ; 1-Yes, 0-No
+        Coulomb_Friedman = 1                                     ; 1-Yes, 0-No
+                  K_Morr = 8                    MeV/A            ; E/A=8MeV/A default; D.Morrissey coef.
+               K_MorHalf = 8                    MeV/A            ; E/A=8MeV/A default at Afrag=Aproj/2; D.Morrissey coef.
+                 AA_fast = 0                                     ; 1-Yes, 0-No
+            BarrierShape = 1                                     ; 0-classical, 1-quantum mech.
+                 H_omega = 5                    MeV              ; default 3
+           Probabilty_CN = 1                                     ; 0/1 use Prbabilty for CN formation
+            UseVanishing = 1                                     ; 1-Yes, 0-No
+              VanishMode = 1                                     ; 0-Sierk, 1-Cohen
+           NuclPotential = 1                                     ; 0-Bass, 1-WS
+                   WS_V0 = 105                  MeV              
+                   WS_R0 = 1.12                 fm               
+                    WS_a = 0.75                 fm               
+          FusDiffuseness = 1    
+              Width Coef = 1                                     ; default 1; for Leon's charge state distribution
+          gZt Correction = 1                                     ; default 1;      Leon's C.S.D.
+           PowerCoefLeon = 0.477                                 ; default 0.477; Leon's C.S.D.
+           Cross section = File                                  ; Fit  & File
+           Charge method = 5                                     ; charge calculations method  0-5
+      EPAX Cross Section = 4                                     ; cross section calculations method 0-4
+        SR Cross Section = 2                                     ; EPAX for SR  0-2
+             Energy Loss = 0                                     ; energy loss calculation method 0-3
+     Anglular straggling = 2                                     ; 0-LISE, 1-ATIMA
+         StragglingCoef1 = 0.217
+         StragglingCoef2 = 1.12 
+       Energy straggling = 0                                     ; 0-LISE, 1-ATIMA
+       EnergyStragMethod = 0                                     ; 0-integrate, 1-table
+        EnergyStragShape = 1                                     ; 0-Gauss, 1-Landau-Vavilov
+          EquilThickness = 1                                     ; 0-Charge, 1-Global
+              MassMethod = 0                                     ; 0-DB+calcul, 1 + just calcul
+            MassDataBase = 0                                     ; 0-A&W, 1-User ME
+            Mass formula = 1                                     ; 0-LDM, 1-Myerer, 2: 1+corrections
+      UseChargeForEnergy = 2                                     ; 0-No, 1-Yes, 2-Auto
+         EnergyValueAuto = 30                                    ; default value 30 MeV/u
+         EquilibriumMode = 1                                     ; 0-Equil, 1-NonEquil
+               UB_Global = 70                                    ; default 70 MeV/u
+             MinZ_Global = 2                                     ; default Z>=29
+        ChargeStateOptim = 1                                     ; 0-No, 1-Yes
+         ZmQ_AfterReactn = 0                                     ; default 0 (full stripped)
+             EPAX_p_Norm = 1
+               EPAX_p_Un = 1.65
+              EPAX_p_Up0 = 1.79
+              EPAX_p_Up1 = 0.00472
+              EPAX_p_Up2 = -1.3e-5 
+                EPAX_p_H = 1
+
+[fission]
+         FisAngDistShape = 0                                     ; 0-isotropic; 1-anisotropic
+     FisMomCutForAngDist = 2                                     ; 0-dont use;  1-use just MatrixKinematics; 2-use for all; (default 2)
+      OddEvenCorrections = 1                                     ; 0-dont use;  1-use
+ PostScissionEvaporation = 1                                     ; 0-dont use;  1-use
+   DeexcitFunctionPoints = 0                                     ; 0- average deexcitation energy;  1- 3 points; 2 - manually
+           FisEXmanually = 20                                    ; Excitation energy manually
+           FisCSmanually = 1000                                  ; Cross section manually
+            FisTXEmethod = 1                                     ; 0-from Edissipated, 1 from Q-value
+                   Fis_f = 0.0045                                ; default 0.0045
+              FisEXsigma = 5.5                  MeV              ; default 5.5
+            FisCS_Global = 1e-11    
+               FisCS_TKE = 1e-8     
+                      N0 = 83                                    ; default 82
+                     dU0 = -2.65                                 ; default -2.5
+                      C0 = 0.7                                   ; default 1.4
+                   cpol0 = 0.65                                  ; default 0.65
+                  width0 = 0.63                                  ; default 0.63
+                      N1 = 90                                    ; default 90
+                     dU1 = -3.8                                  ; default -5.5
+                      C1 = 0.15                                  ; default 0.16
+                   cpol1 = 0.55                                  ; default 0.55
+                  width1 = 0.97                                  ; default 0.97
+
+[charge_suppression]
+                 FragInd = 1e-3     
+               FragTotal = 1e-5     
+                 BeamInd = 1e-20    
+               BeamTotal = 1e-20    
+
+[convolution]
+        Convolution mode = 1                                     ; 0-Qgg, 1-Surface, 2-Qgg+Surface
+               SigmaConv = 91.5                 MeV/c            ; default 90 for Convolution
+              CoefConv_0 = 3.344 
+              CoefConv_1 = 3     
+              CoefConv_2 = 2.936 
+             ShiftConv_0 = 0.158 
+             ShiftConv_1 = 0.149 
+             ShiftConv_2 = 0.153 
+
+[evaporation]
+          NP evaporation = 32                                    ; Number of points in distribution
+              EvapMethod = 2
+        StateDensityMode = 2                                     ; 0, 1+pairing, 2+shell
+      EvapUnstableNuclei = 1                                     ; 0 - only stable,1 +unstable
+              Tunnelling = 1                                     ; 1-Yes, 0-No
+          AvoidUnboundCS = 1                                     ; 1-Yes, 0-No
+       ProtectedChannels = 1                                     ; 1-Yes, 0-No
+           R_Evaporation = 5.7                  fm               ; correction for the effective Coulomb barrier
+         Mode_Apf_manual = 0                                     ; 1-manual, 0-auto
+             Energy_in_T = 2                                     ; default 2
+     EvaporationVelocity = 0                                     ; 0 - quality, 1 -fast
+        DeltaOddEvenEvap = 12    
+     DeltaOddEvenFission = 14    
+   BreakupTemperature250 = 4.7  
+   BreakupTemperature150 = 5.9  
+   BreakupTemperature050 = 8    
+      BreakupDiffuseness = 0.05 
+      DissipationKramers = 0                                     ; 0 - no, 1 - use
+ DissipationStepFunction = 1                                     ; 0 - no, 1 - use
+         DissipationBeta = 1                                     ; default 2.0
+                 mode_1n = 1                                     ; 1-Yes, 0-No
+                 mode_2n = 0                                     ; 1-Yes, 0-No
+                 mode_1p = 1                                     ; 1-Yes, 0-No
+                 mode_2p = 0                                     ; 1-Yes, 0-No
+                  mode_a = 1                                     ; 1-Yes, 0-No
+                  mode_d = 0                                     ; 1-Yes, 0-No
+                  mode_t = 0                                     ; 1-Yes, 0-No
+                mode_3he = 0                                     ; 1-Yes, 0-No
+                mode_fis = 1                                     ; 1-Yes, 0-No
+             mode_brk_up = 1                                     ; 1-Yes, 0-No
+              mode_gamma = 0                                     ; 1-Yes, 0-No
+
+[fission_barrier]
+    FissionBarrierFactor = 1    
+      FissionBarrierMode = 1                                     ; #0-4
+      OddEvenCorrections = 1                                     ; 1-Yes, 0-No
+        ShellCorrections = 1                                     ; 1-Yes, 0-No
+             FB_InOutMax = 2                                     ; #0-2 - in/out/max
+             ModeForUser = 1                                     ; #0-2
+           NdeltaOddEven = 2.5  
+           ZdeltaOddEven = 9    
+
+[excitation_energy]
+       GeomAA_Correction = 1                                     ; 0 - don't use,1 - use -default
+          Thermalization = 0                                     ; 1-Yes, 0-No
+          ThermaTimeCoef = 3e-22                                 ; 2.1e-22 MeV *s/e(t)
+                Friction = 0                                     ; 0 - off,1 - on
+          Ev_A_SigmaCoef = 9.6  
+         G_FrictionCoef1 = 6.5  
+         G_FrictionCoef2 = 0    
+           G_FactorCoef1 = 1.5  
+           G_FactorCoef2 = 2.5  
+               DepthHole = 40    
+          EnergyCoef_CB0 = 0       
+          EnergyCoef_CB1 = 13.3     
+          EnergyCoef_CB2 = 0       
+           SigmaCoef_CB0 = 0       
+           SigmaCoef_CB1 = 9.6     
+           SigmaCoef_CB2 = 0       
+              D_MeanTemp = 13       
+
+[evapauto]
+                  tun_a0 = -0.61392
+                  tun_a1 = 0.44559
+                  tun_a2 = 0.12008
+                 A_Bound = 300                                   ; mass
+               A_Pairing =   1                                   ; mass
+
+[plot]
+            Start target = Detector                              ; Detector & RF      
+            Start of TOF = T1
+            Stop  of TOF = M1
+         dE-detector-1st = M2
+         dE-detector-2nd = M1
+            TKE-detector = M1
+                PlotBrho = D1
+               PlotWedge = D1
+              X-detector = M1
+              Y-detector = M1
+                 Tilting = M1
+                 Stopper = n
+                RO_Wedge = n
+          ConditionBlock = A0
+          Plot threshold = 1e-10                pps              ; minimal value for plot scale
+     Shift of TOF for RF = 0                    ns               ; for dE-TOF plot with RF
+  Fraction of RF trigger = 2
+            UseCondition = 0
+         TKE_calibration = 1,1,0,MeV                             ; Input PV(0) or CH(1), A, B, dimension
+
+[cs_file]
+              UserDiffCS = 14                                    ; Number of User Diff CS saved in this file
+         AppendOverwrite = 1
+          AttachedInside = 1
+            ShowCSinPlot = 1
+                    Chi2 = 1
+              CSfilename = 
+
+[sec_reactions]
+        NP sec.reactions = 16                                    ; Number of points in distribution
+     Secondary reactions = 0                                     ; 0/1 - use secondary reactions in calculations
+         fiss_FilterUse0 = 1
+         fiss_FilterUse1 = 1
+         fiss_FilterUse2 = 1
+            fiss_ellipse = 5
+          fiss_NdeltaTop = 0
+          fiss_ZdeltaTop = 0
+          fiss_NdeltaBot = 25
+          fiss_ZdeltaBot = 20
+         frag_FilterUse0 = 3
+         frag_FilterUse1 = 3
+         frag_FilterUse2 = 3
+            frag_ellipse = 4
+          frag_NdeltaTop = 5
+          frag_ZdeltaTop = 5
+          frag_NdeltaBot = 6
+          frag_ZdeltaBot = 6
+
+[abrasion_fission]
+                HML_show = 7                                     ; HML-bits
+             BoundaryLow = 40                   MeV              
+            BoundaryHigh = 180                  MeV              
+                Velocity = 1                                     ; Calculat fissile nuclei speed
+           LowEx_nucleus = 47Ca20+                               ; Mass ElementName Charge+ Beam
+                 L_CS_Ex = 3.000e+02 25.00 5.00                  ; mb, MeV, Mev
+           MidEx_nucleus = 42Ar18+                               ; Mass ElementName Charge+ Beam
+                 M_CS_Ex = 1.000e+03 100.00 5.00                 ; mb, MeV, Mev
+          HighEx_nucleus = 36S 16+                               ; Mass ElementName Charge+ Beam
+                 H_CS_Ex = 8.000e+02 250.00 5.00                 ; mb, MeV, Mev
+
+[gamma_detection]
+                   coef0 = 1.39905 
+                   coef1 = 0.69523 
+                   coef2 = -5.92199 
+                   coef3 = 1       
+                   coef4 = 0.269   
+                    area = 38.81                cm^2             
+                distance = 20.4                 cm               
+                geom_eff = 1                    %                
+                    mode = 2                                     ; 0-area,1-dist,2-geom
+               threshold = 100                  keV              
+                   start = 0                    mks              
+                    gate = 10                   mks              
+             Energy_cell = 1330                 keV              
+             Refer_GperF = 0.01                 g/f              
+                 UseGeom = 0                                     ; yes-1, no-0
+               UseEnergy = 1                                     ; yes-1, no-0
+
+[sec_target]
+                     NP2 = 16                                    ; Dimension
+                tertiary = 0                                     ; yes-1, no-0
+                  method = 0                                     ; 0-distribution, 1-gauss, 2-d4
+               threshold = 1e-10
+                   Pr_z0 = 1
+                   Pr_z1 = 100
+                   Pr_n0 = 0
+                   Pr_n1 = 200
+                   Dr_z0 = 1
+                   Dr_z1 = 8
+                   Dr_n0 = 0
+                   Dr_n1 = 10
+
+[cross sections]
+1     19O   = 36.9873 0 7
+2     13C   = 21.4186 0 7
+3     16N   = 21.4186 0 7
+4     15N   = 21.4186 0 7
+5     14N   = 21.4186 0 7
+6     12C   = 21.4186 0 7
+7     15C   = 21.4186 0 7
+8     19F   = 10 0 7
+9     18F   = 10 0 7
+10    17N   = 21.4186 0 7
+11    17O   = 21.4186 0 7
+12    12N   = 21.4186 0 7
+13    13N   = 21.4186 0 7
+14    18N   = 21.4186 0 7
+15    16C   = 21.4186 0 7
+16    20O   = 2.77266 0 7
+
+[previous]
+                 Lowerst = 14C 6+                                ; Mass ElementName Charge+ Beam
+                 Highest = 20O 8+                                ; Mass ElementName Charge+ Beam
+
+[MC_options]
+                   dXsel = 8
+                   dYsel = 12
+                  dAZQ_X = 1
+                  dAZQ_Y = 5
+                  dVEL_X = 1
+                  dVEL_Y = 0
+               dIso_mode = 1
+               strag_ang = 1
+               strag_ene = 1
+               strag_lat = 0
+            MCresolution = 1
+            XYresolution = 1
+                  defect = 1
+                  charge = 1
+           loss_reaction = 1
+            reaction_ang = 0
+            reaction_mom = 0
+               HighOrder = 1
+                  CS_use = 1
+           envelope_show = 0
+                use_bore = 1
+          XY_orientation = 0
+            outside_cikl = 1
+        MC_outside_sigma = 1
+              AZQ_Xsigma = 0.1   
+              AZQ_Ysigma = 0.1   
+                 G1_gate = 0 1 -1000.0000 1000.0000
+                 G2_gate = 0 0 -100.0000 100.0000
+                 G3_gate = 0 0 -100.0000 100.0000
+                 G4_gate = 0 0 -100.0000 100.0000
+            G1_component = 0 0,S2,R1,R1                          ; mode,RF_TOF,BP,TOFstart,TOFstop
+            G2_component = 0 0,R1,R1,R1
+            G3_component = 0 0,R1,R1,R1
+            G4_component = 0 0,R1,R1,R1
+
+[Levmar_fit]
+                   Niter = 1000                                  ; # iterations
+               UseBounds = 1                                     ; yes-1, no-0
+                 Example = 4                                     ; 0-15
+                    opt0 = 1e-3     
+                    opt1 = 1e-15    
+                    opt2 = 1e-15    
+                    opt3 = 1e-20    
+                    opt4 = 1e-6     
+
+
+{============================= BLOCK D1 - Dipole ======================================}
+
+[D1_General]
+                    Name = D1,1                                  ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 3.361000             m                ; Length block for optical blocks
+               SE_method = 0                                     ; 0: S-block, 1: E-block
+             SecondOrder = 0                                     ; Exist - 1, Non - 0
+              ThirdOrder = 0                                     ; Number of lines
+               COSY file = NULL
+           CalculateAuto = 1                                     ; 0/1/2  nothing, keep_matrix, keep_field
+        RemotePermission = 0                                     ; 0/1 -  no/yes
+             Before_Quad = 2                                     ; number of quadrupoles before optic device
+              After_Quad = 0                                     ; number of quadrupoles after  optic device
+             QB_DontDraw = 0
+             QA_DontDraw = 0
+                     ZmQ = 0                                     ;  Z - Q  = charge state settings
+        Calibration file = A1900\A1900_D1-Z026.cal
+
+[D1_slits]
+              SlitsShape = 0                                     ; 0-slits, 1-ellipse
+           ApertureShape = 0                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 1,-1.00,-75.0,1.00,75.0               ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+
+[D1_optics]
+                    row1 = -5.86110e-01,-6.00000e-06,+0.00000e+00,+0.00000e+00,+0.00000e+00,+2.81569e+00
+                    row2 = -1.59585e+00,-1.70619e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row3 = +0.00000e+00,+0.00000e+00,-2.39548e+00,-2.00000e-06,+0.00000e+00,+0.00000e+00
+                    row4 = +0.00000e+00,+0.00000e+00,-6.99110e-01,-4.17450e-01,+0.00000e+00,+0.00000e+00
+                    row5 = -4.49340e-01,-4.80410e-01,+0.00000e+00,+0.00000e+00,+1.00000e+00,+8.61900e-01
+                    row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
+
+[D1_AngAcceptance]
+                   X-Use = 1                                     ; Use 1/0
+                 X-Value = 50                   mrad             ; acceptance
+                   Y-Use = 1                                     ; Use 1/0
+                 Y-Value = 100                  mrad             ; acceptance
+                   Shape = 0                                     ; 0 - rectangle, 1- ellipse
+
+[D1_DipoleSettings]
+                    Brho = 1.25600              Tm               ; magnetic rigidity
+                   Angle = 22.5                 degrees          
+                  Radius = 1.0764               m                
+
+[D1_DipoleTransport]
+                 Code4_N = 0                                     ; default 0. code 4. n
+                 Code4_B = 0                                     ; default 0. code 4. b
+         Calculate2Order = 1                                     ; Use 1/0
+                 GapVert = 4                    cm               ; code 16.5
+                      K1 = 0                                     ; code 16.7
+                      K2 = 0                                     ; code 16.8
+       EntranceCurvature = 0                    1/m              ; 1/R1 - code 16.12
+           ExitCurvature = 0                    1/m              ; 1/R2 - code 16.13
+              Beta1angle = 0                    deg              ; code 2.0 - entrance
+              Beta2angle = 22.5                 deg              ; code 2.0 - exit
+          UseFringeField = 1                                     ; Entrance Use 1/0
+          UseExitFringeF = 1                                     ; Exit Use 1/0
+
+
+{============================= BLOCK S1 - Drift ======================================}
+
+[S1_General]
+                    Name = Slits,1                               ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+               SE_method = 1                                     ; 0: S-block, 1: E-block
+             SecondOrder = 0                                     ; Exist - 1, Non - 0
+              ThirdOrder = 0                                     ; Number of lines
+               COSY file = NULL
+           CalculateAuto = 1                                     ; 0/1/2  nothing, keep_matrix, keep_field
+        RemotePermission = 1                                     ; 0/1 -  no/yes
+
+[S1_slits]
+              SlitsShape = 0                                     ; 0-slits, 1-ellipse
+           ApertureShape = 0                                     ; 0-slits, 1-ellipse
+                X_action = 1,1,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 0,-3.00,-75.0,3.00,75.0               ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-20.00,-35.0,20.00,35.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[S1_optics]
+                    row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row2 = +0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row3 = +0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row4 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00
+                    row5 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00
+                    row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
+
+[S1_AngAcceptance]
+                   X-Use = 0                                     ; Use 1/0
+                 X-Value = 1000                 mrad             ; acceptance
+                   Y-Use = 0                                     ; Use 1/0
+                 Y-Value = 1000                 mrad             ; acceptance
+                   Shape = 1                                     ; 0 - rectangle, 1- ellipse
+
+[S1_DriftSettings]
+                    Mode = 1                                     ; E-Quad 3, M Sext-Quad 2, Standard 1, Beamline 0
+              ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
+        Length_effective = 0                    m                
+               Leff_coef = 0.7                  1                
+               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
+           MagneticField = 0                    KG               
+                  Radius = 5                    cm               ; half-aperture
+       Include 2nd order = 0                                     ; 1 - Yes / 0 - No
+          CorrespondBrho = 0.001                Tm               
+          CorrespondErho = 1e-2                 J/c              ; for e-quad
+                 Voltage = 0                    kV               ; for e-quad
+           sextMagnField = 0                    KG               
+                 sextRad = 5                    cm               ; half-aperture
+        Calibration file = NULL
+
+
+{============================= BLOCK W1 - Wedge ======================================}
+
+[W1_General]
+                    Name = Wedge 1,0                             ; Name of Block, Constant name 1/0
+               Available = 0                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+
+[W1_Compound]
+               contents1 = 0,4,1,9.012                           ; Nomer,Z,Atoms,Mass
+               thickness = 1,0,1.848,0,0                         ; State,Thickness,density,angle,SolidGas
+                  Defect = 0,0.1                                 ; [0] choice - % or micron at 0 degree,  [1]=value; 
+        Use for Q-states = 1                                     ; Use 1/0
+
+[W1_slits]
+              SlitsShape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 4156310,-20.00,-50.0,20.00,50.0       ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = -1073620735,-20.00,-50.0,20.00,50.0   ; joint,Bottom,B-limit,Top,T-limit
+
+[W1_ProdTarget]
+              ProdTarget = 0                                     ; 1 - Yes / 0 - No
+
+[W1_WedgeSettings]
+             ProfileMode = 0                                     ; 0-Wedge,1-Homo,2-Curved,3-Custom
+    PhysProfileDesirable = 0                                     ; 0-Achrom,1-Monoch,2-user-defined
+                   Angle = 0.61353              mrad             ; wedge slope for the mode (0-Wedge)
+               Direction = 0                                     ; x=0, y=1
+       CalculateForBlock = FP slits
+           DirectReverse = 0                                     ; 0-direct, 1-LISE reverse, 2-COSY
+         ProfileFileName = NULL
+        ExternalInternal = 1                                     ; external=0 / internal=1
+            ReadInternal = 0                                     ; 1 - Yes / 0 - No
+          CustomFileName = NULL
+       CustExternalInter = 1                                     ; external=0 / internal=1
+           CustReadInter = 0                                     ; 1 - Yes / 0 - No
+                  Porder = 2                                     ; polynom order 1-4
+                   coef0 = 0e+0                 mm^(+1)          
+                   coef1 = 0e+0                 mm^(+0)          
+                   coef2 = 0e+0                 mm^(-1)          
+                   coef3 = 0e+0                 mm^(-2)          
+                   coef4 = 0e+0                 mm^(-3)          
+
+
+{============================= BLOCK D2 - Dipole ======================================}
+
+[D2_General]
+                    Name = D2,1                                  ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 3.361000             m                ; Length block for optical blocks
+               SE_method = 0                                     ; 0: S-block, 1: E-block
+             SecondOrder = 0                                     ; Exist - 1, Non - 0
+              ThirdOrder = 0                                     ; Number of lines
+               COSY file = NULL
+           CalculateAuto = 1                                     ; 0/1/2  nothing, keep_matrix, keep_field
+        RemotePermission = 1                                     ; 0/1 -  no/yes
+             Before_Quad = 0                                     ; number of quadrupoles before optic device
+              After_Quad = 2                                     ; number of quadrupoles after  optic device
+             QB_DontDraw = 0
+             QA_DontDraw = 0
+                     ZmQ = 0                                     ;  Z - Q  = charge state settings
+        Calibration file = NULL
+
+[D2_slits]
+              SlitsShape = 0                                     ; 0-slits, 1-ellipse
+           ApertureShape = 0                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+
+[D2_optics]
+                    row1 = -1.70624e+00,-2.72984e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+4.80424e+00
+                    row2 = -1.59590e+00,-5.86336e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+4.49357e+00
+                    row3 = +0.00000e+00,+0.00000e+00,-4.17374e-01,+5.72128e-04,+0.00000e+00,+0.00000e+00
+                    row4 = +0.00000e+00,+0.00000e+00,-6.99030e-01,-2.39501e+00,+0.00000e+00,+0.00000e+00
+                    row5 = +2.88388e-06,-2.81569e-01,+0.00000e+00,+0.00000e+00,+1.00000e+00,+8.61892e-01
+                    row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
+
+[D2_AngAcceptance]
+                   X-Use = 1                                     ; Use 1/0
+                 X-Value = 50                   mrad             ; acceptance
+                   Y-Use = 1                                     ; Use 1/0
+                 Y-Value = 100                  mrad             ; acceptance
+                   Shape = 0                                     ; 0 - rectangle, 1- ellipse
+
+[D2_DipoleSettings]
+                    Brho = 1.25600              Tm               ; magnetic rigidity
+                   Angle = -22.5                degrees          
+                  Radius = 1.0764               m                
+
+[D2_DipoleTransport]
+                 Code4_N = 0                                     ; default 0. code 4. n
+                 Code4_B = 0                                     ; default 0. code 4. b
+         Calculate2Order = 1                                     ; Use 1/0
+                 GapVert = 4                    cm               ; code 16.5
+                      K1 = 0                                     ; code 16.7
+                      K2 = 0                                     ; code 16.8
+       EntranceCurvature = 0                    1/m              ; 1/R1 - code 16.12
+           ExitCurvature = 0                    1/m              ; 1/R2 - code 16.13
+              Beta1angle = 0                    deg              ; code 2.0 - entrance
+              Beta2angle = 22.5                 deg              ; code 2.0 - exit
+          UseFringeField = 1                                     ; Entrance Use 1/0
+          UseExitFringeF = 1                                     ; Exit Use 1/0
+
+
+{============================= BLOCK S2 - Drift ======================================}
+
+[S2_General]
+                    Name = FP slits,1                            ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+               SE_method = 1                                     ; 0: S-block, 1: E-block
+             SecondOrder = 0                                     ; Exist - 1, Non - 0
+              ThirdOrder = 0                                     ; Number of lines
+               COSY file = NULL
+           CalculateAuto = 1                                     ; 0/1/2  nothing, keep_matrix, keep_field
+        RemotePermission = 1                                     ; 0/1 -  no/yes
+
+[S2_slits]
+              SlitsShape = 0                                     ; 0-slits, 1-ellipse
+           ApertureShape = 0                                     ; 0-slits, 1-ellipse
+                X_action = 1,1,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 1,-24.00,-50.0,24.00,50.0             ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[S2_optics]
+                    row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row2 = +0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row3 = +0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row4 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00
+                    row5 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00
+                    row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
+
+[S2_AngAcceptance]
+                   X-Use = 0                                     ; Use 1/0
+                 X-Value = 1000                 mrad             ; acceptance
+                   Y-Use = 0                                     ; Use 1/0
+                 Y-Value = 1000                 mrad             ; acceptance
+                   Shape = 1                                     ; 0 - rectangle, 1- ellipse
+
+[S2_DriftSettings]
+                    Mode = 1                                     ; E-Quad 3, M Sext-Quad 2, Standard 1, Beamline 0
+              ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
+        Length_effective = 0                    m                
+               Leff_coef = 0.7                  1                
+               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
+           MagneticField = 0                    KG               
+                  Radius = 5                    cm               ; half-aperture
+       Include 2nd order = 0                                     ; 1 - Yes / 0 - No
+          CorrespondBrho = 0.001                Tm               
+          CorrespondErho = 1e-2                 J/c              ; for e-quad
+                 Voltage = 0                    kV               ; for e-quad
+           sextMagnField = 0                    KG               
+                 sextRad = 5                    cm               ; half-aperture
+        Calibration file = NULL
+
+
+{============================= BLOCK S3 - Drift ======================================}
+
+[S3_General]
+                    Name = Drift 3,1                             ; Name of Block, Constant name 1/0
+               Available = 0                                     ; Use 1/0
+                  Length = 2.000000             m                ; Length block for optical blocks
+               SE_method = 1                                     ; 0: S-block, 1: E-block
+             SecondOrder = 0                                     ; Exist - 1, Non - 0
+              ThirdOrder = 0                                     ; Number of lines
+               COSY file = NULL
+           CalculateAuto = 1                                     ; 0/1/2  nothing, keep_matrix, keep_field
+        RemotePermission = 1                                     ; 0/1 -  no/yes
+
+[S3_slits]
+              SlitsShape = 0                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[S3_optics]
+                    row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row2 = +0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row3 = +0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
+                    row4 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00,+0.00000e+00
+                    row5 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00,+0.00000e+00
+                    row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
+
+[S3_AngAcceptance]
+                   X-Use = 0                                     ; Use 1/0
+                 X-Value = 1000                 mrad             ; acceptance
+                   Y-Use = 0                                     ; Use 1/0
+                 Y-Value = 1000                 mrad             ; acceptance
+                   Shape = 1                                     ; 0 - rectangle, 1- ellipse
+
+[S3_DriftSettings]
+                    Mode = 1                                     ; E-Quad 3, M Sext-Quad 2, Standard 1, Beamline 0
+              ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
+        Length_effective = 2                    m                
+               Leff_coef = 0.7                  1                
+               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
+           MagneticField = 0                    KG               
+                  Radius = 5                    cm               ; half-aperture
+       Include 2nd order = 0                                     ; 1 - Yes / 0 - No
+          CorrespondBrho = 0.001                Tm               
+          CorrespondErho = 1e-2                 J/c              ; for e-quad
+                 Voltage = 0                    kV               ; for e-quad
+           sextMagnField = 0                    KG               
+                 sextRad = 5                    cm               ; half-aperture
+        Calibration file = NULL
+
+
+{============================= BLOCK M1 - Material ======================================}
+
+[M1_General]
+                    Name = DE,1                                  ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+
+[M1_Compound]
+               contents1 = 0,14,1,28.086                         ; Nomer,Z,Atoms,Mass
+               thickness = 0,50,2.321,0,0                        ; State,Thickness,density,angle,SolidGas
+                  Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
+        Use for Q-states = 1                                     ; Use 1/0
+             ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
+             Resolution2 = 0.1,0.3,0.3          ns,mm,mm         ; Time&X&Y space
+
+[M1_slits]
+              SlitsShape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 0,-20.00,-50.0,20.00,50.0             ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 0,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[M1_BlockCalibration]
+                     TOF = 1,1,0,ns                              ; Input PV(0) or CH(1), A, B, dimension
+                      dE = 1,1,0,MeV                             ; Input PV(0) or CH(1), A, B, dimension
+                       X = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+                       Y = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+
+[M1_ProdTarget]
+              ProdTarget = 0                                     ; 1 - Yes / 0 - No
+
+
+{============================= BLOCK M2 - Material ======================================}
+
+[M2_General]
+                    Name = Eres,1                                ; Name of Block, Constant name 1/0
+               Available = 1                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+
+[M2_Compound]
+               contents1 = 0,14,1,28.086                         ; Nomer,Z,Atoms,Mass
+               thickness = 0,500,2.321,0,0                       ; State,Thickness,density,angle,SolidGas
+                  Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
+        Use for Q-states = 1                                     ; Use 1/0
+             ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
+             Resolution2 = 0.1,0.3,0.3          ns,mm,mm         ; Time&X&Y space
+
+[M2_slits]
+              SlitsShape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 0,-20.00,-50.0,20.00,50.0             ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 0,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+
+[M2_BlockCalibration]
+                     TOF = 1,1,0,ns                              ; Input PV(0) or CH(1), A, B, dimension
+                      dE = 1,1,0,MeV                             ; Input PV(0) or CH(1), A, B, dimension
+                       X = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+                       Y = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+
+[M2_ProdTarget]
+              ProdTarget = 0                                     ; 1 - Yes / 0 - No
+
+
+{============================= BLOCK M3 - Material ======================================}
+
+[M3_General]
+                    Name = wind PPAC,1                           ; Name of Block, Constant name 1/0
+               Available = 0                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+
+[M3_Compound]
+               contents1 = 0,13,1,26.982                         ; Nomer,Z,Atoms,Mass
+               thickness = 1,0.2,2.702,0,0                       ; State,Thickness,density,angle,SolidGas
+                  Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
+        Use for Q-states = 0                                     ; Use 1/0
+             ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
+             Resolution2 = 0.1,0.3,0.3          ns,mm,mm         ; Time&X&Y space
+
+[M3_slits]
+              SlitsShape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 16821455,-20.00,-50.0,20.00,50.0      ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 261,-20.00,-50.0,20.00,50.0           ; joint,Bottom,B-limit,Top,T-limit
+
+[M3_BlockCalibration]
+                     TOF = 1,1,0,ns                              ; Input PV(0) or CH(1), A, B, dimension
+                      dE = 1,1,0,MeV                             ; Input PV(0) or CH(1), A, B, dimension
+                       X = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+                       Y = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+
+[M3_ProdTarget]
+              ProdTarget = 0                                     ; 1 - Yes / 0 - No
+
+
+{============================= BLOCK M4 - Material ======================================}
+
+[M4_General]
+                    Name = Row 1,1                               ; Name of Block, Constant name 1/0
+               Available = 0                                     ; Use 1/0
+                  Length = 0.000000             m                ; Length block for optical blocks
+
+[M4_Compound]
+               contents1 = 0,6,1,12.011                          ; Nomer,Z,Atoms,Mass
+               contents2 = 1,1,4,1.008                           ; Nomer,Z,Atoms,Mass
+               thickness = 4,250,6.319e-5,0,1                    ; State,Thickness,density,angle,SolidGas
+                  Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
+        Use for Q-states = 0                                     ; Use 1/0
+             ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
+             Resolution2 = 0.1,0.3,0.3          ns,mm,mm         ; Time&X&Y space
+
+[M4_slits]
+              SlitsShape = 1                                     ; 0-slits, 1-ellipse
+           ApertureShape = 1                                     ; 0-slits, 1-ellipse
+                X_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  X_size = 4190188,-20.00,-50.0,20.00,50.0       ; joint,Left,L-limit,Right,R-limit
+                Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
+                  Y_size = 440397801,-20.00,-50.0,20.00,50.0     ; joint,Bottom,B-limit,Top,T-limit
+
+[M4_BlockCalibration]
+                     TOF = 1,1,0,ns                              ; Input PV(0) or CH(1), A, B, dimension
+                      dE = 1,1,0,MeV                             ; Input PV(0) or CH(1), A, B, dimension
+                       X = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+                       Y = 1,1,0,mm                              ; Input PV(0) or CH(1), A, B, dimension
+
+[M4_ProdTarget]
+              ProdTarget = 0                                     ; 1 - Yes / 0 - No
+
+
+{============================= Useer Diff CS ======================================}
+
+[DiffCS0000]
+CorrelatedTo=0
+Filename=o18dp_10.dat.txt
+Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       88.1123
+1       87.4696
+2       85.5741
+3       82.5271
+4       78.4817
+5       73.6421
+6       68.2342
+7       62.4965
+8       56.6646
+9       50.9498
+10      45.5345
+11      40.5577
+12      36.1171
+13      32.2663
+14      29.0171
+15      26.3496
+16      24.2137
+17      22.54  
+18      21.2483
+19      20.2526
+20      19.4685
+21      18.8182
+22      18.2348
+23      17.6637
+24      17.061 
+25      16.4003
+26      15.6631
+27      14.8456
+28      13.9511
+29      12.9916
+30      11.9821
+31      10.9428
+32      9.89489
+33      8.85906
+34      7.85531
+35      6.90116
+36      6.0114 
+37      5.1974 
+38      4.46742
+39      3.82624
+40      3.27553
+41      2.81384
+42      2.43765
+43      2.14123
+44      1.91734
+45      1.75769
+46      1.65325
+47      1.59496
+48      1.57369
+49      1.58072
+50      1.60804
+51      1.64848
+52      1.69564
+53      1.74415
+54      1.78981
+55      1.82917
+56      1.85998
+57      1.88051
+58      1.89014
+59      1.88871
+60      1.87657
+61      1.85469
+62      1.82419
+63      1.78642
+64      1.74294
+65      1.69534
+66      1.64501
+67      1.59352
+68      1.54211
+69      1.49191
+70      1.44391
+71      1.39887
+72      1.35727
+73      1.31964
+74      1.28595
+75      1.2564 
+76      1.23081
+77      1.20892
+78      1.19048
+79      1.175  
+80      1.16208
+81      1.15115
+82      1.1419 
+83      1.13368
+84      1.12612
+85      1.11872
+86      1.11122
+87      1.10328
+88      1.09453
+89      1.08486
+90      1.07407
+91      1.0621 
+92      1.04888
+93      1.03439
+94      1.01876
+95      1.00199
+96      0.984222
+97      0.965645
+98      0.946352
+99      0.926477
+100     0.906266
+101     0.885882
+102     0.865474
+103     0.845246
+104     0.825198
+105     0.805592
+106     0.786494
+107     0.768037
+108     0.750231
+109     0.733116
+110     0.716785
+111     0.701249
+112     0.686508
+113     0.672543
+114     0.659328
+115     0.646851
+116     0.635051
+117     0.623891
+118     0.613338
+119     0.60332
+120     0.593797
+121     0.584726
+122     0.576062
+123     0.567762
+124     0.559787
+125     0.552122
+126     0.544727
+127     0.537591
+128     0.530698
+129     0.524041
+130     0.517616
+131     0.511417
+132     0.505451
+133     0.499712
+134     0.494209
+135     0.488943
+136     0.483917
+137     0.479136
+138     0.474599
+139     0.470302
+140     0.466237
+141     0.46241
+142     0.458797
+143     0.455397
+144     0.452194
+145     0.449181
+146     0.446336
+147     0.443649
+148     0.441107
+149     0.438692
+150     0.436399
+151     0.434198
+152     0.4321 
+153     0.430085
+154     0.428152
+155     0.426288
+156     0.424494
+157     0.422777
+158     0.421139
+159     0.419566
+160     0.418073
+161     0.416663
+162     0.41534
+163     0.414103
+164     0.41296
+165     0.411907
+166     0.410952
+167     0.410085
+168     0.409315
+169     0.408631
+170     0.408037
+171     0.407525
+172     0.407092
+173     0.406732
+174     0.406436
+175     0.4062 
+176     0.406015
+177     0.405877
+178     0.405779
+179     0.405725
+180     0.405709
+
+[DiffCS0001]
+CorrelatedTo=1
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0002]
+CorrelatedTo=2
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0003]
+CorrelatedTo=3
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0004]
+CorrelatedTo=4
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0005]
+CorrelatedTo=5
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0006]
+CorrelatedTo=6
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0007]
+CorrelatedTo=9
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0008]
+CorrelatedTo=10
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0009]
+CorrelatedTo=11
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0010]
+CorrelatedTo=12
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0011]
+CorrelatedTo=13
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0012]
+CorrelatedTo=14
+Filename=be10dp_10.dat.txt
+Comment=10 MeV/u be10dp 2 states s = 0.77 0.96
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       53.5487
+1       53.2307
+2       52.276 
+3       50.7368
+4       48.6968
+5       46.3546
+6       43.5826
+7       40.6096
+8       37.4359
+9       34.1137
+10      30.9557
+11      27.7563
+12      24.7925
+13      21.9712
+14      19.3597
+15      16.974 
+16      14.9048
+17      13.0194
+18      11.406 
+19      10.047 
+20      8.89871
+21      7.95514
+22      7.19595
+23      6.59377
+24      6.13423
+25      5.77912
+26      5.51956
+27      5.33063
+28      5.20048
+29      5.10543
+30      5.0526 
+31      4.98637
+32      4.95177
+33      4.91634
+34      4.87496
+35      4.82689
+36      4.77165
+37      4.71387
+38      4.63118
+39      4.55147
+40      4.43711
+41      4.30972
+42      4.17107
+43      4.0065 
+44      3.86312
+45      3.699  
+46      3.52561
+47      3.33614
+48      3.15635
+49      2.96739
+50      2.77298
+51      2.5804 
+52      2.39217
+53      2.20682
+54      2.01402
+55      1.843  
+56      1.67469
+57      1.51797
+58      1.36385
+59      1.21811
+60      1.08157
+61      0.954669
+62      0.84025
+63      0.730626
+64      0.633053
+65      0.546225
+66      0.468281
+67      0.400498
+68      0.342022
+69      0.292587
+70      0.251563
+71      0.218548
+72      0.19305
+73      0.174448
+74      0.162121
+75      0.155483
+76      0.153841
+77      0.156646
+78      0.163234
+79      0.172942
+80      0.18518
+81      0.199391
+82      0.214759
+83      0.231516
+84      0.248502
+85      0.265507
+86      0.28211
+87      0.298039
+88      0.312965
+89      0.326611
+90      0.339187
+91      0.34954
+92      0.358393
+93      0.365462
+94      0.370673
+95      0.373891
+96      0.375384
+97      0.375079
+98      0.372849
+99      0.369141
+100     0.36377
+101     0.357316
+102     0.349642
+103     0.340663
+104     0.33155
+105     0.320433
+106     0.309017
+107     0.297359
+108     0.285418
+109     0.272797
+110     0.260358
+111     0.248696
+112     0.235436
+113     0.223468
+114     0.211907
+115     0.20074
+116     0.190079
+117     0.180077
+118     0.170734
+119     0.162168
+120     0.154463
+121     0.147131
+122     0.140582
+123     0.134852
+124     0.129693
+125     0.125192
+126     0.121346
+127     0.117936
+128     0.115216
+129     0.113252
+130     0.11187
+131     0.11098
+132     0.111014
+133     0.111001
+134     0.111582
+135     0.112764
+136     0.114342
+137     0.116321
+138     0.118891
+139     0.120754
+140     0.123141
+141     0.125934
+142     0.128663
+143     0.13148
+144     0.134787
+145     0.137546
+146     0.140633
+147     0.144074
+148     0.147264
+149     0.150878
+150     0.154486
+151     0.158229
+152     0.16225
+153     0.166234
+154     0.170833
+155     0.174578
+156     0.178777
+157     0.182995
+158     0.18722
+159     0.191415
+160     0.195552
+161     0.199631
+162     0.2037 
+163     0.207769
+164     0.211807
+165     0.215749
+166     0.21965
+167     0.223375
+168     0.226947
+169     0.230122
+170     0.23355
+171     0.236517
+172     0.239167
+173     0.241417
+174     0.24328
+175     0.244942
+176     0.246166
+177     0.247005
+178     0.24755
+179     0.247859
+180     0.247958
+
+[DiffCS0013]
+CorrelatedTo=15
+Filename=o18d3he_20.dat.txt
+Comment=o18d3he 2 states 4 6
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0       0.827793
+1       0.819661
+2       1.15786
+3       1.67274
+4       2.29882
+5       2.95754
+6       3.56895
+7       4.06173
+8       4.38239
+9       4.50076
+10      4.41192
+11      4.13514
+12      3.7089 
+13      3.18426
+14      2.61736
+15      2.06238
+16      1.56497
+17      1.15857
+18      0.862193
+19      0.680374
+20      0.604983
+21      0.618179
+22      0.696008
+23      0.812051
+24      0.940717
+25      1.05993
+26      1.15282
+27      1.20861
+28      1.22256
+29      1.19537
+30      1.13211
+31      1.04078
+32      0.930992
+33      0.812567
+34      0.694562
+35      0.584467
+36      0.487714
+37      0.407612
+38      0.345389
+39      0.300532
+40      0.271159
+41      0.254489
+42      0.247346
+43      0.246482
+44      0.248958
+45      0.252324
+46      0.254774
+47      0.255141
+48      0.252896
+49      0.248036
+50      0.240936
+51      0.232261
+52      0.222767
+53      0.213241
+54      0.204373
+55      0.196683
+56      0.190516
+57      0.186018
+58      0.183142
+59      0.181681
+60      0.181332
+61      0.181711
+62      0.182409
+63      0.183058
+64      0.183323
+65      0.182938
+66      0.181729
+67      0.179616
+68      0.176605
+69      0.172757
+70      0.168209
+71      0.163129
+72      0.157704
+73      0.152136
+74      0.146598
+75      0.141256
+76      0.136218
+77      0.131599
+78      0.127413
+79      0.123691
+80      0.120402
+81      0.117498
+82      0.114912
+83      0.112555
+84      0.110346
+85      0.108194
+86      0.10602
+87      0.103753
+88      0.101341
+89      0.0987431
+90      0.0959537
+91      0.0929231
+92      0.089702
+93      0.0862982
+94      0.0827433
+95      0.0790767
+96      0.0753407
+97      0.0715809
+98      0.0678446
+99      0.0641711
+100     0.0606011
+101     0.0571663
+102     0.0538929
+103     0.0507999
+104     0.0479007
+105     0.0452015
+106     0.0427021
+107     0.0403961
+108     0.0382751
+109     0.0363256
+110     0.0345329
+111     0.0328783
+112     0.0313455
+113     0.0299177
+114     0.0285767
+115     0.0273089
+116     0.0260994
+117     0.0249386
+118     0.0238158
+119     0.0227254
+120     0.0216612
+121     0.0206206
+122     0.0196032
+123     0.0186083
+124     0.0176385
+125     0.0166939
+126     0.015779
+127     0.0148958
+128     0.0140473
+129     0.0132355
+130     0.0124633
+131     0.0117322
+132     0.011042
+133     0.0103939
+134     0.00978698
+135     0.00922042
+136     0.00869249
+137     0.00820136
+138     0.0077448
+139     0.00732036
+140     0.00692563
+141     0.00655822
+142     0.00621594
+143     0.00589692
+144     0.00559962
+145     0.00532265
+146     0.00506514
+147     0.00482657
+148     0.00460658
+149     0.00440526
+150     0.00422266
+151     0.00405911
+152     0.00391493
+153     0.00379011
+154     0.00368496
+155     0.00359926
+156     0.00353269
+157     0.00348457
+158     0.0034541
+159     0.00344001
+160     0.00344089
+161     0.00345509
+162     0.00348075
+163     0.00351595
+164     0.00355866
+165     0.0036068
+166     0.0036586
+167     0.00371213
+168     0.00376585
+169     0.00381829
+170     0.00386825
+171     0.0039148
+172     0.00395722
+173     0.00399498
+174     0.00402782
+175     0.00405548
+176     0.00407808
+177     0.00409551
+178     0.0041078
+179     0.00411521
+180     0.00411769
+
+{============================= Calculations ======================================}
+
+[Calculations]
+20O  8+ 8+ =2.0688e+01,2.0688e+01,7,2.0688e+01,2.7727e+00,0,4.6705e-03,7.8053e+00,2.7593e+00,1,1,1,1,1,1,1,1,1,9.7306e-01,1,1,1,1,1,1,9.7365e-01,7.6660e-02,1,1,2.0102e-01,3.8135e-01,5.3943e-01,5.3943e-01,1,1,1,1.1613e-01,1,1,1.1613e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+19O  8+ 8+ =8.3987e+01,8.3987e+01,7,8.3987e+01,3.6987e+01,0,1.4214e-03,8.0618e+00,2.8884e+00,1,1,1,1,1,1,1,1,1,9.7227e-01,1,1,1,1,1,1,9.7271e-01,8.9649e-02,1,1,2.2134e-01,4.0502e-01,5.2126e-02,5.2126e-02,1,1,1,3.1300e-01,1,1,3.1300e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+19N  7+ 7+ =2.1217e-06,2.1217e-06,7,2.1217e-06,5.5177e-04,0,2.4070e-06,7.2740e+00,2.7959e+00,1,1,1,1,1,1,1,1,1,9.6680e-01,1,1,1,1,1,1,9.6686e-01,7.2722e-03,1,1,6.2562e-02,1.1624e-01,7.5705e-04,7.5705e-04,1,1,1,4.5246e-01,1,1,4.5246e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+18N  7+ 7+ =2.6720e-01,2.6720e-01,7,2.6720e-01,2.1419e+01,0,7.8089e-06,7.7913e+00,3.0704e+00,1,1,1,1,1,1,1,1,1,9.6943e-01,1,1,1,1,1,1,9.6948e-01,9.5840e-03,1,1,6.9222e-02,1.3845e-01,2.5635e-03,2.5635e-03,1,1,1,3.2804e-01,1,1,3.2804e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+17N  7+ 7+ =1.1498e+01,1.1498e+01,7,1.1498e+01,2.1419e+01,0,3.3604e-04,8.2074e+00,3.2976e+00,9.8747e-01,1,1,1,1,1,1,9.8800e-01,1,9.6267e-01,1,1,1,1,1,1,9.6272e-01,6.5834e-03,1,1,5.7450e-02,1.1459e-01,1.1093e-01,1.1093e-01,1,1,1,4.8406e-01,1,1,4.8406e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+16N  7+ 7+ =3.6497e+01,3.6497e+01,7,3.6497e+01,2.1419e+01,0,1.0666e-03,8.6651e+00,3.5449e+00,9.5674e-01,1,1,1,1,1,1,9.5724e-01,1,9.8610e-01,1,1,1,1,1,1,9.8615e-01,6.5498e-03,1,1,5.7303e-02,1.1430e-01,4.8346e-01,4.8346e-01,1,1,1,3.5703e-01,1,1,3.5703e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+15N  7+ 7+ =2.2100e+01,2.2100e+01,7,2.2100e+01,2.1419e+01,0,6.4587e-04,9.3601e+00,3.9041e+00,9.2208e-01,1,1,1,1,1,1,9.2255e-01,1,1,1,1,1,1,1,1,1,6.4975e-03,1,1,5.7073e-02,1.1384e-01,2.5576e-01,2.5576e-01,1,1,1,4.2185e-01,1,1,4.2185e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8.1249e-02,1,1,1,1,9.9546e-01,1,8.1619e-02
+15C  6+ 6+ =1.2857e-04,1.2857e-04,7,1.2857e-04,2.1419e+01,0,3.7574e-09,8.9629e+00,4.0328e+00,9.3469e-01,1,1,1,1,1,1,9.3517e-01,1,9.9888e-01,1,1,1,1,1,1,9.9893e-01,6.5093e-03,1,1,5.7125e-02,1.1395e-01,1.4658e-06,1.4658e-06,1,1,1,4.2180e-01,1,1,4.2180e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+14C  6+ 6+ =6.4484e-05,6.4484e-05,7,6.4484e-05,2.7604e+01,0,1.4622e-09,9.7810e+00,4.4212e+00,8.9383e-01,1,1,1,1,1,1,8.9429e-01,1,1,1,1,1,1,1,1,1,3.4257e-03,1,1,4.1412e-02,8.2723e-02,1.2229e-06,1.2229e-06,1,1,1,3.9056e-01,1,1,3.9056e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
