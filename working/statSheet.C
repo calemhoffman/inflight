@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=2,Int_t expNum=25,Int_t scaleNum=100){
+void statSheet(Int_t loc=1,Int_t expNum=26,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -93,7 +93,7 @@ void statSheet(Int_t loc=2,Int_t expNum=25,Int_t scaleNum=100){
     yLow=80;
     yHigh=160;//
   }
-  if (expNum == 25) {
+  if (expNum == 25 || expNum == 26) {
     xHigh=400;
     xLow=10;
     yLow=10;
@@ -101,10 +101,10 @@ void statSheet(Int_t loc=2,Int_t expNum=25,Int_t scaleNum=100){
     yBin=yBin/3.;
     xBin=xBin/3.;
     if (loc == 1) {
-      xHigh=3000;
-      xLow=10;
-      yLow=1500;
-      yHigh=5000;
+      xHigh=4000;
+      xLow=1000;
+      yLow=100;
+      yHigh=3000;
       yBin=yBin*3.;
       xBin=xBin*3.;
     }
@@ -141,20 +141,20 @@ Float_t cal4=-1.610;//
 Float_t tcal1=0.4749;//
 Float_t tcal2=306.69;//
 
-if (expNum<20 || expNum==18 || expNum==25) {
+if (expNum<20 || expNum==18 || expNum==25 || expNum==26) {
   cal1 = 1;
  cal2 = 0; cal3 = cal1; cal4 = 0;
 }
 
 tree->SetAlias("decal",Form("e[%d]*%f+%f",nDe,cal3,cal4));
 tree->SetAlias("ecal",Form("e[%d]*%f+%f",nE,cal1,cal2));
-tree->SetAlias("etotcal","decal+ecal");
+tree->SetAlias("etotcal","decal*0.25+ecal");
 tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1,tcal2));
 
  if (location<3) {
     cc->cd(1);//->cd(1);
     if (loc==2 || loc==1) {
-      tree->Draw(Form("decal:etotcal-decal>>hdEtotE"),"","colz");
+      tree->Draw(Form("decal:etotcal>>hdEtotE"),"","colz");
       tree->Draw(Form("etotcal>>htotE"));
     }
     else {
