@@ -2,9 +2,9 @@ Version 16.3.11
 
 {============================= Main Part ======================================}
 [general]
-                    File = /Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/e_infl_f21_ne22_11MeVu.lpp
-                    Date = 18-10-2022
-                    Time = 11:00:06
+                    File = /Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/e_infl_ne22_8MeVu_optsb.lpp
+                    Date = 20-10-2022
+                    Time = 10:09:46
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -13,8 +13,8 @@ Version 16.3.11
 
 [settings]
                    A,Z,Q = 22Ne10+                               ; Mass ElementName Charge+ Beam
-                  Energy = 12                   MeV/u            
-               Intensity = 200                  pnA              ; enA,pna,pps,kW
+                  Energy = 8                    MeV/u            
+               Intensity = 1                    pnA              ; enA,pna,pps,kW
             RF frequency = 20                   MHz              
             Bunch length = 1                    ns               
          Settings on A,Z = 21F                                   ; Mass ElementName Charge+ Beam
@@ -31,12 +31,12 @@ Version 16.3.11
                   ShiftY = 0                    mm               ; beam respect to the spectrometer axis
                   AngleY = 0                    mrad             ; beam respect to the spectrometer axis
             Scheme Angle = 0                    degrees          
-                  ShapeX = 1
-                  ShapeT = 1
-                  ShapeY = 1
-                  ShapeF = 1
-                  ShapeL = 1
-                  ShapeD = 1
+                  ShapeX = 32769
+                  ShapeT = 32769
+                  ShapeY = 32769
+                  ShapeF = 32769
+                  ShapeL = 32769
+                  ShapeD = 32769
                OptBeam_X = 1                    (+/-)mm          
                OptBeam_T = 40                   (+/-)mrad        
                OptBeam_Y = 1                    (+/-)mm          
@@ -283,7 +283,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
          TKE_calibration = 1,1,0,MeV
 
 [cs_file]
-              UserDiffCS = 9                                     ; Number of User Diff CS saved in this file
+              UserDiffCS = 11                                    ; Number of User Diff CS saved in this file
          AppendOverwrite = 1
           AttachedInside = 1
             ShowCSinPlot = 1
@@ -364,7 +364,9 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 6     31Si  = 49.1981 0 7
 7     30Si  = 4.58593e+07 0 7
 8     29Al  = 2.74927 0 7
-9     21F   = 1.88363 0 7
+9     21F   = 0.512856 0 7
+10    22Ne  = 2.05786e+11 0 7
+11    23Ne  = 61.182 0 7
 
 [previous]
                  Lowerst = 27Al13+                               ; Mass ElementName Charge+ Beam
@@ -375,8 +377,8 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
              Suppression = 1e+12                                 ; default 1e12
 
 [MC_options]
-                   dXsel = 0
-                   dYsel = 8
+                   dXsel = 8
+                   dYsel = 6
                    dZsel = 4
                   dAZQ_X = 1
                   dAZQ_Y = 5
@@ -384,7 +386,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   dVEL_X = 1
                   dVEL_Y = 0
                   dVEL_Z = 0
-               dIso_mode = 1
+               dIso_mode = 0
                strag_ang = 1
                strag_ene = 1
                strag_lat = 0
@@ -644,10 +646,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.68                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -5.201278            KG               
+           MagneticField = -4.344268            KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.05968              Tm               ; refBrho
+          CorrespondBrho = 0.885078             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -785,10 +787,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 4.684065             KG               
+           MagneticField = 3.912276             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.05968              Tm               ; refBrho
+          CorrespondBrho = 0.885078             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -977,7 +979,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D2_DipoleSettings]
-                    Brho = 1.09305              Tm               ; magnetic rigidity
+                    Brho = 0.88508              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1177,7 +1179,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D3_DipoleSettings]
-                    Brho = 1.09305              Tm               ; magnetic rigidity
+                    Brho = 0.88508              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1378,7 +1380,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
               SlitsShape = 0                                     ; 0-slits, 1-ellipse
            ApertureShape = 0                                     ; 0-slits, 1-ellipse
                 X_action = 1,1,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
-                  X_size = 0,-5.00,-75.0,5.00,75.0               ; joint,Left,L-limit,Right,R-limit
+                  X_size = 0,-75.00,-75.0,75.00,75.0             ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-20.00,-35.0,20.00,35.0             ; joint,Bottom,B-limit,Top,T-limit
 
@@ -1630,7 +1632,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D4_DipoleSettings]
-                    Brho = 1.09305              Tm               ; magnetic rigidity
+                    Brho = 0.88508              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1831,7 +1833,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D5_DipoleSettings]
-                    Brho = 1.09305              Tm               ; magnetic rigidity
+                    Brho = 0.88508              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -2032,10 +2034,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 4.831568             KG               
+           MagneticField = 3.912275             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.09305              Tm               ; refBrho
+          CorrespondBrho = 0.885078             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2173,10 +2175,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -5.36453             KG               
+           MagneticField = -4.343832            KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.09305              Tm               ; refBrho
+          CorrespondBrho = 0.885078             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2509,7 +2511,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [DiffCS0000]
 CorrelatedTo=0
 Filename=o18dp_10.dat.txt
-Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!
+Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        88.1123 
@@ -2697,7 +2699,7 @@ NofPoints  = 181
 [DiffCS0001]
 CorrelatedTo=1
 Filename=ca48d3he_10.dat.txt
-Comment=c48d3he 3 16 3 15!!!
+Comment=c48d3he 3 16 3 15!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.221707
@@ -2885,7 +2887,7 @@ NofPoints  = 181
 [DiffCS0002]
 CorrelatedTo=2
 Filename=o18d3he_15.dat.txt
-Comment=o18d3he 2 states 4 6!!!
+Comment=o18d3he 2 states 4 6!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.136052
@@ -3073,7 +3075,7 @@ NofPoints  = 181
 [DiffCS0003]
 CorrelatedTo=3
 Filename=ar36dp_10.dat.txt
-Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!
+Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        94.2713 
@@ -3261,7 +3263,7 @@ NofPoints  = 181
 [DiffCS0004]
 CorrelatedTo=4
 Filename=s36_cd2_0.txt
-Comment= !!!
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        9.249e+39
@@ -5069,7 +5071,7 @@ NofPoints  = 1801
 [DiffCS0005]
 CorrelatedTo=5
 Filename=si30dp_10.data.txt
-Comment=10 MEV/u si30dp 4 states!!!
+Comment=10 MEV/u si30dp 4 states!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        70.1845 
@@ -5257,7 +5259,7 @@ NofPoints  = 181
 [DiffCS0006]
 CorrelatedTo=6
 Filename=s36_cd2_0.txt
-Comment= !!!
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        9.249e+39
@@ -7065,7 +7067,7 @@ NofPoints  = 1801
 [DiffCS0007]
 CorrelatedTo=7
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -7252,188 +7254,420 @@ NofPoints  = 181
 
 [DiffCS0008]
 CorrelatedTo=8
-Filename=o18d3he_15.dat.txt
-Comment=o18d3he 2 states 4 6!!!
+Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40d3heL2.txt
+Comment= !!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
-0        0.136052
-1        0.135159
-2        0.264713
-3        0.467297
-4        0.724443
-5        1.01301 
-6        1.30781 
-7        1.58382 
-8        1.81884 
-9        1.99531 
-10       2.10179 
-11       2.13356 
-12       2.09258 
-13       1.98668 
-14       1.82842 
-15       1.63349 
-16       1.4188  
-17       1.20104 
-18       0.995139
-19       0.813142
-20       0.663505
-21       0.550909
-22       0.47629 
-23       0.437311
-24       0.429043
-25       0.444747
-26       0.476762
-27       0.517271
-28       0.558978
-29       0.595695
-30       0.622658
-31       0.636706
-32       0.636324
-33       0.621471
-34       0.593393
-35       0.554307
-36       0.507052
-37       0.454793
-38       0.400703
-39       0.347705
-40       0.298312
-41       0.254461
-42       0.217493
-43       0.188104
-44       0.166431
-45       0.152105
-46       0.144347
-47       0.142117
-48       0.14421 
-49       0.149342
-50       0.15629 
-51       0.16392 
-52       0.171267
-53       0.177575
-54       0.182283
-55       0.185052
-56       0.18573 
-57       0.184335
-58       0.181019
-59       0.176036
-60       0.169711
-61       0.162381
-62       0.154401
-63       0.146116
-64       0.137813
-65       0.129734
-66       0.122075
-67       0.114971
-68       0.108501
-69       0.102697
-70       0.0975525
-71       0.0930305
-72       0.0890711
-73       0.0856018
-74       0.0825462
-75       0.0798268
-76       0.077374
-77       0.0751276
-78       0.0730405
-79       0.0710754
-80       0.0692084
-81       0.0674263
-82       0.0657253
-83       0.0641074
-84       0.0625781
-85       0.0611462
-86       0.0598197
-87       0.0586053
-88       0.057506
-89       0.0565206
-90       0.0556448
-91       0.0548681
-92       0.0541773
-93       0.0535551
-94       0.0529829
-95       0.0524392
-96       0.0519018
-97       0.0513502
-98       0.0507651
-99       0.0501281
-100      0.049426
-101      0.0486475
-102      0.0477866
-103      0.0468392
-104      0.0458076
-105      0.0446968
-106      0.043515
-107      0.0422722
-108      0.0409837
-109      0.0396624
-110      0.0383254
-111      0.0369882
-112      0.0356656
-113      0.0343739
-114      0.0331244
-115      0.0319285
-116      0.0307951
-117      0.0297302
-118      0.0287386
-119      0.0278197
-120      0.0269742
-121      0.0261989
-122      0.0254881
-123      0.0248368
-124      0.0242365
-125      0.0236804
-126      0.0231597
-127      0.0226665
-128      0.0221934
-129      0.0217343
-130      0.021282
-131      0.0208325
-132      0.020383
-133      0.0199296
-134      0.0194725
-135      0.0190111
-136      0.0185463
-137      0.0180802
-138      0.0176148
-139      0.0171531
-140      0.0166988
-141      0.0162544
-142      0.015824
-143      0.0154105
-144      0.0150167
-145      0.0146467
-146      0.0143017
-147      0.0139859
-148      0.0137016
-149      0.0134508
-150      0.0132357
-151      0.0130588
-152      0.0129236
-153      0.0128315
-154      0.0127861
-155      0.0127893
-156      0.0128431
-157      0.0129502
-158      0.0131116
-159      0.0133292
-160      0.0136038
-161      0.0139342
-162      0.0143196
-163      0.0147565
-164      0.0152421
-165      0.0157713
-166      0.0163365
-167      0.0169319
-168      0.0175464
-169      0.0181722
-170      0.0187965
-171      0.0194087
-172      0.0199982
-173      0.0205515
-174      0.0210577
-175      0.0215071
-176      0.0218893
-177      0.0221957
-178      0.0224198
-179      0.0225556
-180      0.0226015
+0        0.128794
+1        0.12751 
+2        0.12788 
+3        0.12888 
+4        0.13099 
+5        0.13481 
+6        0.14093 
+7        0.14985 
+8        0.16192 
+9        0.1772  
+10       0.1955  
+11       0.2163  
+12       0.23878 
+13       0.26191 
+14       0.28448 
+15       0.30522 
+16       0.32289 
+17       0.3364  
+18       0.34488 
+19       0.34775 
+20       0.34476 
+21       0.33602 
+22       0.32196 
+23       0.3033  
+24       0.28099 
+25       0.25612 
+26       0.22987 
+27       0.20338 
+28       0.17773 
+29       0.15382 
+30       0.13241 
+31       0.11398 
+32       0.098832
+33       0.087023
+34       0.07842 
+35       0.072727
+36       0.069521
+37       0.068301
+38       0.068529
+39       0.06967 
+40       0.071225
+41       0.072763
+42       0.073934
+43       0.074484
+44       0.074255
+45       0.073182
+46       0.071286
+47       0.068652
+48       0.065422
+49       0.061771
+50       0.057892
+51       0.053979
+52       0.050212
+53       0.04675 
+54       0.043718
+55       0.041205
+56       0.039262
+57       0.037901
+58       0.037101
+59       0.036809
+60       0.036952
+61       0.037436
+62       0.038159
+63       0.039017
+64       0.039905
+65       0.040729
+66       0.041405
+67       0.041865
+68       0.042059
+69       0.041952
+70       0.041528
+71       0.040788
+72       0.039746
+73       0.03843 
+74       0.036877
+75       0.035131
+76       0.033241
+77       0.031259
+78       0.029234
+79       0.027214
+80       0.025243
+81       0.023358
+82       0.021591
+83       0.019967
+84       0.018503
+85       0.01721 
+86       0.016091
+87       0.015145
+88       0.014363
+89       0.013736
+90       0.013248
+91       0.012883
+92       0.01262 
+93       0.012442
+94       0.01233 
+95       0.012264
+96       0.012229
+97       0.01221 
+98       0.012194
+99       0.012171
+100      0.012133
+101      0.012075
+102      0.011994
+103      0.011888
+104      0.01176 
+105      0.011611
+106      0.011445
+107      0.011267
+108      0.011082
+109      0.010896
+110      0.010713
+111      0.010538
+112      0.010375
+113      0.010226
+114      0.010094
+115      0.009979
+116      0.009879
+117      0.009794
+118      0.00972 
+119      0.009653
+120      0.009588
+121      0.009519
+122      0.009442
+123      0.009349
+124      0.009237
+125      0.0091  
+126      0.008933
+127      0.008736
+128      0.008504
+129      0.00824 
+130      0.007944
+131      0.00762 
+132      0.007272
+133      0.006906
+134      0.006531
+135      0.006156
+136      0.00579 
+137      0.005443
+138      0.005126
+139      0.00485 
+140      0.004625
+141      0.004459
+142      0.004361
+143      0.004336
+144      0.00439 
+145      0.004524
+146      0.004738
+147      0.005031
+148      0.005397
+149      0.005831
+150      0.006322
+151      0.00686 
+152      0.007432
+153      0.008025
+154      0.008623
+155      0.009213
+156      0.009778
+157      0.010305
+158      0.010779
+159      0.011189
+160      0.011524
+161      0.011777
+162      0.011941
+163      0.012014
+164      0.011995
+165      0.011887
+166      0.011695
+167      0.011427
+168      0.011094
+169      0.010706
+170      0.01028 
+171      0.009828
+172      0.009368
+173      0.008915
+174      0.008485
+175      0.008093
+176      0.007752
+177      0.007474
+178      0.007268
+179      0.007142
+180      0.007099
+
+[DiffCS0009]
+CorrelatedTo=9
+Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40_elastic.txt
+Comment= !!!
+Ex12 = 0.000 0.000
+NofPoints  = 32
+0        3.78207e+14
+0.5      3.647e+14
+1        6.294e+08
+2        3.962e+07
+3        7.875e+06
+4        2.49e+06
+5        1.01e+06
+6        477800  
+7        250900  
+8        142000  
+9        85070   
+10       53340   
+11       34720   
+12       23340   
+13       16150   
+14       11470   
+15       8358    
+16       6236    
+17       4763    
+18       3721    
+19       2969    
+20       2419    
+21       2007    
+22       1695    
+23       1453    
+24       1262    
+25       1108    
+26       982.2   
+27       877.3   
+28       788.5   
+29       712.1   
+180      0       
+
+[DiffCS0010]
+CorrelatedTo=10
+Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/c14dp_l2.txt
+Comment= !!!
+Ex12 = 0.000 0.000
+NofPoints  = 181
+0        91.7008 
+1        90.702  
+2        90.107  
+3        89.134  
+4        87.805  
+5        86.152  
+6        84.209  
+7        82.014  
+8        79.604  
+9        77.015  
+10       74.278  
+11       71.422  
+12       68.471  
+13       65.447  
+14       62.365  
+15       59.24   
+16       56.083  
+17       52.905  
+18       49.714  
+19       46.52   
+20       43.332  
+21       40.161  
+22       37.02   
+23       33.924  
+24       30.888  
+25       27.93   
+26       25.071  
+27       22.329  
+28       19.724  
+29       17.275  
+30       14.997  
+31       12.906  
+32       11.009  
+33       9.3142  
+34       7.8218  
+35       6.5294  
+36       5.43    
+37       4.5134  
+38       3.7664  
+39       3.1736  
+40       2.7185  
+41       2.384   
+42       2.1533  
+43       2.0102  
+44       1.9399  
+45       1.929   
+46       1.9655  
+47       2.039   
+48       2.1405  
+49       2.2624  
+50       2.3977  
+51       2.5405  
+52       2.6855  
+53       2.8278  
+54       2.9629  
+55       3.0871  
+56       3.1965  
+57       3.2884  
+58       3.3604  
+59       3.4107  
+60       3.4385  
+61       3.4437  
+62       3.427   
+63       3.3899  
+64       3.3344  
+65       3.2632  
+66       3.1791  
+67       3.0852  
+68       2.9846  
+69       2.8802  
+70       2.7746  
+71       2.6702  
+72       2.5687  
+73       2.4717  
+74       2.3802  
+75       2.295   
+76       2.2165  
+77       2.1451  
+78       2.0809  
+79       2.0239  
+80       1.9739  
+81       1.931   
+82       1.8949  
+83       1.8655  
+84       1.8425  
+85       1.8254  
+86       1.8138  
+87       1.8072  
+88       1.805   
+89       1.8064  
+90       1.8105  
+91       1.8167  
+92       1.8241  
+93       1.8318  
+94       1.8391  
+95       1.8452  
+96       1.8496  
+97       1.8516  
+98       1.8508  
+99       1.8469  
+100      1.8395  
+101      1.8286  
+102      1.8139  
+103      1.7955  
+104      1.7733  
+105      1.7475  
+106      1.7182  
+107      1.6856  
+108      1.6499  
+109      1.6115  
+110      1.5706  
+111      1.5277  
+112      1.4831  
+113      1.4372  
+114      1.3904  
+115      1.343   
+116      1.2955  
+117      1.2483  
+118      1.2015  
+119      1.1555  
+120      1.1105  
+121      1.0669  
+122      1.0246  
+123      0.98412 
+124      0.94544 
+125      0.9088  
+126      0.87437 
+127      0.8423  
+128      0.81277 
+129      0.78591 
+130      0.76185 
+131      0.74068 
+132      0.72248 
+133      0.70729 
+134      0.69508 
+135      0.68584 
+136      0.67948 
+137      0.67589 
+138      0.67498 
+139      0.67658 
+140      0.68058 
+141      0.68682 
+142      0.69519 
+143      0.70554 
+144      0.71778 
+145      0.73178 
+146      0.74745 
+147      0.76467 
+148      0.78335 
+149      0.80334 
+150      0.82452 
+151      0.84673 
+152      0.8698  
+153      0.89354 
+154      0.91775 
+155      0.94223 
+156      0.96677 
+157      0.99119 
+158      1.0153  
+159      1.0389  
+160      1.062   
+161      1.0843  
+162      1.1058  
+163      1.1264  
+164      1.1461  
+165      1.1649  
+166      1.1828  
+167      1.1996  
+168      1.2155  
+169      1.2305  
+170      1.2443  
+171      1.2571  
+172      1.2689  
+173      1.2794  
+174      1.2887  
+175      1.2967  
+176      1.3034  
+177      1.3087  
+178      1.3125  
+179      1.3148  
+180      1.3156  
+
+{============================= Calculations ======================================}
+
+[Calculations]
+21F  9+ 9+ 9+ 9+ =5.8287e+01,5.8287e+01,7,5.8287e+01,5.1286e-01,0,6.8123e-02,5.0106e+00,1.4461e+00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,7.8889e-01,7.8889e-01,1,1,1,1,1,1,1,1,1,1,1,8.6398e-02,1,1,1.9252e-01,4.4876e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,9.8245e-01,1,1,1,1,1,1,9.8281e-01,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
