@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=1,Int_t expNum=26,Int_t scaleNum=100){
+void statSheet(Int_t loc=1,Int_t expNum=29,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -24,7 +24,7 @@ void statSheet(Int_t loc=1,Int_t expNum=26,Int_t scaleNum=100){
     nDe = 2;
     nE = 5;
   } else if (location == 1) {
-    deGain = 0.25;//0.05;//0.25
+    deGain = 1.0;//0.05;//0.25
     eGain = 1.0;
     title = Form("cross: Scale %d",scaleNum);
     nDe = 1;
@@ -108,6 +108,13 @@ void statSheet(Int_t loc=1,Int_t expNum=26,Int_t scaleNum=100){
       yBin=yBin*3.;
       xBin=xBin*3.;
     }
+
+    if (expNum == 29) {
+    xHigh=8000;//300;
+    xLow=0;
+    yLow=0;
+    yHigh=8000;//
+  }
   }
 
 TH2F *hdEtotE = new TH2F("hdEtotE",Form("%s; Total E [MeV]; DE [MeV]",title.Data()),
