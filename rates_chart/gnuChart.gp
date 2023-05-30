@@ -25,6 +25,16 @@ color_1 = "#4D0000" #Dark Red
 color_2 = "#EAD20A" #Dark Yellow
 color_6 = "#272727" #Dark Grey
 color_10 = "#1d11E7" #Bright Blue
+color_1 = "#6ea0c2" # ANL BLUE 1 0,130,202
+color_2 = "#b0d76c" # ANL GREEN 1 122,184,0
+color_3 = "#de7b83" # ANL RED 1 205,32,44
+color_5 = "#9568b9" # ANL PURPLE 1 77,0,140
+color_4 = "#000000" # ANL BLACK 1 0,0,0
+color_8 = "#76777B" # ANL GREY 1 118,119,123
+color_7 = "#d5d5d5" # ANL BLUE 2 0,96,156
+color_6 = "#feaf6d" # ANL ORANGE 1 255,121,0
+color_9 = "#feff66" # ANL YELLOW 1 236,170,0
+color_10 = "#6fc7c3" # ANL TEAL 1 0,161,156
 set style line 1  linecolor rgbcolor color_1 linewidth @my_line_width lt 1 dt 1 pt 7
 set style line 2  linecolor rgbcolor color_2 linewidth @my_line_width lt 1 dt 1 pt 5
 set style line 3  linecolor rgbcolor color_3 linewidth @my_line_width lt 1 dt 1 pt 9
@@ -248,30 +258,40 @@ plot [-1:30][-1:22] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette n
                     'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
 ############################################################################################################
 set out "|ps2pdf - raisor_full.pdf"
-set label 12  at 24,5.5 "rates/100 pnA [10 MeV/u]" center
-set label 22 "ATLAS in-flight radioactive ion beams"
-set label 22 center at 6,25 tc rgb color_8 font "Helvetica, 18"
+set label 12  at 28.25,5.5 "beam rates" center
+set label 22 ""
+set label 22 center at 6,25 tc rgb color_8 font "Helvetica, 16"
 unset label 13
 unset label 14
+set label 15 "{/Symbol \263}1e6 pps"
+set label 15 left at 27,4 tc rgb color_8 font "Helvetica, 16"
+set label 16 "{/Symbol \263}1e5 pps"
+set label 16 left at 27,3 tc rgb color_8 font "Helvetica, 16"
+set label 17 "{/Symbol \263}1e4 pps"
+set label 17 left at 27,2 tc rgb color_8 font "Helvetica, 16"
+set label 18 "{/Symbol \263}1e3 pps"
+set label 18 left at 27,1 tc rgb color_8 font "Helvetica, 16"
+set label 19 "{/Symbol \263}1e2 pps"
+set label 19 left at 27,0 tc rgb color_8 font "Helvetica, 16"
 pt1=47
-ps1=1.25
+ps1=1.7
 pt2=47
-plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 lc palette notitle,\
-                    'airis.dat' using ($1-$2):($7>=1e3?$2:1/0) w points pt pt1 ps ps1 lt 6 notitle,\
-                    '' using ($1-$2):($7>=1e4?$2:1/0) w points pt pt1 ps ps1 lt 2 notitle,\
-                    '' using ($1-$2):($7>=1e5?$2:1/0) w points pt pt1 ps ps1 lt 3 notitle,\
-                    '' using ($1-$2):($7>=1e6?$2:1/0) w points pt pt1 ps ps1 lt 1 notitle,\
-                    '' using ($1-$2):($7>=1e7?$2:1/0) w points pt pt1 ps ps1 lt 5 notitle,\
-                    'stable.dat' u 2:1 w points pt 47 lc rgb color_8 notitle,\
-                    'legend.dat' u 1:2 every :::3::3 w points pt 47 lt 6 notitle,\
-                    'legend.dat' u 1:2 every :::4::4 w points pt 47 lt 2 notitle,\
-                    'legend.dat' u 1:2 every :::5::5 w points pt 47 lt 3 notitle,\
-                    'legend.dat' u 1:2 every :::6::6 w points pt 47 lt 4 notitle,\
-                    'legend.dat' u 1:2 every :::7::7 w points pt 47 lt 5 notitle
+plot [-1:40][-1:28] 'iaea.dat' every ::1 using 2:1:4 w points pt 64 ps ps1-0.2 lc palette notitle,\
+                    'airis.dat' using ($1-$2):($7>=1e3?($7<1e4?$2:1/0):1/0) w points pt pt1 ps ps1 lt 6 notitle,\
+                    '' using ($1-$2):($7>=1e4?($7<1e5?$2:1/0):1/0) w points pt pt1 ps ps1 lt 2 notitle,\
+                    '' using ($1-$2):($7>=1e5?($7<1e6?$2:1/0):1/0) w points pt pt1 ps ps1 lt 3 notitle,\
+                    '' using ($1-$2):($7>=1e6?($7<1e7?$2:1/0):1/0) w points pt pt1 ps ps1 lt 1 notitle,\
+                    '' using ($1-$2):($7>=1e7?($7<1e10?$2:1/0):1/0) w points pt pt1 ps ps1 lt 5 notitle,\
+                    'stable.dat' u 2:1 w points pt 47 ps ps1 lc rgb color_4 notitle,\
+                    'legend.dat' u ($1+4):2 every :::3::3 w points pt 47 ps ps1 lt 6 notitle,\
+                    'legend.dat' u ($1+4):2 every :::4::4 w points pt 47 ps ps1 lt 2 notitle,\
+                    'legend.dat' u ($1+4):2 every :::5::5 w points pt 47 ps ps1 lt 3 notitle,\
+                    'legend.dat' u ($1+4):2 every :::6::6 w points pt 47 ps ps1 lt 1 notitle,\
+                    'legend.dat' u ($1+4):2 every :::7::7 w points pt 47 ps ps1 lt 5 notitle
 ############################################################################################################
 set out "|ps2pdf - raisor.pdf"
 # set label 12  at 24,5.5 "rates/100 pnA [10 MeV/u]" center
-# set label 22 "ATLAS in-flight radioactive ion beams"
+set label 22 ""
 # set label 22 center at 6,25 tc rgb color_8 font "Helvetica, 18"
 unset label 12
 unset label 13
