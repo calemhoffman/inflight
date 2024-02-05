@@ -1,4 +1,4 @@
-void statSheet(Int_t loc=1,Int_t expNum=29,Int_t scaleNum=100){
+void statSheet(Int_t loc=1,Int_t expNum=28,Int_t scaleNum=100){
 #include "TTree.h"
 
   TTree * t = tree;
@@ -93,7 +93,7 @@ void statSheet(Int_t loc=1,Int_t expNum=29,Int_t scaleNum=100){
     yLow=80;
     yHigh=160;//
   }
-  if (expNum == 25 || expNum == 26) {
+  if (expNum == 28 || expNum == 25 || expNum == 26) {
     xHigh=400;
     xLow=10;
     yLow=10;
@@ -101,10 +101,10 @@ void statSheet(Int_t loc=1,Int_t expNum=29,Int_t scaleNum=100){
     yBin=yBin/3.;
     xBin=xBin/3.;
     if (loc == 1) {
-      xHigh=4000;
-      xLow=1000;
+      xHigh=160;
+      xLow=60;
       yLow=100;
-      yHigh=3000;
+      yHigh=2000;
       yBin=yBin*3.;
       xBin=xBin*3.;
     }
@@ -136,7 +136,7 @@ xBin,xLow,xHigh);
 TH1F *htotEg = new TH1F("htotEg",Form("%s; Total E [MeV]",title.Data()),
 xBin,xLow,xHigh);
 
-  TCanvas *cc = new TCanvas("cc","cc",800,800);
+  TCanvas *cc = new TCanvas("cc","cc",1200,1200);
   cc->Clear(); cc->Divide(1,2);
   //cc->cd(1); gPad->Divide(2,1); cc->cd(1)->cd(1); gPad->SetLogz(1);
   //cc->cd(2); gPad->Divide(2,1); cc->cd(2)->cd(1); gPad->SetLogz(1);
@@ -148,21 +148,21 @@ Float_t cal4=-1.610;//
 Float_t tcal1=0.4749;//
 Float_t tcal2=306.69;//
 
-if (expNum<20 || expNum==18 || expNum==25 || expNum==26) {
-  cal1 = 1;
+if (expNum<20 || expNum==18 || expNum==25 || expNum==26 || expNum == 28) {
+  cal1 = 1.;
  cal2 = 0; cal3 = cal1; cal4 = 0;
 }
 
 tree->SetAlias("decal",Form("e[%d]*%f+%f",nDe,cal3,cal4));
 tree->SetAlias("ecal",Form("e[%d]*%f+%f",nE,cal1,cal2));
-tree->SetAlias("etotcal","decal*0.25+ecal");
-tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1,tcal2));
+tree->SetAlias("etotcal","decal+ecal");
+tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0e8+400)*%f+%f",tcal1,tcal2));
 
  if (location<3) {
     cc->cd(1);//->cd(1);
     if (loc==2 || loc==1) {
-      tree->Draw(Form("decal:etotcal>>hdEtotE"),"","colz");
-      tree->Draw(Form("etotcal>>htotE"));
+      tree->Draw(Form("decal:etotcal*0.0335-0.159>>hdEtotE"),"","colz");
+      tree->Draw(Form("etotcal*0.0335-0.159>>htotE"));
     }
     else {
     tree->Draw(Form("decal:etotcal*0.019+2.13>>hdEtotE"),"","colz");
@@ -188,8 +188,8 @@ tree->SetAlias("tofcal",Form("((timeStamp[1]-timeStamp[7])*2.0+400)*%f+%f",tcal1
 cc->cd(2);
 htotE->Draw();
 
-cc->Clear();
-hdEtotE->Draw("col");
+// cc->Clear();
+// hdEtotE->Draw("col");
 
   cc->SaveAs(Form("figures/infl%d_scale%d.C",expNum,scaleNum));
   cc->SaveAs(Form("figures/infl%d_scale%d.png",expNum,scaleNum));
