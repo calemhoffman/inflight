@@ -18,7 +18,7 @@
 
 using namespace std;
 
-TString run="infl41_final0";
+TString run="infl41_final6";
 TString rootfile = Form("/Users/calemhoffman/Research/anl/inflight/data/infl41_cl34/%s.root",run.Data());
 TString outfile = Form("/Users/calemhoffman/Research/anl/inflight/data/infl41_cl34/%s.csv",run.Data());
 UInt_t e[16];
