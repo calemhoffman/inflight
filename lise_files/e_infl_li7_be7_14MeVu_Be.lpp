@@ -2,9 +2,9 @@ Version 16.3.11
 
 {============================= Main Part ======================================}
 [general]
-                    File = /Users/raisor/inflight/lise_files/e_infl_c16_o18_10MeVu_Be.lpp
-                    Date = 05-05-2023
-                    Time = 10:19:38
+                    File = /Users/raisor/inflight/lise_files/e_infl_li7_be7_14MeVu_Be.lpp
+                    Date = 20-11-2023
+                    Time = 09:59:14
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -615,10 +615,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.68                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -5.610514            KG               
+           MagneticField = -5.591232            KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.143053             Tm               ; refBrho
+          CorrespondBrho = 1.139125             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -756,10 +756,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 5.052606             KG               
+           MagneticField = 5.035241             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.143053             Tm               ; refBrho
+          CorrespondBrho = 1.139125             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2003,10 +2003,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 5.052607             KG               
+           MagneticField = 5.052594             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.143053             Tm               ; refBrho
+          CorrespondBrho = 1.14305              Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2144,10 +2144,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -5.609952            KG               
+           MagneticField = -5.609937            KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 1.143053             Tm               ; refBrho
+          CorrespondBrho = 1.14305              Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2480,7 +2480,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [DiffCS0000]
 CorrelatedTo=0
 Filename=o18dp_10.dat.txt
-Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!!!!
+Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        88.1123 
@@ -2668,7 +2668,7 @@ NofPoints  = 181
 [DiffCS0001]
 CorrelatedTo=1
 Filename=ca48d3he_10.dat.txt
-Comment=c48d3he 3 16 3 15!!!!!!!!!
+Comment=c48d3he 3 16 3 15!!!!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.221707
@@ -2856,7 +2856,7 @@ NofPoints  = 181
 [DiffCS0002]
 CorrelatedTo=2
 Filename=o18d3he_15.dat.txt
-Comment=o18d3he 2 states 4 6!!!!!!!!!
+Comment=o18d3he 2 states 4 6!!!!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.136052
@@ -3044,7 +3044,7 @@ NofPoints  = 181
 [DiffCS0003]
 CorrelatedTo=3
 Filename=/Users/raisor/inflight/lise_files/ar40_elastic.txt
-Comment= !!!!!!
+Comment= !!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 32
 0        3.78207e+14
@@ -3083,7 +3083,7 @@ NofPoints  = 32
 [DiffCS0004]
 CorrelatedTo=4
 Filename=19O_gs.txt
-Comment= J.Wiza et al., PhysRev 143 (1966) 676 -- Ground state  18O(p,d)19O"	!!!DEGREES	ARB-UNITS!!!
+Comment= J.Wiza et al., PhysRev 143 (1966) 676 -- Ground state  18O(p,d)19O"	!!!DEGREES	ARB-UNITS!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 25
 0        10.0837 
