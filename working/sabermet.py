@@ -4,12 +4,17 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.io as pio
 import math
 from scipy import special
 from scipy.interpolate import splrep, splev
 from scipy.optimize import curve_fit
 from scipy.stats import chisquare
-# 	#42c8b0, #d36f88, #fc8d45, #4575f3, #6933b0
+# 	
+color = ['#42c8b0','#d36f88','#fc8d45','#4575f3','#6933b0','#aaaaaa','#000000']
+colorgrad = [color[0],color[1],color[2]]
+pio.templates["mycolor"] = go.layout.Template(layout_colorway=color)
+pio.templates.default = "mycolor"
 # Define a multi-Gaussian function
 def multi_gaussian(x, *params):
     y = np.zeros_like(x)
@@ -35,16 +40,16 @@ print(df.head())
 print('Event Number: {}'.format(df.shape[0]))
 
 #%% histos for fits and calibrations
-figC = make_subplots(rows=3, cols=1, vertical_spacing=0.01)
+figC = make_subplots(rows=3, cols=1, vertical_spacing=0.03)
 
-figC.add_trace(go.Histogram(x=df['e0'], nbinsx=800, marker_color='blue', showlegend=False),
+figC.add_trace(go.Histogram(x=df['e0'], nbinsx=800, showlegend=False),
               row=1, col=1)
-figC.add_trace(go.Histogram(x=df['e2'], nbinsx=800, marker_color='blue', showlegend=False),
+figC.add_trace(go.Histogram(x=df['e2'], nbinsx=800,  showlegend=False),
               row=2, col=1)
-figC.add_trace(go.Histogram(x=df['etot'], nbinsx=800, marker_color='blue', showlegend=False),
+figC.add_trace(go.Histogram(x=df['etot'], nbinsx=800,  showlegend=False),
               row=3, col=1)
 
-figC.update_layout(title='',width=1000,height=900,    plot_bgcolor='lightgray')
+figC.update_layout(title='',width=1000,height=900,    plot_bgcolor='white')
 
 #%% multi gauss fit to ETOT
 df = df[(df['e0']>0) & (df['e2']>0)].loc[:,:]
@@ -119,7 +124,7 @@ fig = make_subplots(rows=3, cols=3,
 
 # Add scatter plot
 fig.add_trace(go.Scatter(x=df['etot'], y=df['e0'],
-                         mode='markers', marker=dict(color='blue',opacity=0.1,size=6),
+                         mode='markers', marker=dict(color=color[3],opacity=0.1,size=6),
                          showlegend=False),
               row=2, col=1)
 # fig.add_trace(go.Histogram2d(x=df['etot'], y=df['e0'], zmin=1,zmax=100,
@@ -128,15 +133,15 @@ fig.add_trace(go.Scatter(x=df['etot'], y=df['e0'],
 #               row=2, col=1)
 
 # Add x-axis histogram
-fig.add_trace(go.Histogram(x=df['etot'], nbinsx=800, marker_color='blue', showlegend=False),
+fig.add_trace(go.Histogram(x=df['etot'], nbinsx=800, showlegend=False),
               row=1, col=1)
 
 # Add y-axis histogram
-fig.add_trace(go.Histogram(y=df['e0'], nbinsy=800, marker_color='blue', showlegend=False, orientation='h'),
+fig.add_trace(go.Histogram(y=df['e0'], nbinsy=800, showlegend=False, orientation='h'),
               row=2, col=3)
 
 # Update layout
-fig.update_layout(title='',width=800,height=800,    plot_bgcolor='lightgray')
+fig.update_layout(title='',width=800,height=800,    plot_bgcolor=color[6])
 
 # Update axis labels
 fig.update_xaxes(title_text="energy loss", range=[1200,3200], row=2, col=1)
