@@ -92,10 +92,6 @@ for numg in range(numex):
     error.append(np.sqrt(area[numg]))
     print("G:{} Ex:{:.2f} area:{:.2f}({:.2f} wid:{:.2f})".format(numg,ex[numg],area[numg],error[numg],width[numg]))
 
-#second linear fit now for calibration
-erefs = [100,80,60,50,40]
-popt2, pcov2 = curve_fit(linfit,ex,erefs)
-print(popt2)
 # Generate the fitted curve using the optimized parameters
 #%%
 xfit = np.linspace(1200,3000, 500)
@@ -113,6 +109,26 @@ fig.update_xaxes(range=[1200,3000])
 fig.update_yaxes(range=[0,100])
 fig.update_layout(height=600,width=800)
 fig.show()
+
+#%%
+#second linear fit now for calibration
+erefs = [315.8,277.5,241.8,208.5,177.6]
+popt2, pcov2 = curve_fit(linfit,ex,erefs)
+print(popt2)
+xfit = np.linspace(1200,3000, 1800)
+y_fit = linfit(xfit, *popt2)
+fig2 = go.Figure()
+fig2.add_trace(go.Scatter(x=ex,y=erefs,mode='markers',showlegend=False))
+fig2.add_trace(go.Scatter(x=xfit,y=y_fit,mode='lines'))
+# for i in range(numex):
+#     popti = popt[i*3:i*3+3]
+#     yfit = multi_gaussian(xfit, *popti)
+#     fig.add_trace(go.Scatter(x=xfit,y=yfit,mode='lines',name="{:.2f} MeV".format(ex[i]),
+#     line_color='blue',showlegend=False))
+fig2.update_xaxes(range=[1200,3000])
+fig2.update_yaxes(range=[0,500])
+fig2.update_layout(height=600,width=800)
+fig2.show()
 
 # %% 2D DE-E w/ projections
 # Create subplots with 1 row and 2 columns, sharing the x-axis and y-axis
