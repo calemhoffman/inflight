@@ -31,7 +31,7 @@ def linfit(x, m, b):
 
 #%% file in read
 runnum=5
-df_read = pd.read_csv('/Users/calemhoffman/Research/anl/inflight/data/infl41_cl34/infl41_final{}.csv'.format(runnum))
+df_read = pd.read_csv('../infl41_cl34/infl41_final{}.csv'.format(runnum))
 #keep rows we want only
 df = df_read.loc[:,['e0','e2','t0','t2']]
 df.loc[:,'dt'] = df['t2']-df['t0']
