@@ -1,10 +1,10 @@
-Version 16.3.11
+Version 17.7.1
 
 {============================= Main Part ======================================}
 [general]
-                    File = /Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/e_infl_o14_n14_8MeVu.lpp
-                    Date = 14-11-2022
-                    Time = 10:18:23
+                    File = /Users/calemhoffman/Documents/GitHub/inflight/lise_files/e_infl_o14_n14_8MeVu.lpp
+                    Date = 10-09-2024
+                    Time = 09:55:22
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -12,12 +12,12 @@ Version 16.3.11
           NumberOfBlocks = 41
 
 [settings]
-                   A,Z,Q = 14N 7+                                ; Mass ElementName Charge+ Beam
-                  Energy = 8                    MeV/u            
-               Intensity = 1                    pnA              ; enA,pna,pps,kW
+                   A,Z,Q = 11B 5+                                ; Mass ElementName Charge+ Beam
+                  Energy = 10.88                MeV/u            
+               Intensity = 100                  pnA              ; enA,pna,pps,kW
             RF frequency = 20                   MHz              
             Bunch length = 1                    ns               
-         Settings on A,Z = 14O                                   ; Mass ElementName Charge+ Beam
+         Settings on A,Z = 11C                                   ; Mass ElementName Charge+ Beam
 
 [OpticsBeam]
                       BX = 1                    (+/-)mm          ; one-half the horisontal beam extent (x)
@@ -54,6 +54,7 @@ Version 16.3.11
               Delta peak = 0                                     ; 0-without, 1-with
              BrhoMeanMax = 0                                     ; 0-Max, 1-Mean
             BrhoMeMaLeRi = 1                                     ; 0-Max, 1-Mean, 2-Left, 3-Right /for fission/
+              CentralCut = 1                                     ; 0-no, 1-moderate, 2-strong
 
 [target]
          Target contents = 0,1,2,1.008                           ; Nomer,Z,Atoms,Mass
@@ -96,6 +97,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   K_Morr = 8                    MeV/A            ; E/A=8MeV/A default; D.Morrissey coef.
                K_MorHalf = 8                    MeV/A            ; E/A=8MeV/A default at Afrag=Aproj/2; D.Morrissey coef.
                  AA_fast = 0
+             AA_Modefast = 3
                MethodApf = 2                                     ; Prefragment search method: 0-N/Z direction, 1 -  W*EPAX, 2 -  W*CSgeom,
            ExcitationApf = 1                                     ; Excitation energy for APF search: 0 - dSurface, 1 - dA*Ex
             BarrierShape = 1                                     ; 0-classical, 1-quantum mech.
@@ -126,7 +128,8 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
           EquilThickness = 1                                     ; 0-Charge, 1-Global
               MassMethod = 0                                     ; 0-DB+calcul, 1 + just calcul
             MassDataBase = 0                                     ; 0-A&W, 1-User ME
-            Mass formula = 1                                     ; 0-LDM, 1-Myerer, 2: 1+corrections
+            Mass formula = 1                                     ; 0-LDM, 1-Myerer, 2: 1+corrections, 3 ..
+          MassExcessFile = AME2020.lme
       UseChargeForEnergy = 2                                     ; 0-No, 1-Yes, 2-Auto
          EnergyValueAuto = 30                                    ; default value 30 MeV/u
          EquilibriumMode = 1                                     ; 0-Equil, 1-NonEquil
@@ -138,7 +141,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                EPAX_p_Un = 1.65
               EPAX_p_Up0 = 1.79
               EPAX_p_Up1 = 0.00472
-              EPAX_p_Up2 = -1.3e-5 
+              EPAX_p_Up2 = -1.3e-5
                 EPAX_p_H = 1
 
 [fission]
@@ -152,8 +155,8 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
             FisTXEmethod = 1                                     ; 0-from Edissipated, 1 from Q-value
                    Fis_f = 0.0045                                ; default 0.0045
               FisEXsigma = 5.5                  MeV              ; default 5.5
-            FisCS_Global = 1e-11    
-               FisCS_TKE = 1e-8     
+            FisCS_Global = 1e-11
+               FisCS_TKE = 1e-8
                 FisBeta1 = 0.625                                 ; deformation of light fragment
                 FisBeta2 = 0.625                                 ; deformation of heavy fragment
                 FisTKE_d = 2                    fm               ; d-param in Wilkins formula
@@ -170,13 +173,14 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   width1 = 0.97                                  ; default 0.97
 
 [charge_suppression]
-                 FragInd = 1e-3     
-               FragTotal = 1e-5     
-                 BeamInd = 1e-20    
-               BeamTotal = 1e-20    
+                 FragInd = 1e-3
+               FragTotal = 1e-5
+                 BeamInd = 1e-20
+               BeamTotal = 1e-20
 
 [convolution]
         Convolution mode = 1                                     ; 0-Qgg, 1-Surface, 2-E* per Abraded nucleon
+             UseGaussian = 1                                     ; use DJM if Es <=0
                  Sigma_0 = 91.5   
                  Sigma_1 = 91.5   
                  Sigma_2 = 125     
@@ -202,10 +206,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
      EvaporationVelocity = 0                                     ; 0 - quality, 1 -fast
         DeltaOddEvenEvap = 12    
      DeltaOddEvenFission = 14    
-   BreakupTemperature250 = 4.7  
-   BreakupTemperature150 = 5.9  
-   BreakupTemperature050 = 8    
-      BreakupDiffuseness = 0.05 
+   BreakupTemperature250 = 4.7   
+   BreakupTemperature150 = 5.9   
+   BreakupTemperature050 = 8     
+      BreakupDiffuseness = 0.05  
       DissipationKramers = 0
  DissipationStepFunction = 1
          DissipationBeta = 1                                     ; default 2.0
@@ -232,18 +236,18 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
            ZdeltaOddEven = 9    
 
 [excitation_energy]
-           AbrasionModel = 0                                     ; 0-Geometrical, 1-exponentional
+           AbrasionModel = 0                                     ; 0-Geometrical, 1-Exponential
        GeomAA_Correction = 1                                     ; 0 - don't use,1 - use -default
           Thermalization = 0
           ThermaTimeCoef = 3e+0                                  ; 2.1e-22 MeV *s/e(t)
-            AbraExpSlope = 0.363
+            AbraExpSlope = 0.363 
                 Friction = 0                                     ; 0 - off,1 - on
           Ev_A_SigmaCoef = 9.6  
          G_FrictionCoef1 = 6.5  
          G_FrictionCoef2 = 0.5  
            G_FactorCoef1 = 1.5  
            G_FactorCoef2 = 2.5  
-               DepthHole = 40    
+               DepthHole = 40     
           EnergyCoef_CB0 = 0       
           EnergyCoef_CB1 = 13.3     
           EnergyCoef_CB2 = 0       
@@ -251,6 +255,12 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
            SigmaCoef_CB1 = 9.6     
            SigmaCoef_CB2 = 0       
               D_MeanTemp = 13       
+             DN_MeanTemp = 0       
+             DZ_MeanTemp = 0       
+               LN_median = 20       
+             LN_variance = 20       
+              LN2_median = 0       
+            LN2_variance = 0       
                AA_factor = 1       
           ApplyLimitTemp = 0
 
@@ -268,8 +278,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
          dE-detector-1st = M1
          dE-detector-2nd = M2
             TKE-detector = M2
-                PlotBrho = S11
-               PlotWedge = S22
               X-detector = M1
               Y-detector = M1
                  Tilting = M1
@@ -283,7 +291,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
          TKE_calibration = 1,1,0,MeV
 
 [cs_file]
-              UserDiffCS = 14                                    ; Number of User Diff CS saved in this file
+              UserDiffCS = 16                                    ; Number of User Diff CS saved in this file
          AppendOverwrite = 1
           AttachedInside = 1
             ShowCSinPlot = 1
@@ -315,7 +323,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
             AF_Ex_choice = 0
              BoundaryLow = 40                   MeV              
             BoundaryHigh = 180                  MeV              
-                Velocity = 1                                     ; Calculat fissile nuclei speed
+                Velocity = 1                                     ; Calculat. fissioning nuclei speed
            LowEx_nucleus = 47Ca20+                               ; Mass ElementName Charge+ Beam
                  L_CS_Ex = 3.000e+02 25.00 5.00                  ; mb, MeV, Mev
            MidEx_nucleus = 42Ar18+                               ; Mass ElementName Charge+ Beam
@@ -344,6 +352,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [sec_target]
                      NP2 = 16                                    ; Dimension
                 tertiary = 0
+               showDebug = 1
                   method = 0                                     ; 0-distribution, 1-gauss, 2-d4
                threshold = 1e-10
                    Pr_z0 = 1
@@ -351,9 +360,9 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Pr_n0 = 0
                    Pr_n1 = 200
                    Dr_z0 = 1
-                   Dr_z1 = 10
+                   Dr_z1 = 7
                    Dr_n0 = 0
-                   Dr_n1 = 12
+                   Dr_n1 = 7
 
 [cross sections]
 1     19O   = 36.9873 0 7
@@ -370,6 +379,8 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 12    24Ne  = 0.965876 0 7
 13    14O   = 10.6554 0 7
 14    14N   = 2.05786e+11 0 7
+15    11C   = 2.05786e+11 0 7
+16    11B   = 2.05786e+11 0 7
 
 [previous]
                  Lowerst = 27Al13+                               ; Mass ElementName Charge+ Beam
@@ -378,6 +389,11 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [finger]
              Diffuseness = 0.01                                  ; default 0.01
              Suppression = 1e+12                                 ; default 1e12
+           BeamDumpBlock = Beam_Dump
+          BD_usePrevious = 1
+         BD_LongDistance = 0                    mm               
+       BD_distTransverse = 8.34                 mm               
+               BD_Center = 125                  mm               
 
 [MC_options]
                    dXsel = 8
@@ -406,6 +422,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                 use_bore = 1
              use_ang_acc = 1
           XY_orientation = 0
+          Plot_XY_orient = 0
             outside_cikl = 1
         MC_outside_sigma = 1
                dP_option = 0
@@ -426,11 +443,11 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Niter = 1000                                  ; # iterations
                UseBounds = 1
                  Example = 4                                     ; 0-15
-                    opt0 = 1e-3     
-                    opt1 = 1e-15    
-                    opt2 = 1e-15    
-                    opt3 = 1e-20    
-                    opt4 = 1e-6     
+                    opt0 = 1e-3
+                    opt1 = 1e-15
+                    opt2 = 1e-15
+                    opt3 = 1e-20
+                    opt4 = 1e-6
 
 
 {============================= BLOCK M1 - Material ======================================}
@@ -482,6 +499,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [D1_optics]
                     row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -537,6 +555,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S1_optics]
                     row1 = +1.00000e+00,+9.50000e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -556,17 +575,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S1_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.95                 m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S2 - Drift ======================================}
@@ -589,6 +597,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S2_optics]
                     row1 = +1.53233e+00,+4.68733e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -599,42 +608,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [S2_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row12 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row13 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row14 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = -5.75177e-03,-7.20986e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row22 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row23 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row24 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = -3.31824e-02,-5.75177e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row33 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row34 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+4.14380e-03,+5.92414e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row43 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row44 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+1.70843e-02,+4.14380e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row53 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [S2_AngAcceptance]
                    X-Use = 0
@@ -646,17 +623,17 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S2_DriftSettings]
                     Mode = 2                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 2                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.4                  m                
-               Leff_coef = -0.68                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -3.050476            KG               
-                  Radius = 8                    cm               ; half-aperture
+               Leff_coef = -0.68                1                
+             Leff_manual = 0                    m                ; for mode=1
+           MagneticField = -4.121649            KG               
+                  Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.621488             Tm               ; refBrho
+          CorrespondBrho = 0.839723             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
-                 sextRad = 8                    cm               ; half-aperture
+                 sextRad = 8                    cm               ; pole tip
 
 
 {============================= BLOCK S3 - Drift ======================================}
@@ -678,6 +655,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-2.00,-75.0,2.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-2.00,-75.0,2.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S3_optics]
                     row1 = +1.00000e+00,+7.00000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -697,17 +675,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S3_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.07                 m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S4 - Drift ======================================}
@@ -730,6 +697,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S4_optics]
                     row1 = +5.89593e-01,+3.43614e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -740,42 +708,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [S4_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row12 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row13 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row14 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +3.79717e-03,+5.38884e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row22 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row23 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row24 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = +1.60083e-02,+3.79717e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row33 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row34 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,-5.10096e-03,-6.43145e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row43 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row44 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,-2.90584e-02,-5.10096e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row53 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [S4_AngAcceptance]
                    X-Use = 0
@@ -787,17 +723,17 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S4_DriftSettings]
                     Mode = 2                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 2                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.4                  m                
-               Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 2.747138             KG               
-                  Radius = 8                    cm               ; half-aperture
+               Leff_coef = -0.67                1                
+             Leff_manual = 0                    m                ; for mode=1
+           MagneticField = 3.711794             KG               
+                  Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.621488             Tm               ; refBrho
+          CorrespondBrho = 0.839723             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
-                 sextRad = 8                    cm               ; half-aperture
+                 sextRad = 8                    cm               ; pole tip
 
 
 {============================= BLOCK S5 - Drift ======================================}
@@ -819,6 +755,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S5_optics]
                     row1 = +1.00000e+00,+7.50000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -838,17 +775,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S5_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.075                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S6 - Drift ======================================}
@@ -870,6 +796,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S6_optics]
                     row1 = +1.00000e+00,+9.40000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -889,17 +816,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S6_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.094                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK D2 - Dipole ======================================}
@@ -927,6 +843,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-1.00,-75.0,1.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [D2_optics]
                     row1 = +9.23880e-01,+4.11920e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+8.19360e-01
@@ -937,42 +854,21 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [D2_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row12 = +3.83883e-04,+5.13725e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row13 = +0.00000e+00,+0.00000e+00,-1.15056e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row14 = +0.00000e+00,+0.00000e+00,-2.30038e-04,-1.38205e-04,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +1.52480e-03,+3.40455e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,-7.82825e-03
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row22 = -1.16714e-05,-2.42641e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row23 = +0.00000e+00,+0.00000e+00,-3.06687e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row24 = +0.00000e+00,+0.00000e+00,+1.46431e-04,-1.45210e-04,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = -2.32159e-05,-1.72608e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,-4.49747e-02
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row33 = -1.47262e-04,-4.58357e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row34 = +3.20436e-04,+5.41823e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+1.07808e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row43 = +0.00000e+00,+4.00188e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row44 = +0.00000e+00,+5.32110e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+3.84814e-03,+1.58513e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row53 = +0.00000e+00,+0.00000e+00,-1.77761e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [D2_AngAcceptance]
                    X-Use = 0
@@ -982,7 +878,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D2_DipoleSettings]
-                    Brho = 0.62134              Tm               ; magnetic rigidity
+                    Brho = 0.83972              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1020,6 +916,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S7_optics]
                     row1 = +1.00000e+00,+1.16200e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1039,17 +936,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S7_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.1162               m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S8 - Drift ======================================}
@@ -1071,6 +957,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S8_optics]
                     row1 = +1.00000e+00,+1.16200e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1090,17 +977,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S8_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.1162               m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK D3 - Dipole ======================================}
@@ -1127,6 +1003,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [D3_optics]
                     row1 = +1.08239e+00,+4.11920e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,-8.19361e-01
@@ -1141,38 +1018,23 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    row12 = -3.02460e-04,-3.78495e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row13 = +0.00000e+00,+0.00000e+00,+1.43236e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row14 = +0.00000e+00,+0.00000e+00,-2.77773e-04,-4.20292e-05,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +0.00000e+00,+3.13556e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+7.88176e-03
                    row21 = +5.66684e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row22 = +2.20893e-04,+1.91342e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row23 = +0.00000e+00,+0.00000e+00,+5.66684e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row24 = +0.00000e+00,+0.00000e+00,-2.20893e-04,+1.91342e-04,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+3.82683e-02
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row33 = +3.18790e-04,-4.28545e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row34 = -4.81590e-04,-8.19361e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+1.58513e-03,+1.07808e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row43 = -3.30288e-04,-2.30113e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row44 = -2.99008e-04,+3.62807e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+3.84814e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row51 = -3.04989e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row52 = +1.30602e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row53 = +0.00000e+00,+0.00000e+00,+2.27932e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row54 = +0.00000e+00,+0.00000e+00,-1.30602e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row56 = -3.15301e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [D3_AngAcceptance]
                    X-Use = 0
@@ -1182,7 +1044,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D3_DipoleSettings]
-                    Brho = 0.62134              Tm               ; magnetic rigidity
+                    Brho = 0.83972              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1220,6 +1082,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S9_optics]
                     row1 = +1.00000e+00,+9.40000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1239,17 +1102,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S9_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.094                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S10 - Drift ======================================}
@@ -1271,6 +1123,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S10_optics]
                     row1 = +1.00000e+00,+2.00000e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1290,17 +1143,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S10_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.2                  m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK F1 - Fit ======================================}
@@ -1386,6 +1228,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 0,-75.00,-75.0,75.00,75.0             ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,0                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-20.00,-35.0,20.00,35.0             ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S11_optics]
                     row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1405,17 +1248,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S11_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0                    m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK W1 - Wedge ======================================}
@@ -1452,6 +1284,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    coef3 = 0e+0                 mm^(-2)          
                    coef4 = 0e+0                 mm^(-3)          
          MatrixElement66 = 1                                     ; d/d matrix, default 1
+                 x_shift = 0.000                mm               
 
 
 {============================= BLOCK S12 - Drift ======================================}
@@ -1473,6 +1306,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S12_optics]
                     row1 = +1.00000e+00,+2.00000e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1492,17 +1326,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S12_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.2                  m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S13 - Drift ======================================}
@@ -1524,6 +1347,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S13_optics]
                     row1 = +1.00000e+00,+9.40000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1543,17 +1367,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S13_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.094                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK D4 - Dipole ======================================}
@@ -1580,6 +1393,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [D4_optics]
                     row1 = +9.23880e-01,+4.11920e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,-8.19361e-01
@@ -1594,38 +1408,19 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    row12 = -3.23223e-04,-2.43266e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row13 = +0.00000e+00,+0.00000e+00,-1.15056e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row14 = +0.00000e+00,+0.00000e+00,-2.30038e-04,-5.62692e-05,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +1.40414e-03,+2.86657e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+7.93526e-03
                    row21 = +5.23548e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row22 = -2.83776e-04,+1.10913e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row23 = +0.00000e+00,+0.00000e+00,-3.06687e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row24 = +0.00000e+00,+0.00000e+00,+1.46431e-04,+2.69004e-04,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = +1.15031e-03,-1.20285e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,+4.39340e-02
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row33 = -1.47262e-04,-4.58357e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row34 = -4.44931e-04,-1.09690e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+1.07808e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row43 = +0.00000e+00,+4.00188e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row44 = +2.94524e-04,+5.95170e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+3.84814e-03,+1.58513e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row53 = +0.00000e+00,+0.00000e+00,+1.77761e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [D4_AngAcceptance]
                    X-Use = 0
@@ -1635,7 +1430,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D4_DipoleSettings]
-                    Brho = 0.62134              Tm               ; magnetic rigidity
+                    Brho = 0.83972              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1673,6 +1468,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S14_optics]
                     row1 = +1.00000e+00,+1.16200e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1692,17 +1488,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S14_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.1162               m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S15 - Drift ======================================}
@@ -1724,6 +1509,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S15_optics]
                     row1 = +1.00000e+00,+1.16200e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1743,17 +1529,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S15_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.1162               m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK D5 - Dipole ======================================}
@@ -1781,6 +1556,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-1.00,-75.0,1.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [D5_optics]
                     row1 = +1.08239e+00,+4.11920e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+8.19361e-01
@@ -1791,42 +1567,24 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [D5_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row12 = +4.33777e-04,+3.78495e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row13 = +0.00000e+00,+0.00000e+00,+1.31103e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row14 = +0.00000e+00,+0.00000e+00,-2.46243e-04,-1.23965e-04,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +0.00000e+00,+3.13556e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,-7.88176e-03
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row22 = +7.36309e-05,-1.91342e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row23 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row24 = +0.00000e+00,+0.00000e+00,-7.36309e-05,-1.91342e-04,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,-3.82683e-02
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row33 = +0.00000e+00,-4.91606e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row34 = +3.46837e-04,+8.19361e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+1.58513e-03,+1.07808e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row43 = -3.30288e-04,-2.30113e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row44 = -2.99008e-04,+3.62807e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+3.84814e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row51 = +3.04989e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row52 = -1.30602e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row53 = +0.00000e+00,+0.00000e+00,-2.27932e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row54 = +0.00000e+00,+0.00000e+00,+1.30602e-05,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row56 = +3.15301e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [D5_AngAcceptance]
                    X-Use = 0
@@ -1836,7 +1594,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D5_DipoleSettings]
-                    Brho = 0.62134              Tm               ; magnetic rigidity
+                    Brho = 0.83972              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1874,6 +1632,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-3.00,-35.0,3.00,35.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S16_optics]
                     row1 = +1.00000e+00,+9.40000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1893,17 +1652,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S16_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.094                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S17 - Drift ======================================}
@@ -1925,6 +1673,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S17_optics]
                     row1 = +1.00000e+00,+7.50000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1944,17 +1693,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S17_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.075                m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S18 - Drift ======================================}
@@ -1977,6 +1715,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S18_optics]
                     row1 = +5.89593e-01,+3.43614e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -1987,42 +1726,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [S18_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row12 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row13 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row14 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = +3.79717e-03,+5.38884e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row22 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row23 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row24 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = +1.60083e-02,+3.79717e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row33 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row34 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,-5.10096e-03,-6.43145e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row43 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row44 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,-2.90584e-02,-5.10096e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row53 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [S18_AngAcceptance]
                    X-Use = 0
@@ -2034,17 +1741,17 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S18_DriftSettings]
                     Mode = 2                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 2                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.4                  m                
-               Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 2.746483             KG               
-                  Radius = 8                    cm               ; half-aperture
+               Leff_coef = -0.67                1                
+             Leff_manual = 0                    m                ; for mode=1
+           MagneticField = 3.711799             KG               
+                  Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.621339             Tm               ; refBrho
+          CorrespondBrho = 0.839723             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
-                 sextRad = 8                    cm               ; half-aperture
+                 sextRad = 8                    cm               ; pole tip
 
 
 {============================= BLOCK S19 - Drift ======================================}
@@ -2066,6 +1773,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-2.00,-75.0,2.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-2.00,-75.0,2.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S19_optics]
                     row1 = +1.00000e+00,+7.00000e-02,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -2085,17 +1793,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S19_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.07                 m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK S20 - Drift ======================================}
@@ -2118,6 +1815,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S20_optics]
                     row1 = +1.53227e+00,+4.68726e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -2128,42 +1826,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                     row6 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+1.00000e+00
 
 [S20_optics2]
-                   row11 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row12 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row13 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row14 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row15 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row16 = -5.75110e-03,-7.20907e-04,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row21 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row22 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row23 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row24 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row25 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row26 = -3.31782e-02,-5.75110e-03,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row31 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row32 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row33 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row34 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row35 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row36 = +0.00000e+00,+0.00000e+00,+4.14345e-03,+5.92360e-04,+0.00000e+00,+0.00000e+00
-                   row41 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row42 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row43 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row44 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row45 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
                    row46 = +0.00000e+00,+0.00000e+00,+1.70832e-02,+4.14345e-03,+0.00000e+00,+0.00000e+00
-                   row51 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row52 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row53 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row54 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row55 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row56 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row61 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row62 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row63 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row64 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row65 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
-                   row66 = +0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
 
 [S20_AngAcceptance]
                    X-Use = 0
@@ -2175,17 +1841,17 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S20_DriftSettings]
                     Mode = 2                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 2                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.4                  m                
-               Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -3.049443            KG               
-                  Radius = 8                    cm               ; half-aperture
+               Leff_coef = -0.67                1                
+             Leff_manual = 0                    m                ; for mode=1
+           MagneticField = -4.121241            KG               
+                  Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.621339             Tm               ; refBrho
+          CorrespondBrho = 0.839723             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
-                 sextRad = 8                    cm               ; half-aperture
+                 sextRad = 8                    cm               ; pole tip
 
 
 {============================= BLOCK S21 - Drift ======================================}
@@ -2207,6 +1873,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-7.00,-75.0,7.00,75.0               ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S21_optics]
                     row1 = +1.00000e+00,+9.50000e-01,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -2226,17 +1893,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S21_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0.95                 m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0                    Tm               ; refBrho
-          CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK F3 - Fit ======================================}
@@ -2321,6 +1977,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                   X_size = 1,-35.00,-50.0,35.00,50.0             ; joint,Left,L-limit,Right,R-limit
                 Y_action = 0,0,1                                 ; Use 1/0, Show 1/0, UseApp 1/0
                   Y_size = 1,-20.00,-50.0,20.00,50.0             ; joint,Bottom,B-limit,Top,T-limit
+         ApplyForMethods = 1, 1                                  ; Distribution, Ellipse
 
 [S22_optics]
                     row1 = +1.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00,+0.00000e+00
@@ -2340,17 +1997,6 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [S22_DriftSettings]
                     Mode = 1                                     ; 4-finger, E-Quad 3, M-Quad 2, Stand 1, Beamline 0
               ShowLength = 0                                     ; I 3 / B 2 / Brho 1 / Length 0
-        Length_effective = 0                    m                
-               Leff_coef = 0.7                  1                
-               Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 0                    KG               
-                  Radius = 5                    cm               ; half-aperture
-       Include 2nd order = 0
-          CorrespondBrho = 0.001                Tm               ; refBrho
-          CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
-                 Voltage = 0                    kV               ; for e-quad
-           sextMagnField = 0                    KG               
-                 sextRad = 5                    cm               ; half-aperture
 
 
 {============================= BLOCK M2 - Material ======================================}
@@ -2514,7 +2160,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [DiffCS0000]
 CorrelatedTo=0
 Filename=o18dp_10.dat.txt
-Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!
+Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        88.1123 
@@ -2702,7 +2348,7 @@ NofPoints  = 181
 [DiffCS0001]
 CorrelatedTo=1
 Filename=ca48d3he_10.dat.txt
-Comment=c48d3he 3 16 3 15!!!!!!
+Comment=c48d3he 3 16 3 15!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.221707
@@ -2890,7 +2536,7 @@ NofPoints  = 181
 [DiffCS0002]
 CorrelatedTo=2
 Filename=o18d3he_15.dat.txt
-Comment=o18d3he 2 states 4 6!!!!!!
+Comment=o18d3he 2 states 4 6!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.136052
@@ -3078,7 +2724,7 @@ NofPoints  = 181
 [DiffCS0003]
 CorrelatedTo=3
 Filename=ar36dp_10.dat.txt
-Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!!!!
+Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        94.2713 
@@ -3266,7 +2912,7 @@ NofPoints  = 181
 [DiffCS0004]
 CorrelatedTo=4
 Filename=s36_cd2_0.txt
-Comment= !!!!!!
+Comment= !!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        9.249e+39
@@ -5074,7 +4720,7 @@ NofPoints  = 1801
 [DiffCS0005]
 CorrelatedTo=5
 Filename=si30dp_10.data.txt
-Comment=10 MEV/u si30dp 4 states!!!!!!
+Comment=10 MEV/u si30dp 4 states!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        70.1845 
@@ -5262,7 +4908,7 @@ NofPoints  = 181
 [DiffCS0006]
 CorrelatedTo=6
 Filename=s36_cd2_0.txt
-Comment= !!!!!!
+Comment= !!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        9.249e+39
@@ -7070,7 +6716,7 @@ NofPoints  = 1801
 [DiffCS0007]
 CorrelatedTo=7
 Filename=s36d3he_10.dat.txt
-Comment=s36d3he w 3 20!!!!!!
+Comment=s36d3he w 3 20!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        3.00265 
@@ -7258,7 +6904,7 @@ NofPoints  = 181
 [DiffCS0008]
 CorrelatedTo=8
 Filename=n15dp_10.dat.txt
-Comment=n15dp 2 states 1 1!!!!!!
+Comment=n15dp 2 states 1 1!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        73.663  
@@ -7446,7 +7092,7 @@ NofPoints  = 181
 [DiffCS0009]
 CorrelatedTo=9
 Filename=o18_X.txt
-Comment=!!!!!!
+Comment=!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        5.0255e+11
@@ -9254,7 +8900,7 @@ NofPoints  = 1801
 [DiffCS0010]
 CorrelatedTo=10
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40_elastic.txt
-Comment= !!!
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 32
 0        3.78207e+14
@@ -9293,7 +8939,7 @@ NofPoints  = 32
 [DiffCS0011]
 CorrelatedTo=11
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40d3heL0.txt
-Comment= !!!
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        3.07039 
@@ -9481,7 +9127,7 @@ NofPoints  = 181
 [DiffCS0012]
 CorrelatedTo=12
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/c14dp_l0.txt
-Comment= 
+Comment= !!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        37.644  
@@ -9669,6 +9315,84 @@ NofPoints  = 181
 [DiffCS0013]
 CorrelatedTo=13
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40_elastic.txt
+Comment= !!!
+Ex12 = 0.000 0.000
+NofPoints  = 32
+0        3.78207e+14
+0.5      3.647e+14
+1        6.294e+08
+2        3.962e+07
+3        7.875e+06
+4        2.49e+06
+5        1.01e+06
+6        477800  
+7        250900  
+8        142000  
+9        85070   
+10       53340   
+11       34720   
+12       23340   
+13       16150   
+14       11470   
+15       8358    
+16       6236    
+17       4763    
+18       3721    
+19       2969    
+20       2419    
+21       2007    
+22       1695    
+23       1453    
+24       1262    
+25       1108    
+26       982.2   
+27       877.3   
+28       788.5   
+29       712.1   
+180      0       
+
+[DiffCS0014]
+CorrelatedTo=14
+Filename=/Users/calemhoffman/Documents/GitHub/inflight/lise_files/ar40_elastic.txt
+Comment= 
+Ex12 = 0.000 0.000
+NofPoints  = 32
+0        3.78207e+14
+0.5      3.647e+14
+1        6.294e+08
+2        3.962e+07
+3        7.875e+06
+4        2.49e+06
+5        1.01e+06
+6        477800  
+7        250900  
+8        142000  
+9        85070   
+10       53340   
+11       34720   
+12       23340   
+13       16150   
+14       11470   
+15       8358    
+16       6236    
+17       4763    
+18       3721    
+19       2969    
+20       2419    
+21       2007    
+22       1695    
+23       1453    
+24       1262    
+25       1108    
+26       982.2   
+27       877.3   
+28       788.5   
+29       712.1   
+180      0       
+
+[DiffCS0015]
+CorrelatedTo=15
+Filename=/Users/calemhoffman/Documents/GitHub/inflight/lise_files/ar40_elastic.txt
 Comment= 
 Ex12 = 0.000 0.000
 NofPoints  = 32
