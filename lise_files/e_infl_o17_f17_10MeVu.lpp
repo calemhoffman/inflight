@@ -2,9 +2,9 @@ Version 17.7.1
 
 {============================= Main Part ======================================}
 [general]
-                    File = /Users/calemhoffman/Documents/GitHub/inflight/lise_files/e_infl_o14_n14_8MeVu.lpp
+                    File = /Users/calemhoffman/Documents/GitHub/inflight/lise_files/e_infl_o17_f17_10MeVu.lpp
                     Date = 07-10-2024
-                    Time = 13:27:21
+                    Time = 13:45:06
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -12,12 +12,12 @@ Version 17.7.1
           NumberOfBlocks = 41
 
 [settings]
-                   A,Z,Q = 34S 16+                               ; Mass ElementName Charge+ Beam
-                  Energy = 11.2                 MeV/u            
-               Intensity = 10                   pnA              ; enA,pna,pps,kW
+                   A,Z,Q = 17O 8+                                ; Mass ElementName Charge+ Beam
+                  Energy = 10.85                MeV/u            
+               Intensity = 150                  pnA              ; enA,pna,pps,kW
             RF frequency = 20                   MHz              
             Bunch length = 1                    ns               
-         Settings on A,Z = 34Cl                                  ; Mass ElementName Charge+ Beam
+         Settings on A,Z = 17O                                   ; Mass ElementName Charge+ Beam
 
 [OpticsBeam]
                       BX = 1                    (+/-)mm          ; one-half the horisontal beam extent (x)
@@ -31,12 +31,12 @@ Version 17.7.1
                   ShiftY = 0                    mm               ; beam respect to the spectrometer axis
                   AngleY = 0                    mrad             ; beam respect to the spectrometer axis
             Scheme Angle = 0                    degrees          
-                  ShapeX = 1
-                  ShapeT = 1
-                  ShapeY = 1
-                  ShapeF = 1
-                  ShapeL = 1
-                  ShapeD = 1
+                  ShapeX = 32769
+                  ShapeT = 32769
+                  ShapeY = 32769
+                  ShapeF = 32769
+                  ShapeL = 32769
+                  ShapeD = 32769
                OptBeam_X = 1                    (+/-)mm          
                OptBeam_T = 40                   (+/-)mrad        
                OptBeam_Y = 1                    (+/-)mm          
@@ -291,7 +291,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
          TKE_calibration = 1,1,0,MeV
 
 [cs_file]
-              UserDiffCS = 18                                    ; Number of User Diff CS saved in this file
+              UserDiffCS = 20                                    ; Number of User Diff CS saved in this file
          AppendOverwrite = 1
           AttachedInside = 1
             ShowCSinPlot = 1
@@ -383,6 +383,8 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 16    11B   = 2.05786e+11 0 7
 17    34S   = 2.05786e+11 0 7
 18    34Cl  = 0.459621 0 7
+19    17F   = 0.459621 0 7
+20    17O   = 2.05786e+11 0 7
 
 [previous]
                  Lowerst = 27Al13+                               ; Mass ElementName Charge+ Beam
@@ -461,7 +463,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 
 [M1_Compound]
                contents1 = 0,6,1,12.011                          ; Nomer,Z,Atoms,Mass
-               thickness = 1,0,2.253,0,0,0                       ; State,Thickness,density,angle,SolidGas,..
+               thickness = 1,0.1,2.253,0,0,0                     ; State,Thickness,density,angle,SolidGas,..
                   Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
         Use for Q-states = 1
              ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
@@ -628,10 +630,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.68                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = -4.292622            KG               
+           MagneticField = -4.652648            KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.874556             Tm               ; refBrho
+          CorrespondBrho = 0.947906             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -728,10 +730,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = 3.865766             KG               
+           MagneticField = 4.189991             KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.874556             Tm               ; refBrho
+          CorrespondBrho = 0.947906             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -880,7 +882,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D2_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.94791              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1046,7 +1048,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D3_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.94791              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1432,7 +1434,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D4_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.94791              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1596,7 +1598,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D5_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.94791              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1746,10 +1748,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = 3.876719             KG               
+           MagneticField = 4.189996             KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.877033             Tm               ; refBrho
+          CorrespondBrho = 0.947906             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -1846,10 +1848,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = -4.304353            KG               
+           MagneticField = -4.652188            KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.877033             Tm               ; refBrho
+          CorrespondBrho = 0.947906             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -9537,4 +9539,112 @@ NofPoints  = 62
 58       0.004   
 59       0.006   
 60       0.007   
+180      0       
+
+[DiffCS0018]
+CorrelatedTo=18
+Filename=/Users/calemhoffman/Documents/GitHub/inflight/lise_files/dp.txt
+Comment= 
+Ex12 = 0.000 0.000
+NofPoints  = 62
+0        1.53797 
+1        1.4971  
+2        1.452   
+3        1.379   
+4        1.282   
+5        1.165   
+6        1.034   
+7        0.893   
+8        0.749   
+9        0.607   
+10       0.473   
+11       0.352   
+12       0.245   
+13       0.158   
+14       0.089   
+15       0.041   
+16       0.013   
+17       0.003   
+18       0.008   
+19       0.026   
+20       0.055   
+21       0.09    
+22       0.128   
+23       0.168   
+24       0.205   
+25       0.239   
+26       0.267   
+27       0.289   
+28       0.304   
+29       0.311   
+30       0.312   
+31       0.307   
+32       0.296   
+33       0.281   
+34       0.262   
+35       0.242   
+36       0.219   
+37       0.197   
+38       0.175   
+39       0.153   
+40       0.133   
+41       0.114   
+42       0.097   
+43       0.082   
+44       0.068   
+45       0.057   
+46       0.046   
+47       0.037   
+48       0.03    
+49       0.023   
+50       0.018   
+51       0.013   
+52       0.01    
+53       0.007   
+54       0.005   
+55       0.004   
+56       0.003   
+57       0.003   
+58       0.004   
+59       0.006   
+60       0.007   
+180      0       
+
+[DiffCS0019]
+CorrelatedTo=19
+Filename=/Users/calemhoffman/Documents/GitHub/inflight/lise_files/ar40_elastic.txt
+Comment= 
+Ex12 = 0.000 0.000
+NofPoints  = 32
+0        3.78207e+14
+0.5      3.647e+14
+1        6.294e+08
+2        3.962e+07
+3        7.875e+06
+4        2.49e+06
+5        1.01e+06
+6        477800  
+7        250900  
+8        142000  
+9        85070   
+10       53340   
+11       34720   
+12       23340   
+13       16150   
+14       11470   
+15       8358    
+16       6236    
+17       4763    
+18       3721    
+19       2969    
+20       2419    
+21       2007    
+22       1695    
+23       1453    
+24       1262    
+25       1108    
+26       982.2   
+27       877.3   
+28       788.5   
+29       712.1   
 180      0       

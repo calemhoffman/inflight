@@ -2,9 +2,9 @@ Version 17.7.1
 
 {============================= Main Part ======================================}
 [general]
-                    File = /Users/calemhoffman/Documents/GitHub/inflight/lise_files/e_infl_o14_n14_8MeVu.lpp
+                    File = /Users/calemhoffman/Documents/GitHub/inflight/lise_files/e_infl_s34_cl34_10MeVu.lpp
                     Date = 07-10-2024
-                    Time = 13:27:21
+                    Time = 13:34:35
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -13,8 +13,8 @@ Version 17.7.1
 
 [settings]
                    A,Z,Q = 34S 16+                               ; Mass ElementName Charge+ Beam
-                  Energy = 11.2                 MeV/u            
-               Intensity = 10                   pnA              ; enA,pna,pps,kW
+                  Energy = 11.7                 MeV/u            
+               Intensity = 40                   pnA              ; enA,pna,pps,kW
             RF frequency = 20                   MHz              
             Bunch length = 1                    ns               
          Settings on A,Z = 34Cl                                  ; Mass ElementName Charge+ Beam
@@ -461,7 +461,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 
 [M1_Compound]
                contents1 = 0,6,1,12.011                          ; Nomer,Z,Atoms,Mass
-               thickness = 1,0,2.253,0,0,0                       ; State,Thickness,density,angle,SolidGas,..
+               thickness = 1,0.15,2.253,0,0,0                    ; State,Thickness,density,angle,SolidGas,..
                   Defect = 1,0                                   ; [0] choice - % or micron at 0 degree,  [1]=value; 
         Use for Q-states = 1
              ResolutionE = 0,0.5                                 ; [0] choice - % or MeV,  [1]=value; 
@@ -628,10 +628,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.68                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = -4.292622            KG               
+           MagneticField = -4.429002            KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.874556             Tm               ; refBrho
+          CorrespondBrho = 0.902341             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -728,10 +728,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = 3.865766             KG               
+           MagneticField = 3.988584             KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.874556             Tm               ; refBrho
+          CorrespondBrho = 0.902341             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -880,7 +880,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D2_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.90234              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1046,7 +1046,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D3_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.90234              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1432,7 +1432,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D4_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.90234              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1596,7 +1596,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D5_DipoleSettings]
-                    Brho = 0.87703              Tm               ; magnetic rigidity
+                    Brho = 0.90234              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1746,10 +1746,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = 3.876719             KG               
+           MagneticField = 3.988589             KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.877033             Tm               ; refBrho
+          CorrespondBrho = 0.902341             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -1846,10 +1846,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
                Leff_coef = -0.67                1                
              Leff_manual = 0                    m                ; for mode=1
-           MagneticField = -4.304353            KG               
+           MagneticField = -4.428563            KG               
                   Radius = 8                    cm               ; pole tip
        Include 2nd order = 1
-          CorrespondBrho = 0.877033             Tm               ; refBrho
+          CorrespondBrho = 0.902341             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
