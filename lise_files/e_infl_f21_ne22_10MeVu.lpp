@@ -3,8 +3,8 @@ Version 16.3.11
 {============================= Main Part ======================================}
 [general]
                     File = /Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/e_infl_f21_ne22_10MeVu.lpp
-                    Date = 17-05-2024
-                    Time = 11:25:47
+                    Date = 13-03-2025
+                    Time = 07:30:22
            Configuration = other\e_AIRIS.lcn
              Optionsfile = A1900_2016.lopt
                    Title = e_AIRIS
@@ -13,11 +13,12 @@ Version 16.3.11
 
 [settings]
                    A,Z,Q = 22Ne10+                               ; Mass ElementName Charge+ Beam
-                  Energy = 9.25                 MeV/u            
+                  Energy = 16.2                 MeV/u            
                Intensity = 1                    pnA              ; enA,pna,pps,kW
             RF frequency = 20                   MHz              
             Bunch length = 1                    ns               
-         Settings on A,Z = 21F                                   ; Mass ElementName Charge+ Beam
+         Settings on A,Z = 22Ne                                  ; Mass ElementName Charge+ Beam
+           ReglageOnBeam = 1
 
 [OpticsBeam]
                       BX = 1                    (+/-)mm          ; one-half the horisontal beam extent (x)
@@ -351,9 +352,9 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Pr_n0 = 0
                    Pr_n1 = 200
                    Dr_z0 = 1
-                   Dr_z1 = 14
+                   Dr_z1 = 10
                    Dr_n0 = 0
-                   Dr_n1 = 16
+                   Dr_n1 = 12
 
 [cross sections]
 1     19O   = 36.9873 0 7
@@ -381,7 +382,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
              Suppression = 1e+12                                 ; default 1e12
 
 [MC_options]
-                   dXsel = 7
+                   dXsel = 8
                    dYsel = 6
                    dZsel = 4
                   dAZQ_X = 1
@@ -650,10 +651,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.68                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -4.756583            KG               
+           MagneticField = -6.190777            KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 0.96908              Tm               ; refBrho
+          CorrespondBrho = 1.261275             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -791,10 +792,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 4.28359              KG               
+           MagneticField = 5.575167             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 0.96908              Tm               ; refBrho
+          CorrespondBrho = 1.261275             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -983,7 +984,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D2_DipoleSettings]
-                    Brho = 0.96908              Tm               ; magnetic rigidity
+                    Brho = 1.26128              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -1183,7 +1184,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D3_DipoleSettings]
-                    Brho = 0.96908              Tm               ; magnetic rigidity
+                    Brho = 1.26128              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1636,7 +1637,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D4_DipoleSettings]
-                    Brho = 0.96908              Tm               ; magnetic rigidity
+                    Brho = 1.26128              Tm               ; magnetic rigidity
                    Angle = -22.5                degrees          
                   Radius = 1.0764               m                
 
@@ -1837,7 +1838,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
                    Shape = 1                                     ; 0 - rectangle, 1- ellipse
 
 [D5_DipoleSettings]
-                    Brho = 0.96908              Tm               ; magnetic rigidity
+                    Brho = 1.26128              Tm               ; magnetic rigidity
                    Angle = 22.5                 degrees          
                   Radius = 1.0764               m                
 
@@ -2038,10 +2039,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = 4.283587             KG               
+           MagneticField = 5.575164             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 0.96908              Tm               ; refBrho
+          CorrespondBrho = 1.261275             Tm               ; refBrho
           CorrespondErho = 1e-2                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2179,10 +2180,10 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
         Length_effective = 0.4                  m                
                Leff_coef = -0.67                1                
                Leff_mode = 0                                     ; file-3, calc-2, manually-1, keep-0
-           MagneticField = -4.756102            KG               
+           MagneticField = -6.19015             KG               
                   Radius = 8                    cm               ; half-aperture
        Include 2nd order = 1
-          CorrespondBrho = 0.96908              Tm               ; refBrho
+          CorrespondBrho = 1.261275             Tm               ; refBrho
           CorrespondErho = 0e+0                 J/c              ; for e-quad refErho
                  Voltage = 0                    kV               ; for e-quad
            sextMagnField = 0                    KG               
@@ -2515,7 +2516,7 @@ Binding Energy for Vf/Vp = 8                    MeV              ; Binding energ
 [DiffCS0000]
 CorrelatedTo=0
 Filename=o18dp_10.dat.txt
-Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!
+Comment=10 MeV/u o18dp from global with 0.66 and 1.0 s factors!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        88.1123 
@@ -2703,7 +2704,7 @@ NofPoints  = 181
 [DiffCS0001]
 CorrelatedTo=1
 Filename=ca48d3he_10.dat.txt
-Comment=c48d3he 3 16 3 15!!!
+Comment=c48d3he 3 16 3 15!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.221707
@@ -2891,7 +2892,7 @@ NofPoints  = 181
 [DiffCS0002]
 CorrelatedTo=2
 Filename=o18d3he_15.dat.txt
-Comment=o18d3he 2 states 4 6!!!
+Comment=o18d3he 2 states 4 6!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.136052
@@ -3079,7 +3080,7 @@ NofPoints  = 181
 [DiffCS0003]
 CorrelatedTo=3
 Filename=ar36dp_10.dat.txt
-Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!
+Comment=10 MeV/u ar36dp 4 states 0.56 0.22 0.76 1.2!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        94.2713 
@@ -3267,7 +3268,7 @@ NofPoints  = 181
 [DiffCS0004]
 CorrelatedTo=4
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -3455,7 +3456,7 @@ NofPoints  = 181
 [DiffCS0005]
 CorrelatedTo=5
 Filename=si30dp_10.data.txt
-Comment=10 MEV/u si30dp 4 states!!!
+Comment=10 MEV/u si30dp 4 states!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        70.1845 
@@ -3643,7 +3644,7 @@ NofPoints  = 181
 [DiffCS0006]
 CorrelatedTo=6
 Filename=s36_cd2_0.txt
-Comment= !!!
+Comment= !!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 1801
 0        9.249e+39
@@ -5451,7 +5452,7 @@ NofPoints  = 1801
 [DiffCS0007]
 CorrelatedTo=7
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -5639,7 +5640,7 @@ NofPoints  = 181
 [DiffCS0008]
 CorrelatedTo=8
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -5827,7 +5828,7 @@ NofPoints  = 181
 [DiffCS0009]
 CorrelatedTo=9
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -6015,7 +6016,7 @@ NofPoints  = 181
 [DiffCS0010]
 CorrelatedTo=10
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -6203,7 +6204,7 @@ NofPoints  = 181
 [DiffCS0011]
 CorrelatedTo=11
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -6391,7 +6392,7 @@ NofPoints  = 181
 [DiffCS0012]
 CorrelatedTo=12
 Filename=mg26d3he_10.dat.txt
-Comment=mg26d3he 2 24 12!!!
+Comment=mg26d3he 2 24 12!!!!!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        0.946707
@@ -6579,7 +6580,7 @@ NofPoints  = 181
 [DiffCS0013]
 CorrelatedTo=13
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/c14dp_l2.txt
-Comment= 
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 181
 0        91.7008 
@@ -6767,7 +6768,7 @@ NofPoints  = 181
 [DiffCS0014]
 CorrelatedTo=14
 Filename=/Users/calemhoffman/Research/anl/inflight/inflight_git/lise_files/ar40_elastic.txt
-Comment= 
+Comment= !!!!!!
 Ex12 = 0.000 0.000
 NofPoints  = 32
 0        3.78207e+14
@@ -6806,4 +6807,5 @@ NofPoints  = 32
 {============================= Calculations ======================================}
 
 [Calculations]
-21F  9+ 9+ 9+ 9+ =2.1415e+03,2.1415e+03,7,2.1415e+03,6.1182e+01,0,2.0981e-02,5.7746e+00,1.7732e+00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4.0907e-01,4.0907e-01,1,1,1,1,1,1,1,1,1,1,1,5.1313e-02,1,1,1.4138e-01,3.6295e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+22Ne 10+ 10+ 10+ 10+ =1.3322e+14,1.3322e+14,7,1.3322e+14,2.0579e+11,0,3.8803e-01,1.1970e+01,2.1308e+00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4.7315e-01,4.7315e-01,1,1,1,1,1,1,1,1,1,1,1,8.2048e-01,1,1,8.2816e-01,9.9073e-01,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+22Ne 10+ 10+ 10+ 10+ =6.2385e+09,6.2385e+09,0,1.3322e+14,3.7412e+06,0,1,1.5744e+01,2.0867e-02,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
