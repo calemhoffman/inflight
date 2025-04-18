@@ -35,16 +35,16 @@ color_7 = "#d5d5d5" # ANL BLUE 2 0,96,156
 color_6 = "#feaf6d" # ANL ORANGE 1 255,121,0
 color_9 = "#feff66" # ANL YELLOW 1 236,170,0
 color_10 = "#6fc7c3" # ANL TEAL 1 0,161,156
-set style line 1  linecolor rgbcolor color_1 linewidth @my_line_width lt 1 dt 1 pt 7
-set style line 2  linecolor rgbcolor color_2 linewidth @my_line_width lt 1 dt 1 pt 5
-set style line 3  linecolor rgbcolor color_3 linewidth @my_line_width lt 1 dt 1 pt 9
-set style line 4  linecolor rgbcolor color_4 linewidth @my_line_width lt 1 dt 1 pt 11
-set style line 5  linecolor rgbcolor color_5 linewidth @my_line_width lt 1  dt 1 pt 13
-set style line 6  linecolor rgbcolor color_6 linewidth @my_line_width lt 1  dt 1 pt 15
-set style line 7  linecolor rgbcolor color_7 linewidth @my_line_width lt 1  dt 1 pt 7
-set style line 8  linecolor rgbcolor color_8 linewidth @my_line_width lt 1  dt 1 pt 5
-set style line 9  linecolor rgbcolor color_9 linewidth @my_line_width lt 1  dt 1 pt 5
-set style line 10  linecolor rgbcolor color_10 linewidth @my_line_width lt 1  dt 1 pt 5
+set style line 1  linecolor rgbcolor color_1 linewidth 2 lt 1 dt 1 pt 7
+set style line 2  linecolor rgbcolor color_2 linewidth 2 lt 1 dt 1 pt 5
+set style line 3  linecolor rgbcolor color_3 linewidth 2 lt 1 dt 1 pt 9
+set style line 4  linecolor rgbcolor color_4 linewidth 2 lt 1 dt 1 pt 11
+set style line 5  linecolor rgbcolor color_5 linewidth 2 lt 1  dt 1 pt 13
+set style line 6  linecolor rgbcolor color_6 linewidth 2 lt 1  dt 1 pt 15
+set style line 7  linecolor rgbcolor color_7 linewidth 2 lt 1  dt 1 pt 7
+set style line 8  linecolor rgbcolor color_8 linewidth 2 lt 1  dt 1 pt 5
+set style line 9  linecolor rgbcolor color_9 linewidth 2 lt 1  dt 1 pt 5
+set style line 10  linecolor rgbcolor color_10 linewidth 2 lt 1  dt 1 pt 5
 
 # prettify_nucid lifts the numbers in the beginning of the string
 # to a superscript; e.g. "113Cd" -> "^{113}Cd"
