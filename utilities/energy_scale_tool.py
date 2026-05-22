@@ -8,8 +8,156 @@ other ion (A, q) transported at Bρ_set = scale_factor · Bρ_ref.
 All energies are kinetic; rigidities in T·m; β = v/c.
 """
 
+import math
+
 import numpy as np
 import pandas as pd
+
+
+# ──────────── Bethe-Bloch stopping power: heavy ions in silicon ───────────────
+#
+# Implements the Bethe formula with an effective charge (Northcliffe-Schilling
+# parametrization). Good to ~5–15 % for HI at 1–25 MeV/u. For final calibration,
+# validate against SRIM or LISE++ tables.
+
+U_MEV         = 931.49410242    # atomic mass unit, MeV/c²
+M_E_MEV       = 0.51099895      # electron mass, MeV/c²
+ALPHA         = 7.2973525693e-3 # fine-structure constant (Bohr β = α)
+K_BETHE       = 0.307075        # 4π N_A r_e² m_e c²  (MeV·g⁻¹·cm²)
+
+SI_DENSITY_G_CM3 = 2.329
+SI_Z             = 14
+SI_A             = 28.0855
+SI_I_MEV         = 173e-6       # mean excitation energy of silicon
+
+
+def _beta_gamma_from_T(T_MeV, A):
+    """β, γ for an ion of mass A·u and total kinetic energy T_MeV."""
+    if T_MeV <= 0:
+        return 0.0, 1.0
+    gamma = 1.0 + T_MeV / (A * U_MEV)
+    beta = math.sqrt(max(0.0, 1.0 - 1.0 / (gamma * gamma)))
+    return beta, gamma
+
+
+def effective_charge(Z, beta):
+    """Northcliffe-Schilling Z_eff(v) for a projectile of nuclear charge Z."""
+    if beta <= 0:
+        return 0.0
+    x = beta / (ALPHA * (Z ** (2.0 / 3.0)))
+    return Z * (1.0 - math.exp(-0.95 * x))
+
+
+def stopping_power_si(T_MeV, A, Z):
+    """dE/dx (MeV/cm) for ion (A, Z) of kinetic energy T_MeV in silicon."""
+    if T_MeV <= 0:
+        return 0.0
+    beta, gamma = _beta_gamma_from_T(T_MeV, A)
+    if beta <= 0:
+        return 0.0
+    z_eff = effective_charge(Z, beta)
+    if z_eff <= 0:
+        return 0.0
+    log_arg = 2.0 * M_E_MEV * beta * beta * gamma * gamma / SI_I_MEV
+    bracket = math.log(log_arg) - beta * beta
+    if bracket <= 0:
+        return 0.0
+    dEdx_mass = K_BETHE * (z_eff * z_eff) * (SI_Z / SI_A) * bracket / (beta * beta)
+    return dEdx_mass * SI_DENSITY_G_CM3   # MeV/cm
+
+
+def energy_loss_si(T_in_MeV, A, Z, thickness_um, n_steps=200):
+    """Integrate stopping power through `thickness_um` μm of Si.
+
+    Midpoint integrator. Returns dict:
+      delta_E   : energy deposited in the layer (MeV)
+      E_out     : kinetic energy leaving the layer (MeV; 0 if stopped)
+      stopped   : True if the ion stops inside the layer
+    """
+    if T_in_MeV <= 0 or thickness_um <= 0:
+        return {"delta_E": 0.0, "E_out": float(T_in_MeV), "stopped": T_in_MeV <= 0}
+
+    dx_cm = (thickness_um / n_steps) * 1e-4
+    E = float(T_in_MeV)
+    for _ in range(n_steps):
+        s1 = stopping_power_si(E, A, Z)
+        if s1 <= 0.0:
+            # Below Bethe-Bloch validity (~0.08 MeV/u): nuclear stopping finishes
+            # the job within a few μm. Treat as stopped, deposit residual here.
+            return {"delta_E": T_in_MeV, "E_out": 0.0, "stopped": True}
+        E_mid = E - 0.5 * s1 * dx_cm
+        if E_mid <= 0.0:
+            return {"delta_E": T_in_MeV, "E_out": 0.0, "stopped": True}
+        s2 = stopping_power_si(E_mid, A, Z)
+        if s2 <= 0.0:
+            return {"delta_E": T_in_MeV, "E_out": 0.0, "stopped": True}
+        E -= s2 * dx_cm
+        if E <= 0.0:
+            return {"delta_E": T_in_MeV, "E_out": 0.0, "stopped": True}
+    return {"delta_E": T_in_MeV - E, "E_out": E, "stopped": False}
+
+
+def range_in_si(T_in_MeV, A, Z, step_um=1.0, max_um=200000.0):
+    """CSDA range (μm) of ion (A, Z) with kinetic energy T_in in silicon.
+
+    Walks slabs of `step_um` until the ion stops (or `max_um` is reached).
+    Below the Bethe-Bloch validity threshold the formula returns S=0; the
+    walk exits there, so the reported range omits a small (~few %) low-energy
+    Bragg-tail contribution.
+    """
+    if T_in_MeV <= 0:
+        return 0.0
+    dx_cm = step_um * 1e-4
+    E = float(T_in_MeV)
+    x_um = 0.0
+    while E > 0.0 and x_um < max_um:
+        s1 = stopping_power_si(E, A, Z)
+        if s1 <= 0.0:
+            break
+        # midpoint refinement for the step
+        E_mid = E - 0.5 * s1 * dx_cm
+        s2 = stopping_power_si(E_mid, A, Z) if E_mid > 0 else s1
+        if s2 <= 0.0:
+            break
+        dE = s2 * dx_cm
+        if dE >= E:
+            # ion stops within this slab; estimate sub-slab fraction
+            x_um += step_um * (E / dE)
+            return x_um
+        E -= dE
+        x_um += step_um
+    return x_um
+
+
+def telescope_response(T_in_MeV, A, Z, de_um, e_um, n_steps=200):
+    """Pass an ion of energy T_in through a ΔE/E silicon telescope.
+
+    Returns dict with the deposited energies in each layer, residual after stack,
+    and where (if anywhere) the ion stops.
+    """
+    de = energy_loss_si(T_in_MeV, A, Z, de_um, n_steps=n_steps)
+    if de["stopped"]:
+        return {
+            "E_in":         T_in_MeV,
+            "delta_E":      de["delta_E"],
+            "E_after_dE":   0.0,
+            "E_in_E":       0.0,
+            "E_dep_E":      0.0,
+            "E_residual":   0.0,
+            "stopped_in":   "dE",
+            "punchthrough": False,
+        }
+    e = energy_loss_si(de["E_out"], A, Z, e_um, n_steps=n_steps)
+    return {
+        "E_in":         T_in_MeV,
+        "delta_E":      de["delta_E"],
+        "E_after_dE":   de["E_out"],
+        "E_in_E":       de["E_out"],
+        "E_dep_E":      e["delta_E"],
+        "E_residual":   e["E_out"],
+        "stopped_in":   "E" if e["stopped"] else "punchthrough",
+        "punchthrough": not e["stopped"],
+    }
 
 
 ELEMENT_SYMBOLS = {
@@ -209,3 +357,14 @@ if __name__ == "__main__":
 
     print(f"\nToF (ns) grid @ L = {L_m:g} m:")
     print(est.tof_grid(A_range, q_range, L_m=L_m).to_string(float_format="{:.3f}".format))
+
+    # ─── ΔE-E telescope spot-check ─────────────────────────────────────────
+    de_um, e_um = 100.0, 5000.0
+    print(f"\nSi ΔE-E telescope · ΔE = {de_um:g} μm, E = {e_um:g} μm")
+    print(f"{'Iso':>6}  {'E_in':>8}  {'ΔE':>8}  {'E_res':>8}  {'where':>13}")
+    for A, Z, q in [(14, 6, 6), (13, 6, 6), (13, 5, 5), (12, 6, 6), (11, 4, 4)]:
+        T = est.energy_for(A, q)
+        r = telescope_response(T, A, Z, de_um, e_um)
+        print(f"{isotope_label(A, Z)+str(q)+'+':>6}  "
+              f"{r['E_in']:>8.2f}  {r['delta_E']:>8.3f}  {r['E_residual']:>8.3f}  "
+              f"{r['stopped_in']:>13}")
